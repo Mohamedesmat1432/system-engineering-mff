@@ -2,21 +2,13 @@
 
 namespace App\Livewire\Dashboard;
 
+use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
-use App\Traits\SortSearchTrait;
 use Livewire\Component;
-use Illuminate\Support\Facades\DB;
-use Livewire\WithPagination;
-use Carbon\Carbon;
 
 class DashboardComponent extends Component
 {
-    use WithPagination, SortSearchTrait;
-
-    public $start_date = '';
-    public $end_date = '';
-
     public function dashboardLinks()
     {
         return [
@@ -25,8 +17,8 @@ class DashboardComponent extends Component
                 'value' => __('site.users'),
                 'icon' => 'user-group',
                 'role' => 'view-user',
-                'bg' => 'bg-gray-500',
-                'hover' => 'hover:bg-gray-600',
+                'bg' => 'bg-green-500',
+                'hover' => 'hover:bg-green-600',
                 'count' => User::count(),
                 'total' => '',
             ],
@@ -35,9 +27,19 @@ class DashboardComponent extends Component
                 'value' => __('site.roles'),
                 'icon' => 'lock-closed',
                 'role' => 'view-role',
-                'bg' => 'bg-green-500',
-                'hover' => 'hover:bg-green-600',
+                'bg' => 'bg-blue-500',
+                'hover' => 'hover:bg-blue-600',
                 'count' => Role::count(),
+                'total' => '',
+            ],
+            [
+                'name' => 'permissions',
+                'value' => __('site.permissions'),
+                'icon' => 'lock-open',
+                'role' => 'view-permission',
+                'bg' => 'bg-red-500',
+                'hover' => 'hover:bg-red-600',
+                'count' => Permission::count(),
                 'total' => '',
             ],
         ];

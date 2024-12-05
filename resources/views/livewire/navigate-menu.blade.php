@@ -81,10 +81,8 @@
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
-
                                     <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                                        <x-icon name="arrow-left-on-rectangle"
-                                            class="h-5 w-5 float-{{ __('site.left') }}" />
+                                        <x-icon name="arrow-left-on-rectangle" class="h-5 w-5 inline-block" />
                                         {{ __('site.logout') }}
                                     </x-dropdown-link>
                                 </form>
@@ -162,7 +160,6 @@
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}" x-data>
                         @csrf
-
                         <x-responsive-nav-link class="flex" href="{{ route('logout') }}"
                             @click.prevent="$root.submit();">
                             <x-icon name="arrow-left-on-rectangle" class="h-5 w-5" />
