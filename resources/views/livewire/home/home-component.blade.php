@@ -14,15 +14,13 @@
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="mt-2">
                 <div
-                    class="scale-100  bg-white from-gray-700/50 via-transparent rounded-lg shadow-2xl shadow-gray-500/20 flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                    <div class="grid grid-cols-1 md:grid-cols-1 gap-6 lg:gap-2">
-                        <div class="relative">
-                            <h1
-                                class="absolute top-12 left-1/2 transform -translate-x-1/2 md:text-4xl lg:text-8xl font-bold text-center">
-                                {{ __('site.wellcome') }} {{ __('site.tooo') }}
-                            </h1>
-                            <img src="{{ asset('images/kids_logo.jpeg') }}" alt="">
-                        </div>
+                    class="scale-100 bg-white from-gray-700/50 via-transparent rounded-lg shadow-2xl shadow-gray-500/20 flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
+                    <div class="relative">
+                        {{-- <h1
+                            class="absolute top-12 left-1/2 transform -translate-x-1/2 md:text-4xl lg:text-8xl font-bold text-center">
+                            {{ __('site.wellcome') }} {{ __('site.tooo') }}
+                        </h1> --}}
+                        <img width="100%" src="{{ asset('images/logo.png') }}" alt="Social Housing">
                     </div>
                 </div>
             </div>
@@ -44,7 +42,7 @@
                 </div>
 
                 <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                    Kids Area Managent System
+                    Engineering Managent System
                 </div>
             </div>
         </div>

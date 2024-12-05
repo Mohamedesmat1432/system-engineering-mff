@@ -18,7 +18,7 @@
                             {{ __('site.dashboard') }}
                         </x-nav-link>
 
-                        @foreach ($responsive_links as $link)
+                        @foreach ($this->responsiveLinks() as $link)
                             @can($link['role'])
                                 <x-nav-link wire:navigate href="{{ route($link['name']) }}" :active="request()->routeIs($link['name'])">
                                     <x-icon name="{{ $link['icon'] }}" class="h-5 w-5" />
@@ -67,7 +67,7 @@
                                     {{ __('site.manage_account') }}
                                 </div>
 
-                                @foreach ($dropdown_links as $link)
+                                @foreach ($this->dropdwonLinks() as $link)
                                     @can($link['role'])
                                         <x-dropdown-link wire:navigate href="{{ route($link['name']) }}" :active="request()->routeIs($link['name'])">
                                             <x-icon name="{{ $link['icon'] }}" class="w-5 h-5 inline-block" />
@@ -136,7 +136,7 @@
                         {{ __('site.dashboard') }}
                     </x-responsive-nav-link>
 
-                    @foreach ($responsive_links as $link)
+                    @foreach ($this->responsiveLinks() as $link)
                         @can($link['role'])
                             <x-responsive-nav-link class="flex" wire:navigate href="{{ route($link['name']) }}"
                                 :active="request()->routeIs($link['name'])">
@@ -146,7 +146,7 @@
                         @endcan
                     @endforeach
 
-                    @foreach ($dropdown_links as $link)
+                    @foreach ($this->dropdwonLinks() as $link)
                         @can($link['role'])
                             <x-responsive-nav-link class="flex" wire:navigate href="{{ route($link['name']) }}"
                                 :active="request()->routeIs($link['name'])">
