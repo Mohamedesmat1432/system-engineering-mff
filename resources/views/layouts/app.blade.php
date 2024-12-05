@@ -26,7 +26,6 @@
     <div class="font-sans antialiased min-h-screen bg-gray-100">
         @auth
             <livewire:navigate-menu />
-            {{-- <livewire:chat.group-chat /> --}}
         @else
             <livewire:home-menu />
         @endauth
