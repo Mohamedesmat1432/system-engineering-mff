@@ -1,32 +1,32 @@
 <?php
 
-namespace App\Livewire\User;
+namespace App\Livewire\Department;
 
 use App\Models\Role;
-use App\Traits\UserTrait;
+use App\Traits\DepartmentTrait;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-class UpdateUser extends Component
+class UpdateDepartment extends Component
 {
-    use UserTrait;
+    use DepartmentTrait;
 
     #[On('edit-modal')]
     public function confirmEdit($id)
     {
         $this->reset();
         $this->resetValidation();
-        $this->setUser($id);
+        $this->setDepartment($id);
         $this->edit_modal = true;
     }
 
     public function save()
     {
-        $this->updateUser();
+        $this->updateDepartment();
     }
 
     public function render()
     {
-        return view('livewire.user.update-user');
+        return view('livewire.department.update-department');
     }
 }

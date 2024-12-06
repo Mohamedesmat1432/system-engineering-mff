@@ -45,6 +45,12 @@ class NavigateMenu extends NavigationMenu
                 'icon' => 'user-group',
                 'role' => 'view-user',
             ],
+            [
+                'name' => 'departments',
+                'value' => 'site.departments',
+                'icon' => 'user-group',
+                'role' => 'view-department',
+            ],
         ];
     }
 

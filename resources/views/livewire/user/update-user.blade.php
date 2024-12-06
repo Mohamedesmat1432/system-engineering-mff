@@ -19,9 +19,19 @@
                     <x-input-error for="email" class="mt-2" />
                 </div>
                 <div class="col-span-6 sm:col-span-4 mt-3">
+                    <x-label for="department_id" value="{{ __('site.departments') }}" />
+                    <x-select class="mt-1 block w-full" wire:model="department_id">
+                        <option value="">{{ __('site.select') }}</option>
+                        @foreach ($this->departments() as $key => $val)
+                            <option value="{{ $key }}">{{ $val }}</option>
+                        @endforeach
+                    </x-select>
+                    <x-input-error for="department_id" class="mt-2" />
+                </div>
+                <div class="col-span-6 sm:col-span-4 mt-3">
                     <x-label for="role" value="{{ __('site.roles') }}" />
                     <x-select class="mt-1 block w-full" wire:model="role" multiple>
-                        @foreach ($roles as $key => $val)
+                        @foreach ($this->roles() as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                     </x-select>

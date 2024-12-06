@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use App\Models\Department;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\WithPagination;
@@ -17,6 +19,7 @@ trait UserTrait
     public $password;
     public $new_password;
     public $role;
+    public $department_id;
     protected function rules()
     {
         $rules = [
@@ -24,6 +27,7 @@ trait UserTrait
             'email' => 'required|string|email|max:255|unique:users,email,' . $this->user_id,
             'role' => 'nullable|exists:roles,id',
             'status' => 'required|boolean',
+            'department_id' => 'required|exists:departments,id',
         ];
 
         if($this->password) {
@@ -37,6 +41,16 @@ trait UserTrait
         return $rules;
     }
 
+    public function departments()
+    {
+        return Department::pluck('name','id')->toArray();
+    }
+
+    public function roles()
+    {
+        return Role::pluck('name', 'id')->toArray();
+    }
+
     public function setUser($id)
     {
         $this->user = User::findOrFail($id);
@@ -45,6 +59,7 @@ trait UserTrait
         $this->email = $this->user->email;
         $this->status = $this->user->status;
         $this->role =  $this->user->roles->pluck('id');
+        $this->department_id =  $this->user->department->id ?? '';
     }
 
     public function storeUser()

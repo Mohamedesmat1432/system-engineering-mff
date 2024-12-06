@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Livewire\User;
+namespace App\Livewire\Department;
 
 use App\Models\Role;
-use App\Traits\UserTrait;
+use App\Traits\DepartmentTrait;
 use Livewire\Component;
 
-class CreateUser extends Component
+class CreateDepartment extends Component
 {
-    use UserTrait;
+    use DepartmentTrait;
 
     public function createModal()
     {
@@ -19,11 +19,11 @@ class CreateUser extends Component
 
     public function save()
     {
-        $this->storeUser();
+        $this->storeDepartment();
     }
 
     public function render()
     {
-        return view('livewire.user.create-user');
+        return view('livewire.department.create-department');
     }
 }

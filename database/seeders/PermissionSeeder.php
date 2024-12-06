@@ -41,6 +41,12 @@ class PermissionSeeder extends Seeder
             'import-export-permission',
             'view-trash-group-button',
             'view-backup-database',
+            'view-department',
+            'create-department',
+            'edit-department',
+            'delete-department',
+            'show-department',
+            'bulk-delete-department',
         ];
 
         foreach ($permissions as $permission) {

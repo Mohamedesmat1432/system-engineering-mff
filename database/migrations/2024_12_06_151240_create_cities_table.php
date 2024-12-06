@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('status')->default(true);
+        Schema::create('cities', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('government_id')->nullable();
+            $table->string('name_ar');
+            $table->string('name_en');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('cities');
     }
 };

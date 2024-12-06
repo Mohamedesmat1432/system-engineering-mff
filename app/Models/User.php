@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -32,7 +33,7 @@ class User extends Authenticatable
      */
     protected $table = 'users';
 
-    protected $fillable = ['name', 'email', 'password', 'status'];
+    protected $fillable = ['name', 'email', 'password', 'status', 'department_id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -57,11 +58,15 @@ class User extends Authenticatable
      */
     protected $appends = ['profile_photo_url'];
 
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class);
+    }
+
     protected function name(): Attribute
     {
         return Attribute::make(get: fn(string $value) => ucwords($value));
     }
-
 
     public function scopeSearch($query, $search)
     {

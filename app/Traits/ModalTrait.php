@@ -19,10 +19,4 @@ trait ModalTrait
     public $import_modal = false;
     public $export_modal = false;
     public $note_modal = false;
-    
-    #[On('close-all-modal')]
-    public function closeAllModal()
-    {
-        $this->reset('create_exists_modal');
-    }
 }
