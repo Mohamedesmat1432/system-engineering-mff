@@ -26,6 +26,8 @@ class BulkDeleteDepartment extends Component
 
     public function render()
     {
+        $this->authorize('bulk-delete-department');
+
         return view('livewire.department.bulk-delete-department');
     }
 }

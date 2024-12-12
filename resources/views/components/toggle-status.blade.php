@@ -11,11 +11,11 @@
         </div>
         <!-- Status Text -->
         @if ($status)
-            <span class="ml-2 text-sm text-green-500">
+            <span class="mx-2 text-sm text-green-500">
                 {{ __('site.active') }}
             </span>
         @else
-            <span class="ml-2 text-sm text-red-500">
+            <span class="mx-2 text-sm text-red-500">
                 {{ __('site.not_active') }}
             </span>
         @endif

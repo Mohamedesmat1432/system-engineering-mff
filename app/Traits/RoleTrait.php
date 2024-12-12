@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Models\Permission;
 use App\Models\Role;
 use Livewire\WithPagination;
 
@@ -22,6 +23,11 @@ trait RoleTrait
         ];
     }
 
+    public function permissions()
+    {
+        return Permission::pluck('name', 'id');
+    }
+
     public function setRole($id)
     {
         $this->role = Role::findOrFail($id);
@@ -32,40 +38,37 @@ trait RoleTrait
 
     public function storeRole()
     {
-        $this->authorize('create-role');
         $validated = $this->validate();
         $role = Role::create($validated);
         $role->givePermissionTo($this->permission);
-        $this->reset();
         $this->dispatch('refresh-list-role');
         $this->dispatch('refresh-navigation-menu');
         $this->successNotify(__('site.role_created'));
         $this->create_modal = false;
+        $this->reset();
     }
 
     public function updateRole()
     {
-        $this->authorize('edit-role');
         $validated = $this->validate();
         $this->role->update($validated);
         $this->role->syncPermissions($this->permission);
-        $this->reset();
         $this->dispatch('refresh-list-role');
         $this->dispatch('refresh-navigation-menu');
         $this->successNotify(__('site.role_updated'));
         $this->edit_modal = false;
+        $this->reset();
     }
 
     public function deleteRole($id)
     {
-        $this->authorize('delete-role');
         $role = Role::findOrFail($id);
         $role->delete();
-        $this->reset();
         $this->dispatch('refresh-list-role');
         $this->dispatch('refresh-navigation-menu');
         $this->successNotify(__('site.role_deleted'));
         $this->delete_modal = false;
+        $this->reset();
     }
 
     public function bulkDeleteRole()

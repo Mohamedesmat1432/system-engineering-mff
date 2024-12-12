@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Role;
 
-use App\Models\Permission;
 use App\Traits\RoleTrait;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -27,10 +26,8 @@ class UpdateRole extends Component
 
     public function render()
     {
-        $permissions = Permission::pluck('name', 'id');
+        $this->authorize('edit-role');
 
-        return view('livewire.role.update-role', [
-            'permissions' => $permissions
-        ]);
+        return view('livewire.role.update-role');
     }
 }

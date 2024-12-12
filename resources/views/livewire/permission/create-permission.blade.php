@@ -1,6 +1,4 @@
 <div>
-    <x-create-button permission="create-permission" />
-
     @if ($this->create_modal)
         <x-dialog-modal wire:model="create_modal" submit="save()" method="POST">
             <x-slot name="title">

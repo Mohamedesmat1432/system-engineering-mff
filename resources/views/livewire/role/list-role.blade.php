@@ -1,8 +1,15 @@
 <div>
     <x-page-content page-name="{{ __('site.roles') }}">
 
-        <livewire:role.update-role />
-        <livewire:role.delete-role />
+        @can('create-role')
+            <livewire:role.create-role />
+        @endcan
+        @can('edit-role')
+            <livewire:role.update-role />
+        @endcan
+        @can('delete-role')
+            <livewire:role.delete-role />
+        @endcan
 
         <div class="p-6 lg:p-8 bg-white border-b border-gray-200 rounded-md">
 
@@ -10,15 +17,17 @@
                 <h1 class=" text-2xl font-medium text-gray-900">
                     {{ __('site.roles') }}
                 </h1>
-                <livewire:role.create-role />
             </div>
 
             <div class="mt-6 text-gray-500 leading-relaxed">
                 <div class="mt-3">
-                    <div class="flex justify-between">
-                        <div>
+                    <div class="md:flex justify-between">
+                        <div class="mb-2">
                             <x-input type="search" wire:model.live.debounce.500ms="search"
                                 placeholder="{{ __('site.search') }}..." />
+                        </div>
+                        <div class="mb-2">
+                            <x-create-button permission="create-role" />
                         </div>
                     </div>
                 </div>

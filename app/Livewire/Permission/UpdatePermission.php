@@ -26,6 +26,8 @@ class UpdatePermission extends Component
 
     public function render()
     {
+        $this->authorize('edit-permission');
+
         return view('livewire.permission.update-permission');
     }
 }

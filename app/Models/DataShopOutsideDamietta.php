@@ -16,11 +16,13 @@ class DataShopOutsideDamietta extends Model
         'government_id',
         'auction_date',
         'city_id',
+        'center',
         'location',
         'building_number',
         'building_entrance_number',
         'shop_number',
         'type_of_shop',
+        'shop_area',
         'buyer_name',
         'national_number',
         'count_of_national_number',
@@ -29,12 +31,15 @@ class DataShopOutsideDamietta extends Model
         'sell_price',
         'sell_price_for_meter',
         'payment_method',
-        'insurance_price',
-        'insurance_date',
-        'remaining_amount_sale_price',
-        'remaining_amount_sale_date',
-        'maintenance_deposit_price',
-        'maintenance_deposit_date',
+        'insurance',
+        'remaining_sale',
+        'maintenance_deposit',
+    ];
+
+    protected $casts = [
+        'insurance' => 'array',
+        'remaining_sale' => 'array',
+        'maintenance_deposit' => 'array',
     ];
 
     public function government(): BelongsTo
@@ -42,7 +47,7 @@ class DataShopOutsideDamietta extends Model
         return $this->belongsTo(Government::class);
     }
 
-    public function  city(): BelongsTo
+    public function city(): BelongsTo
     {
         return $this->belongsTo(City::class);
     }

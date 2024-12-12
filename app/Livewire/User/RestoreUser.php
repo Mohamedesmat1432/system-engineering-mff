@@ -29,6 +29,8 @@ class RestoreUser extends Component
 
     public function render()
     {
+        $this->authorize('restore-user');
+
         return view('livewire.user.restore-user');
     }
 }

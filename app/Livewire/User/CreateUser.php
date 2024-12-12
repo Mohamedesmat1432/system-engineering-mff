@@ -4,12 +4,14 @@ namespace App\Livewire\User;
 
 use App\Models\Role;
 use App\Traits\UserTrait;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class CreateUser extends Component
 {
     use UserTrait;
 
+    #[On('create-modal')]
     public function createModal()
     {
         $this->reset();
@@ -24,6 +26,8 @@ class CreateUser extends Component
 
     public function render()
     {
+        $this->authorize('create-user');
+
         return view('livewire.user.create-user');
     }
 }

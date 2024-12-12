@@ -30,11 +30,11 @@ trait UserTrait
             'department_id' => 'required|exists:departments,id',
         ];
 
-        if($this->password) {
+        if ($this->password) {
             $rules['password'] = 'required|string|min:8';
         }
 
-        if($this->new_password) {
+        if ($this->new_password) {
             $rules['new_password'] = 'required|string|min:8';
         }
 
@@ -43,7 +43,7 @@ trait UserTrait
 
     public function departments()
     {
-        return Department::pluck('name','id')->toArray();
+        return Department::pluck('name_' . app()->getLocale(), 'id')->toArray();
     }
 
     public function roles()
@@ -58,98 +58,91 @@ trait UserTrait
         $this->name = $this->user->name;
         $this->email = $this->user->email;
         $this->status = $this->user->status;
-        $this->role =  $this->user->roles->pluck('id');
-        $this->department_id =  $this->user->department->id ?? '';
+        $this->role = $this->user->roles->pluck('id');
+        $this->department_id = $this->user->department->id ?? '';
     }
 
     public function storeUser()
     {
-        $this->authorize('create-user');
         $validated = $this->validate();
         $validated['password'] = Hash::make($this->password);
         $user = User::create($validated);
         $user->syncRoles($this->role);
-        $this->reset();
         $this->dispatch('refresh-list-user');
         $this->successNotify(__('site.user_created'));
         $this->create_modal = false;
+        $this->reset();
     }
 
     public function updateUser()
     {
-        $this->authorize('edit-user');
         $validated = $this->validate();
-        if($this->new_password) {
+        if ($this->new_password) {
             $validated['password'] = Hash::make($this->new_password);
         }
         $this->user->syncRoles($this->role);
         $this->user->update($validated);
-        $this->reset();
         $this->dispatch('refresh-list-user');
         $this->dispatch('refresh-navigation-menu');
         $this->successNotify(__('site.user_updated'));
         $this->edit_modal = false;
+        $this->reset();
     }
 
     public function deleteUser($id)
     {
-        $this->authorize('delete-user');
         $user = User::findOrFail($id);
         $user->delete();
-        $this->reset();
         $this->dispatch('refresh-list-user');
         $this->dispatch('refresh-navigation-menu');
         $this->successNotify(__('site.user_deleted'));
         $this->delete_modal = false;
+        $this->reset();
     }
 
     public function bulkDeleteUser($arr)
     {
-        $this->authorize('bulk-delete-user');
         $users = User::withoutTrashed()->whereIn('id', $arr);
         $users->delete();
-        $this->reset();
         $this->dispatch('refresh-list-user');
         $this->dispatch('checkbox-clear');
         $this->dispatch('refresh-navigation-menu');
         $this->successNotify(__('site.user_delete_all'));
         $this->bulk_delete_modal = false;
+        $this->reset();
     }
 
     public function restoreUser($id)
     {
-        $this->authorize('restore-user');
         $user = User::onlyTrashed()->findOrFail($id);
         $user->restore();
-        $this->reset();
         $this->dispatch('refresh-list-user');
         $this->dispatch('refresh-navigation-menu');
         $this->successNotify(__('site.user_restored'));
         $this->restore_modal = false;
+        $this->reset();
     }
 
     public function forceDeleteUser($id)
     {
-        $this->authorize('force-delete-user');
         $user = User::onlyTrashed()->findOrFail($id);
         $user->forceDelete();
-        $this->reset();
         $this->dispatch('refresh-list-user');
         $this->dispatch('refresh-navigation-menu');
         $this->successNotify(__('site.user_deleted'));
         $this->force_delete_modal = false;
+        $this->reset();
     }
 
     public function forceBulkDeleteUser($arr)
     {
-        $this->authorize('force-bulk-delete-user');
         $users = User::onlyTrashed()->whereIn('id', $arr);
         $users->forceDelete();
-        $this->reset();
         $this->dispatch('refresh-list-user');
         $this->dispatch('checkbox-clear');
         $this->dispatch('refresh-navigation-menu');
         $this->successNotify(__('site.user_delete_all'));
         $this->force_bulk_delete_modal = false;
+        $this->reset();
     }
 }

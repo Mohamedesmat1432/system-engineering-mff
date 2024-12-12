@@ -11,13 +11,6 @@ class ListDepartment extends Component
 {
     use DepartmentTrait;
 
-    #[On('checkbox-clear')]
-    public function checkboxClear()
-    {
-        $this->checkbox_arr = [];
-        $this->checkbox_status = false;
-    }
-    
     #[On('refresh-list-department')]
     public function render()
     {

@@ -11,13 +11,6 @@ class ListUser extends Component
 {
     use UserTrait;
 
-    #[On('checkbox-clear')]
-    public function checkboxClear()
-    {
-        $this->checkbox_arr = [];
-        $this->checkbox_status = false;
-    }
-    
     #[On('refresh-list-user')]
     public function render()
     {

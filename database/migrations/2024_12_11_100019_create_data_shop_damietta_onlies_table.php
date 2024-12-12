@@ -11,30 +11,30 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_shop_outside_damiettas', function (Blueprint $table) {
-            $table->id();
+        Schema::create('data_shop_damietta_onlies', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->foreignId('government_id')->nullable();
             $table->date('auction_date');
             $table->foreignId('city_id')->nullable();
+            $table->string('center')->nullable();
             $table->string('location');
             $table->string('building_number');
             $table->string('building_entrance_number');
             $table->string('shop_number');
             $table->string('type_of_shop');
+            $table->string('shop_area');
             $table->string('buyer_name');
-            $table->string('national_number')->unique();
+            $table->string('national_number');
             $table->string('count_of_national_number');
             $table->string('phone_number');
             $table->string('home_number')->nullable();
-            $table->decimal('sell_price');
-            $table->decimal('sell_price_for_meter');
-            $table->string('payment_method')->nullable();
-            $table->decimal('insurance_amount', 2)->nullable();
-            $table->date('insurance_date')->nullable();
-            $table->decimal('remaining_sale_amount', 2)->nullable();
-            $table->date('remaining_sale_date')->nullable();
-            $table->decimal('maintenance_deposit_amount',2)->nullable();
-            $table->date('maintenance_deposit_date')->nullable();
+            $table->decimal('sell_price',10,2);
+            $table->decimal('sell_price_for_meter',10,2);
+            $table->string('payment_method'); 
+            $table->json('insurance')->nullable();  
+            $table->json('remaining_sale')->nullable();  
+            $table->json('maintenance_deposit')->nullable();  
+            $table->json('installments')->nullable();          
             $table->timestamps();
         });
     }
@@ -44,6 +44,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_stores_outside_damiettas');
+        Schema::dropIfExists('data_shop_damietta_onlies');
     }
 };

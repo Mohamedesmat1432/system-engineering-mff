@@ -1,7 +1,7 @@
 @props(['permission', 'id'])
 
 @can($permission)
-    <x-indigo-button wire:click="createModal()" wire:loading.attr="disabled">
+    <x-indigo-button wire:click="$dispatch('create-modal')" wire:loading.attr="disabled">
         <x-icon class="w-4 h-4" name="plus" />
         {{ __('site.create') }}
     </x-indigo-button>

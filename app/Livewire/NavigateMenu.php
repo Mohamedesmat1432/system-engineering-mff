@@ -48,8 +48,20 @@ class NavigateMenu extends NavigationMenu
             [
                 'name' => 'departments',
                 'value' => 'site.departments',
-                'icon' => 'user-group',
+                'icon' => 'squares-2x2',
                 'role' => 'view-department',
+            ],
+            [
+                'name' => 'shops.outside.damietta',
+                'value' => 'site.list_shop_outside_damietta',
+                'icon' => 'squares-2x2',
+                'role' => 'view-shop-outside-damietta',
+            ],
+            [
+                'name' => 'shops.damietta.only',
+                'value' => 'site.list_shop_damietta_only',
+                'icon' => 'squares-2x2',
+                'role' => 'view-shop-damietta-only',
             ],
         ];
     }

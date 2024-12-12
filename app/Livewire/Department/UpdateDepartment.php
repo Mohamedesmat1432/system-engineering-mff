@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Department;
 
-use App\Models\Role;
 use App\Traits\DepartmentTrait;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -27,6 +26,8 @@ class UpdateDepartment extends Component
 
     public function render()
     {
+        $this->authorize('edit-department');
+
         return view('livewire.department.update-department');
     }
 }

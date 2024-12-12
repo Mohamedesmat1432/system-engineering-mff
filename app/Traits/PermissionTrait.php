@@ -29,35 +29,32 @@ trait PermissionTrait
 
     public function storePermission()
     {
-        $this->authorize('create-permission');
         $validated = $this->validate();
         Permission::create($validated);
-        $this->reset();
         $this->dispatch('refresh-list-permission');
         $this->successNotify(__('site.permission_created'));
         $this->create_modal = false;
+        $this->reset();
     }
 
     public function updatePermission()
     {
-        $this->authorize('edit-permission');
         $validated = $this->validate();
         $this->permission->update($validated);
-        $this->reset();
         $this->dispatch('refresh-list-permission');
         $this->successNotify(__('site.permission_updated'));
         $this->edit_modal = false;
+        $this->reset();
     }
 
     public function deletePermission($id)
     {
-        $this->authorize('delete-permission');
         $permission = Permission::findOrFail($id);
         $permission->delete();
-        $this->reset();
         $this->dispatch('refresh-list-permission');
         $this->successNotify(__('site.permission_deleted'));
         $this->delete_modal = false;
+        $this->reset();
     }
 
     public function bulkDeletePermission($arr)

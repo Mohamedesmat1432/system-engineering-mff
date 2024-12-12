@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 
 trait SortSearchTrait
@@ -26,7 +27,8 @@ trait SortSearchTrait
 
     #[Url('')]
     public int $page_element = 25;
-    
+
+    public string $extension = 'xlsx';
     public bool $trash = false;
     public $status = false;
     public $checkbox_arr = [];
@@ -48,6 +50,13 @@ trait SortSearchTrait
             $this->checkbox_status = false;
             $this->checkbox_arr = [];
         }
+    }
+
+    #[On('checkbox-clear')]
+    public function checkboxClear()
+    {
+        $this->checkbox_arr = [];
+        $this->checkbox_status = false;
     }
 
     public function sortByField($field)

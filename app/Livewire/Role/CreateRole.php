@@ -2,14 +2,15 @@
 
 namespace App\Livewire\Role;
 
-use App\Models\Permission;
 use App\Traits\RoleTrait;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class CreateRole extends Component
 {
     use RoleTrait;
 
+    #[On('create-modal')]
     public function createModal()
     {
         $this->reset();
@@ -24,10 +25,8 @@ class CreateRole extends Component
 
     public function render()
     {
-        $permissions = Permission::pluck('name', 'id');
+        $this->authorize('create-role');
 
-        return view('livewire.role.create-role', [
-            'permissions' => $permissions
-        ]);
+        return view('livewire.role.create-role');
     }
 }

@@ -15,7 +15,7 @@
                 <div class="col-span-6 sm:col-span-4 mt-3">
                     <x-label for="permission" value="{{ __('site.permissions') }}" />
                     <x-select class="mt-1 block w-full h-48" wire:model="permission" multiple>
-                        @foreach ($permissions as $key => $val)
+                        @foreach ($this->permissions() as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                     </x-select>

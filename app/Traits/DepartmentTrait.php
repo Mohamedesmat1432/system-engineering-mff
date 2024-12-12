@@ -33,49 +33,45 @@ trait DepartmentTrait
 
     public function storeDepartment()
     {
-        $this->authorize('create-department');
         $validated = $this->validate();
         Department::create($validated);
-        $this->reset();
         $this->dispatch('refresh-list-department');
         $this->successNotify(__('site.department_created'));
         $this->create_modal = false;
+        $this->reset();
     }
 
     public function updateDepartment()
     {
-        $this->authorize('edit-department');
         $validated = $this->validate();
         $this->department->update($validated);
-        $this->reset();
         $this->dispatch('refresh-list-department');
         $this->dispatch('refresh-navigation-menu');
         $this->successNotify(__('site.department_updated'));
         $this->edit_modal = false;
+        $this->reset();
     }
 
     public function deleteDepartment($id)
     {
-        $this->authorize('delete-department');
         $department = Department::findOrFail($id);
         $department->delete();
-        $this->reset();
         $this->dispatch('refresh-list-department');
         $this->dispatch('refresh-navigation-menu');
         $this->successNotify(__('site.department_deleted'));
         $this->delete_modal = false;
+        $this->reset();
     }
 
     public function bulkDeleteDepartment($arr)
     {
-        $this->authorize('bulk-delete-department');
         $departments = Department::whereIn('id', $arr);
         $departments->delete();
-        $this->reset();
         $this->dispatch('refresh-list-department');
         $this->dispatch('checkbox-clear');
         $this->dispatch('refresh-navigation-menu');
         $this->successNotify(__('site.department_delete_all'));
         $this->bulk_delete_modal = false;
+        $this->reset();
     }
 }

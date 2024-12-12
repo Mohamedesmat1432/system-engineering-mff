@@ -29,6 +29,8 @@ class DeleteDepartment extends Component
 
     public function render()
     {
+        $this->authorize('delete-department');
+
         return view('livewire.department.delete-department');
     }
 }

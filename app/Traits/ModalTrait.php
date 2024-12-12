@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Traits;
-use Livewire\Attributes\Locked;
-use Livewire\Attributes\On;
 
 trait ModalTrait
 {

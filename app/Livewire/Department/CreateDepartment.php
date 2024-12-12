@@ -2,14 +2,15 @@
 
 namespace App\Livewire\Department;
 
-use App\Models\Role;
 use App\Traits\DepartmentTrait;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class CreateDepartment extends Component
 {
     use DepartmentTrait;
 
+    #[On('create-modal')]
     public function createModal()
     {
         $this->reset();
@@ -24,6 +25,8 @@ class CreateDepartment extends Component
 
     public function render()
     {
+        $this->authorize('create-department');
+
         return view('livewire.department.create-department');
     }
 }

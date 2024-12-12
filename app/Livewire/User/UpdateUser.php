@@ -2,7 +2,6 @@
 
 namespace App\Livewire\User;
 
-use App\Models\Role;
 use App\Traits\UserTrait;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -27,6 +26,8 @@ class UpdateUser extends Component
 
     public function render()
     {
+        $this->authorize('edit-user');
+
         return view('livewire.user.update-user');
     }
 }

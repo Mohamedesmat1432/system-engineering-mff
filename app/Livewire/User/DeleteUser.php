@@ -29,6 +29,8 @@ class DeleteUser extends Component
 
     public function render()
     {
+        $this->authorize('delete-user');
+
         return view('livewire.user.delete-user');
     }
 }

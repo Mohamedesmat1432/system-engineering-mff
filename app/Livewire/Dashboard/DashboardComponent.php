@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Dashboard;
 
+use App\Models\DataShopDamiettaOnly;
+use App\Models\DataShopOutsideDamietta;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
@@ -20,7 +22,6 @@ class DashboardComponent extends Component
                 'bg' => 'bg-green-500',
                 'hover' => 'hover:bg-green-600',
                 'count' => User::count(),
-                'total' => '',
             ],
             [
                 'name' => 'roles',
@@ -30,7 +31,6 @@ class DashboardComponent extends Component
                 'bg' => 'bg-blue-500',
                 'hover' => 'hover:bg-blue-600',
                 'count' => Role::count(),
-                'total' => '',
             ],
             [
                 'name' => 'permissions',
@@ -40,7 +40,24 @@ class DashboardComponent extends Component
                 'bg' => 'bg-red-500',
                 'hover' => 'hover:bg-red-600',
                 'count' => Permission::count(),
-                'total' => '',
+            ],
+            [
+                'name' => 'shops.outside.damietta',
+                'value' => __('site.list_shop_outside_damietta'),
+                'icon' => 'lock-open',
+                'role' => 'view-shop-outside-damietta',
+                'bg' => 'bg-gray-800',
+                'hover' => 'hover:bg-gray-900',
+                'count' => DataShopOutsideDamietta::count(),
+            ],
+            [
+                'name' => 'shops.damietta.only',
+                'value' => __('site.list_shop_damietta_only'),
+                'icon' => 'lock-open',
+                'role' => 'view-shop-damietta-only',
+                'bg' => 'bg-gray-500',
+                'hover' => 'hover:bg-gray-600',
+                'count' => DataShopDamiettaOnly::count(),
             ],
         ];
     }

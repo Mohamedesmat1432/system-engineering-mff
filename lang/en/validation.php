@@ -195,6 +195,8 @@ return [
         'description' => 'description',
         'department_id' => 'department',
         'note' => 'note',
+        'government_id' => 'government ',
+        'city_id' => 'city',
     ],
 
 ];

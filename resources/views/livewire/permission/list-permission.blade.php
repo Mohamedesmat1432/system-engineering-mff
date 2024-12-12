@@ -1,8 +1,15 @@
 <div>
     <x-page-content page-name="{{ __('site.permissions') }}">
 
-        <livewire:permission.update-permission />
-        <livewire:permission.delete-permission />
+        @can('create-permission')
+            <livewire:permission.create-permission />
+        @endcan
+        @can('edit-permission')
+            <livewire:permission.update-permission />
+        @endcan
+        @can('delete-permission')
+            <livewire:permission.delete-permission />
+        @endcan
 
         <div class="p-6 lg:p-8 bg-white border-b border-gray-200 rounded-md">
 
@@ -10,15 +17,17 @@
                 <h1 class=" text-2xl font-medium text-gray-900">
                     {{ __('site.permissions') }}
                 </h1>
-                <livewire:permission.create-permission />
             </div>
 
             <div class="mt-6 text-gray-500 leading-relaxed">
                 <div class="mt-3">
-                    <div class="flex justify-between">
-                        <div>
+                    <div class="md:flex justify-between">
+                        <div class="mb-2">
                             <x-input type="search" wire:model.live.debounce.500ms="search"
                                 placeholder="{{ __('site.search') }}..." />
+                        </div>
+                        <div class="mb-2">
+                            <x-create-button permission="create-permission" />
                         </div>
                     </div>
                 </div>

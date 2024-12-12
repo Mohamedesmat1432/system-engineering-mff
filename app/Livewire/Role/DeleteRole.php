@@ -29,6 +29,8 @@ class DeleteRole extends Component
 
     public function render()
     {
+        $this->authorize('delete-role');
+
         return view('livewire.role.delete-role');
     }
 }
