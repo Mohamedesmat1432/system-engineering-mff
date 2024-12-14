@@ -26,18 +26,18 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Livewire::setUpdateRoute(function ($handle) {
-            return Route::middleware(['web', 'localize', 'localeCookieRedirect', 'localeSessionRedirect', 'localeViewPath', 'localizationRedirect'])
-                ->prefix(LaravelLocalization::setLocale())
-                ->post('/livewire/update', $handle);
-        });
-
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
 
         $this->routes(function () {
             Route::middleware('api')->prefix('api')->group(base_path('routes/api.php'));
+
+            Livewire::setUpdateRoute(function ($handle) {
+                return Route::middleware(['web', 'localize', 'localeCookieRedirect', 'localeSessionRedirect', 'localeViewPath', 'localizationRedirect'])
+                    ->prefix(LaravelLocalization::setLocale())
+                    ->post('/livewire/update', $handle);
+            });
 
             Route::middleware(['web', 'localize', 'localeCookieRedirect', 'localeSessionRedirect', 'localeViewPath', 'localizationRedirect'])
                 ->prefix(LaravelLocalization::setLocale())
