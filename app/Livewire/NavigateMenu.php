@@ -16,6 +16,18 @@ class NavigateMenu extends NavigationMenu
                 'role' => 'view-profile',
             ],
             [
+                'name' => 'users',
+                'value' => 'site.users',
+                'icon' => 'user-group',
+                'role' => 'view-user',
+            ],
+            [
+                'name' => 'departments',
+                'value' => 'site.departments',
+                'icon' => 'squares-2x2',
+                'role' => 'view-department',
+            ],
+            [
                 'name' => 'roles',
                 'value' => 'site.roles',
                 'icon' => 'lock-closed',
@@ -39,18 +51,6 @@ class NavigateMenu extends NavigationMenu
     public function responsiveLinks()
     {
         return [
-            [
-                'name' => 'users',
-                'value' => 'site.users',
-                'icon' => 'user-group',
-                'role' => 'view-user',
-            ],
-            [
-                'name' => 'departments',
-                'value' => 'site.departments',
-                'icon' => 'squares-2x2',
-                'role' => 'view-department',
-            ],
             [
                 'name' => 'shops.outside.damietta',
                 'value' => 'site.list_shop_outside_damietta',

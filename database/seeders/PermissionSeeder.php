@@ -52,11 +52,13 @@ class PermissionSeeder extends Seeder
             'edit-shop-outside-damietta',
             'delete-shop-outside-damietta',
             'bulk-delete-shop-outside-damietta',
+            'export-shop-outside-damietta',
             'view-shop-damietta-only',
             'create-shop-damietta-only',
             'edit-shop-damietta-only',
             'delete-shop-damietta-only',
             'bulk-delete-shop-damietta-only',
+            'export-shop-damietta-only',
 
         ];
 

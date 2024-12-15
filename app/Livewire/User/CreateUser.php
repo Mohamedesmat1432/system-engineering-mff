@@ -2,7 +2,6 @@
 
 namespace App\Livewire\User;
 
-use App\Models\Role;
 use App\Traits\UserTrait;
 use Livewire\Attributes\On;
 use Livewire\Component;

@@ -50,6 +50,9 @@
                     </div>
                     <div class="mt-2">
                         <x-label for="city_id" value="{{ __('site.city_id') }}" />
+                        <div class="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"
+                            wire:loading wire:target="cities">
+                        </div>
                         <x-select class="mt-1 block w-full" wire:model="city_id">
                             <option value="">{{ __('site.select') }}</option>
                             @foreach ($this->cities() as $key => $val)

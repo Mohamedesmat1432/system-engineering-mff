@@ -10,7 +10,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <div class="mt-2">
                         <x-label for="buyer_name" value="{{ __('site.buyer_name') }}" />
-                        <x-input type="text" class="mt-1 block w-full" wire:model="buyer_name"
+                        <x-input type="text" required class="mt-1 block w-full" wire:model="buyer_name"
                             placeholder="{{ __('site.buyer_name') }}" />
                         <x-input-error for="buyer_name" class="mt-2" />
                     </div>
@@ -19,19 +19,19 @@
                             <x-label for="national_number" value="{{ __('site.national_number') }}" />
                             <span class="text-red-600 mx-2">{{ $this->count_of_national_number }}</span>
                         </div>
-                        <x-input type="text" class="mt-1 block w-full" wire:model="national_number"
+                        <x-input type="text" required class="mt-1 block w-full" wire:model="national_number"
                             wire:keyup="countNationalId" placeholder="{{ __('site.national_number') }}" />
                         <x-input-error for="national_number" class="mt-2" />
                     </div>
                     <div class="mt-2">
                         <x-label for="phone_number" value="{{ __('site.phone_number') }}" />
-                        <x-input type="text" class="mt-1 block w-full" wire:model="phone_number"
+                        <x-input type="text" required class="mt-1 block w-full" wire:model="phone_number"
                             placeholder="{{ __('site.phone_number') }}" />
                         <x-input-error for="phone_number" class="mt-2" />
                     </div>
                     <div class="mt-2">
                         <x-label for="home_number" value="{{ __('site.home_number') }}" />
-                        <x-input type="text" class="mt-1 block w-full" wire:model="home_number"
+                        <x-input type="text" required class="mt-1 block w-full" wire:model="home_number"
                             placeholder="{{ __('site.home_number') }}" />
                         <x-input-error for="home_number" class="mt-2" />
                     </div>
@@ -50,8 +50,11 @@
                     </div>
                     <div class="mt-2">
                         <x-label for="city_id" value="{{ __('site.city_id') }}" />
+                        <div class="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"
+                            wire:loading wire:target="cities">
+                        </div>
                         <x-select class="mt-1 block w-full" wire:model="city_id">
-                            <option value="">{{ __('site.select') }}</option>
+                            <option value=""> {{ __('site.select') }}</option>
                             @foreach ($this->cities() as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
@@ -60,13 +63,13 @@
                     </div>
                     <div class="mt-2">
                         <x-label for="center" value="{{ __('site.center') }}" />
-                        <x-input type="text" class="mt-1 block w-full" wire:model="center"
+                        <x-input type="text" required class="mt-1 block w-full" wire:model="center"
                             placeholder="{{ __('site.center') }}" />
                         <x-input-error for="center" class="mt-2" />
                     </div>
                     <div class="mt-2">
                         <x-label for="location" value="{{ __('site.location') }}" />
-                        <x-input type="text" class="mt-1 block w-full" wire:model="location"
+                        <x-input type="text" required class="mt-1 block w-full" wire:model="location"
                             placeholder="{{ __('site.location') }}" />
                         <x-input-error for="location" class="mt-2" />
                     </div>
@@ -80,7 +83,7 @@
                     </div>
                     <div class="mt-2">
                         <x-label for="building_number" value="{{ __('site.building_number') }}" />
-                        <x-input type="text" class="mt-1 block w-full" wire:model="building_number"
+                        <x-input type="text" required class="mt-1 block w-full" wire:model="building_number"
                             placeholder="{{ __('site.building_number') }}" />
                         <x-input-error for="building_number" class="mt-2" />
                     </div>
@@ -98,7 +101,7 @@
                     </div>
                     <div class="mt-2">
                         <x-label for="type_of_shop" value="{{ __('site.type_of_shop') }}" />
-                        <x-input type="text" class="mt-1 block w-full" wire:model="type_of_shop"
+                        <x-input type="text" required class="mt-1 block w-full" wire:model="type_of_shop"
                             placeholder="{{ __('site.type_of_shop') }}" />
                         <x-input-error for="type_of_shop" class="mt-2" />
                     </div>
@@ -122,7 +125,7 @@
                     </div>
                     <div class="mt-2">
                         <x-label for="payment_method" value="{{ __('site.payment_method') }}" />
-                        <x-input type="text" class="mt-1 block w-full" wire:model="payment_method"
+                        <x-input type="text" required class="mt-1 block w-full" wire:model="payment_method"
                             placeholder="{{ __('site.payment_method') }}" />
                         <x-input-error for="payment_method" class="mt-2" />
                     </div>
@@ -178,7 +181,8 @@
                 <x-indigo-button type="submit" wire:loading.attr="disabled">
                     {{ __('site.save') }}
                 </x-indigo-button>
-                <x-secondary-button class="mx-2" wire:click="$set('create_modal',false)" wire:loading.attr="disabled">
+                <x-secondary-button class="mx-2" wire:click="$set('create_modal',false)"
+                    wire:loading.attr="disabled">
                     {{ __('site.cancel') }}
                 </x-secondary-button>
             </x-slot>

@@ -26,6 +26,8 @@
                     @endcan
                 @endforeach
             </div>
+            <livewire:chart-component />
+
         </div>
     </x-page-content>
 </div>
