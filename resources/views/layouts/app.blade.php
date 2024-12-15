@@ -49,7 +49,7 @@
 
     @stack('modals')
 
-    @stack('scriptPage')
+    @stack('scripts')
 
     @livewireScripts
 </body>

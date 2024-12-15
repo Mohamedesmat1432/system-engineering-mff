@@ -130,7 +130,7 @@
                     </div>
                 </div>
                 <h3 class="mt-2 text-xl">{{ __('site.insurance') }}</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="mt-2">
                         <x-label for="insurance.amount" value="{{ __('site.amount') }}" />
                         <x-input type="number" class="mt-1 block w-full" wire:model="insurance.amount"
@@ -145,7 +145,7 @@
                     </div>
                 </div>
                 <h3 class="mt-2 text-xl">{{ __('site.remaining_amount_sale') }}</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="mt-2">
                         <x-label for="remaining_sale.amount" value="{{ __('site.amount') }}" />
                         <x-input type="number" class="mt-1 block w-full" wire:model="remaining_sale.amount"
@@ -160,7 +160,7 @@
                     </div>
                 </div>
                 <h3 class="mt-2 text-xl">{{ __('site.maintenance_deposit') }}</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="mt-2">
                         <x-label for="maintenance_deposit.amount" value="{{ __('site.amount') }}" />
                         <x-input type="number" class="mt-1 block w-full" wire:model="maintenance_deposit.amount"
@@ -175,33 +175,22 @@
                     </div>
                 </div>
                 @foreach ($installments as $key => $installment)
-                    <h3 class="mt-2 text-xl">{{ __("site.installment_{$loop->iteration}") }}</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <h3 class="mt-2 text-xl">{{ __("site.installment_{$key}") }}</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                         <div class="mt-2">
-                            <x-label for="installments.{{$key}}.amount" value="{{ __('site.amount') }}" />
+                            <x-label for="installments.{{ $key }}.amount"
+                                value="{{ __('site.amount') }}" />
                             <x-input type="number" class="mt-1 block w-full"
-                                wire:model="installments.{{$key}}.amount"
+                                wire:model="installments.{{ $key }}.amount"
                                 placeholder="{{ __('site.amount') }}" />
-                            <x-input-error for="installments.{{$key}}.amount" class="mt-2" />
+                            <x-input-error for="installments.{{ $key }}.amount" class="mt-2" />
                         </div>
                         <div class="mt-2">
-                            <x-label for="installments.{{$key}}.date" value="{{ __('site.date') }}" />
+                            <x-label for="installments.{{ $key }}.date" value="{{ __('site.date') }}" />
                             <x-input type="date" class="mt-1 block w-full"
-                                wire:model="installments.{{$key}}.date"
+                                wire:model="installments.{{ $key }}.date"
                                 placeholder="{{ __('site.date') }}" />
-                            <x-input-error for="installments.{{$key}}.date" class="mt-2" />
-                        </div>
-                        <div class="mt-2 md:mt-8">
-                            @if ($key !== 0)
-                                <x-danger-button wire:click="remove({{ $key }})"
-                                    wire:loading.attr="disabled">
-                                    {{ __('site.remove') }}
-                                </x-danger-button>
-                            @else
-                                <x-indigo-button wire:click="add" wire:loading.attr="disabled">
-                                    {{ __('site.add_more') }}
-                                </x-indigo-button>
-                            @endif
+                            <x-input-error for="installments.{{ $key }}.date" class="mt-2" />
                         </div>
                     </div>
                 @endforeach

@@ -15,6 +15,7 @@ class CreateShopDamiettaOnly extends Component
     {
         $this->reset();
         $this->resetValidation();
+        $this->installments = array_fill(0,15,$this->installments);
         $this->create_modal = true;
     }
 

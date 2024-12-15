@@ -131,7 +131,7 @@
                     </div>
                 </div>
                 <h3 class="mt-2 text-xl">{{ __('site.insurance') }}</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="mt-2">
                         <x-label for="insurance.amount" value="{{ __('site.amount') }}" />
                         <x-input type="number" class="mt-1 block w-full" wire:model="insurance.amount"
@@ -146,7 +146,7 @@
                     </div>
                 </div>
                 <h3 class="mt-2 text-xl">{{ __('site.remaining_amount_sale') }}</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="mt-2">
                         <x-label for="remaining_sale.amount" value="{{ __('site.amount') }}" />
                         <x-input type="number" class="mt-1 block w-full" wire:model="remaining_sale.amount"
@@ -161,7 +161,7 @@
                     </div>
                 </div>
                 <h3 class="mt-2 text-xl">{{ __('site.maintenance_deposit') }}</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="mt-2">
                         <x-label for="maintenance_deposit.amount" value="{{ __('site.amount') }}" />
                         <x-input type="number" class="mt-1 block w-full" wire:model="maintenance_deposit.amount"

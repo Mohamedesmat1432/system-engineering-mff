@@ -201,10 +201,10 @@
                             </td>
                             <td class="px-2 border" colspan="2">
                                 <div class="flex justify-center">
-                                    <button wire:click="sortByField('insurance_date')">
+                                    <button wire:click="sortByField('insurance')">
                                         {{ __('site.insurance') }}
                                     </button>
-                                    <x-sort-icon sort_field="insurance_date" :sort_by="$sort_by" :sort_asc="$sort_asc" />
+                                    <x-sort-icon sort_field="insurance" :sort_by="$sort_by" :sort_asc="$sort_asc" />
                                 </div>
                                 <div class="flex justify-between">
                                     <span>{{ __('site.amount') }}</span>
@@ -213,11 +213,10 @@
                             </td>
                             <td class="px-2 py-2 border" colspan="2">
                                 <div class="flex justify-center">
-                                    <button wire:click="sortByField('remaining_sale_date')">
+                                    <button wire:click="sortByField('remaining_sale')">
                                         {{ __('site.remaining_amount_sale') }}
                                     </button>
-                                    <x-sort-icon sort_field="remaining_sale_date" :sort_by="$sort_by"
-                                        :sort_asc="$sort_asc" />
+                                    <x-sort-icon sort_field="remaining_sale" :sort_by="$sort_by" :sort_asc="$sort_asc" />
                                 </div>
                                 <div class="flex justify-between">
                                     <span>{{ __('site.amount') }}</span>
@@ -226,10 +225,10 @@
                             </td>
                             <td class="px-2 py-2 border" colspan="2">
                                 <div class="flex justify-center">
-                                    <button wire:click="sortByField('maintenance_deposit_date')">
+                                    <button wire:click="sortByField('maintenance_deposit')">
                                         {{ __('site.maintenance_deposit') }}
                                     </button>
-                                    <x-sort-icon sort_field="maintenance_deposit_date" :sort_by="$sort_by"
+                                    <x-sort-icon sort_field="maintenance_deposit" :sort_by="$sort_by"
                                         :sort_asc="$sort_asc" />
                                 </div>
                                 <div class="flex justify-between">
@@ -237,6 +236,20 @@
                                     <span>{{ __('site.date') }}</span>
                                 </div>
                             </td>
+                            @for ($i = 0; $i <= 14; $i++)
+                                <td class="px-2 py-2 border" colspan="2">
+                                    <div class="flex justify-center">
+                                        <button wire:click="sortByField('installments')">
+                                            {{ __("site.installment_{$i}") }}
+                                        </button>
+                                        <x-sort-icon sort_field="installments" :sort_by="$sort_by" :sort_asc="$sort_asc" />
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>{{ __('site.amount') }}</span>
+                                        <span>{{ __('site.date') }}</span>
+                                    </div>
+                                </td>
+                            @endfor
                             <td class="px-4 py-2 border">
                                 <div class="flex justify-center">
                                     {{ __('site.action') }}
@@ -324,6 +337,14 @@
                                 <td class="p-2 border">
                                     {{ $shop->maintenance_deposit['date'] }}
                                 </td>
+                                @foreach ($shop->installments as $key => $installment)
+                                    <td class="p-2 border">
+                                        {{ $installment['amount'] }}
+                                    </td>
+                                    <td class="p-2 border">
+                                        {{ $installment['date'] }}
+                                    </td>
+                                @endforeach
                                 <td class="p-2 border">
                                     <div class="flex justify-center">
                                         <x-edit-button permission="edit-shop-damietta-only"

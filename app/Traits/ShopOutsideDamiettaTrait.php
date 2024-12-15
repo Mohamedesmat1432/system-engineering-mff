@@ -14,11 +14,10 @@ trait ShopOutsideDamiettaTrait
     public ?DataShopOutsideDamietta $shop;
 
     public $shop_id, $government_id, $auction_date, $city_id, $center, $location,
-    $building_number, $building_entrance_number, $shop_number,
-    $type_of_shop, $shop_area, $buyer_name, $national_number, $count_of_national_number,
-    $phone_number, $home_number, $sell_price, $sell_price_for_meter,
-    $payment_method;
-
+    $building_number, $building_entrance_number, $shop_number, $type_of_shop,
+    $shop_area, $buyer_name, $national_number, $count_of_national_number,
+    $phone_number, $home_number, $sell_price, $sell_price_for_meter, $payment_method;
+    
     public array $insurance = ['amount' => '', 'date' => ''];
     public array $maintenance_deposit = ['amount' => '', 'date' => ''];
     public array $remaining_sale = ['amount' => '', 'date' => ''];
