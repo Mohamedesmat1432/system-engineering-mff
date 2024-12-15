@@ -59,7 +59,7 @@ class PermissionSeeder extends Seeder
             'delete-shop-damietta-only',
             'bulk-delete-shop-damietta-only',
             'export-shop-damietta-only',
-
+            'view-chart',
         ];
 
         foreach ($permissions as $permission) {

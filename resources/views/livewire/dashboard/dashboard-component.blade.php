@@ -26,8 +26,10 @@
                     @endcan
                 @endforeach
             </div>
-            <livewire:chart-component />
-
         </div>
+
+        @can('view-chart')
+            <livewire:chart-component />
+        @endcan
     </x-page-content>
 </div>

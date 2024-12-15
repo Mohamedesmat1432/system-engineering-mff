@@ -6,45 +6,55 @@
 
     @push('scripts')
         <script>
-                import Chart from 'chart.js/auto';
-
-            function initializeChart(chartData) {
-                const ctx1 = document.getElementById('myBarChart').getContext('2d');
-
-                if (window.myChart) {
-                    window.myChart.destroy();
-                }
-
-                window.myChart = new Chart(ctx1, {
-                    type: 'bar', // Change to 'line', 'pie', etc., as needed
-                    data: {
-                        labels: chartData.labels,
-                        datasets: chartData.datasets
-                    },
-                    options: {
-                        responsive: false,
-                        maintainAspectRatio: false,
-                        height: 400,
-                        plugins: {
-                            legend: {
-                                position: 'top',
-                            },
-                        },
-                    }
-                });
-            }
-
-            if (!window.chartInitialized) {
-                window.chartInitialized = true;
-
-                document.addEventListener('livewire:navigate', () => {
-                    initializeChart(@js($chartData));
-                });
-            }
-
             // Initialize the chart on the first load
             document.addEventListener('DOMContentLoaded', () => {
-                initializeChart(@js($chartData));
+                const chartData = @json($chartData);
+                const ctx1 = document.getElementById('myBarChart').getContext('2d');
+
+                if (!window.myChart) {
+                    window.myChart = new Chart(ctx1, {
+                        type: 'bar', // Change to 'line', 'pie', etc., as needed
+                        data: {
+                            labels: chartData.labels,
+                            datasets: chartData.datasets
+                        },
+                        options: {
+                            responsive: false,
+                            maintainAspectRatio: false,
+                            height: 400,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                },
+                            },
+                        }
+                    });
+                }
+
+                document.addEventListener('livewire:navigate', () => {
+                    if (window.myChart && typeof window.myChart.destroy === 'function') {
+                        window.myChart.destroy();
+                    }
+
+                    window.myChart = new Chart(ctx1, {
+                        type: 'bar', // Change to 'line', 'pie', etc., as needed
+                        data: {
+                            labels: chartData.labels,
+                            datasets: chartData.datasets
+                        },
+                        options: {
+                            responsive: false,
+                            maintainAspectRatio: false,
+                            height: 400,
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                },
+                            },
+                        }
+                    });
+                });
+
             });
 
             // document.addEventListener('DOMContentLoaded', () => {

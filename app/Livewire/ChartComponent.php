@@ -34,6 +34,8 @@ class ChartComponent extends Component
 
     public function render()
     {
+        $this->authorize('view-chart');
+        
         return view('livewire.chart-component');
     }
 }
