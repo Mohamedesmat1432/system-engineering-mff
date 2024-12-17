@@ -10,7 +10,6 @@ class ChartComponent extends Component
 
     public function mount()
     {
-        // Sample data
         $this->chartData = [
             'labels' => ['January', 'February', 'March', 'April', 'May'],
             'datasets' => [

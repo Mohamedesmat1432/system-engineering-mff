@@ -11,14 +11,12 @@
     {{-- Fonts EN --}}
     {{-- <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" /> --}}
-
-    {{-- Fonts AR --}}
-
-    @stack('styles')
+    
+    @vite('resources/js/app.js')
 
     @livewireStyles
 
-    @vite('resources/js/app.js')
+    @stack('styles')
 </head>
 
 <body>
@@ -47,11 +45,11 @@
         </main>
     </div>
 
+    @livewireScripts
+
     @stack('modals')
 
     @stack('scripts')
-
-    @livewireScripts
 </body>
 
 </html>
