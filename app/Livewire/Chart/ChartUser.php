@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Chart;
 
 use App\Models\User;
 use Carbon\Carbon;
 use Livewire\Component;
 
-class ChartComponent extends Component
+class ChartUser extends Component
 {
     public $chartDataUser;
 
@@ -38,6 +38,6 @@ class ChartComponent extends Component
     {
         $this->authorize('view-chart');
         
-        return view('livewire.chart-component');
+        return view('livewire.chart.chart-user');
     }
 }

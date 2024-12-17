@@ -1,7 +1,6 @@
 <?php
 
 use App\Livewire\Backup\ListBackup;
-use App\Livewire\ChartComponent;
 use App\Livewire\Dashboard\DashboardComponent;
 use App\Livewire\Department\ListDepartment;
 use App\Livewire\Home\HomeComponent;
@@ -28,7 +27,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/user/profile',[UserProfileController::class,'show'])->name('profile.show');
     Route::get('/backup', ListBackup::class)->name('backup');
     Route::get('/dashboard', DashboardComponent::class)->name('dashboard');
-    Route::get('/charts', ChartComponent::class)->name('charts');
     Route::get('/users', ListUser::class)->name('users');
     Route::get('/roles', ListRole::class)->name('roles');
     Route::get('/permissions', ListPermission::class)->name('permissions');

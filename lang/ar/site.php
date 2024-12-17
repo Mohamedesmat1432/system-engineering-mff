@@ -174,7 +174,7 @@ return [
     'shop_outside_damietta_delete_all' => 'تم حذف النماذج بنجاح',
     'governments' => 'المحافظات',
     'cities' => 'المدن',
-    'auction_date' => 'تاريخ المزاد (محضر الترسيه)',
+    'auction_date' => 'تاريخ المزاد',
     'center' => 'المركز',
     'location' => 'الموقع',
     'building_number' => 'رقم المبني',

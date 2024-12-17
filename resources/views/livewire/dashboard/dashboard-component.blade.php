@@ -7,29 +7,29 @@
         <div class="p-6 lg:p-6 bg-white border-b border-gray-200 rounded-lg">
             <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
                 @foreach ($this->dashboardLinks() as $link)
-                    @can($link['role'])
-                        <div class="">
-                            <a wire:navigate href="{{ route($link['name']) }}">
-                                <div class="{{ $link['bg'] }} {{ $link['hover'] }} rounded p-3 text-white">
-                                    <div class="flex text-2xl justify-between">
-                                        <div class="text-center">
-                                            <x-icon class="w-12 h-12 text-center" name="{{ $link['icon'] }}" />
-                                            <div class="mt-3">{{ $link['count'] }}</div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div>{{ $link['value'] }}</div>
-                                        </div>
-                                    </div>
+                @can($link['role'])
+                <div class="dashboard_links">
+                    <a wire:navigate href="{{ route($link['name']) }}">
+                        <div class="{{ $link['bg'] }} {{ $link['hover'] }} rounded p-3 text-white">
+                            <div class="flex text-2xl justify-between">
+                                <div class="text-center">
+                                    <x-icon class="w-12 h-12 text-center" name="{{ $link['icon'] }}" />
+                                    <div class="mt-3">{{ $link['count'] }}</div>
                                 </div>
-                            </a>
+                                <div class="text-center">
+                                    <div>{{ $link['value'] }}</div>
+                                </div>
+                            </div>
                         </div>
-                    @endcan
+                    </a>
+                </div>
+                @endcan
                 @endforeach
             </div>
         </div>
 
         @can('view-chart')
-            <livewire:chart-component />
+        <livewire:chart.chart-user />
         @endcan
     </x-page-content>
 </div>

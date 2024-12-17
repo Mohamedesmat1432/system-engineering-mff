@@ -1,16 +1,15 @@
 <div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-3">
-        <canvas id="chart" x-data="chartUser" x-init="initChartUser()" 
-            class="w-full"></canvas>
+        <canvas id="chartUserId" x-data="chartUser" x-init="initChartUser()" class="w-full"></canvas>
     </div>
 
     @push('scripts')
-        <script>
-            function chartUser() {
+    <script>
+        function chartUser() {
                 return {
                     chart: null,
                     initChartUser() {
-                        const ctx = document.getElementById('chart').getContext('2d');
+                        const ctx = document.getElementById('chartUserId').getContext('2d');
 
                         // Ensure any existing chart is destroyed before creating a new one
                         if (this.chart) {
@@ -41,6 +40,6 @@
                     },
                 };
             }
-        </script>
+    </script>
     @endpush
 </div>
