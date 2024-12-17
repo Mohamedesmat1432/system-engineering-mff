@@ -2,34 +2,37 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class ChartComponent extends Component
 {
-    public $chartData;
+    public $chartDataUser;
 
     public function mount()
     {
-        $this->chartData = [
-            'labels' => ['January', 'February', 'March', 'April', 'May'],
+        // Fetch data grouped by month
+        $monthlyData = User::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+            ->groupBy('month')
+            ->get()
+            ->mapWithKeys(function ($item) {
+                return [Carbon::create()->month($item->month)->format('F') => $item->count];
+            });
+
+        $this->chartDataUser = [
+            'labels' => $monthlyData->keys(),
             'datasets' => [
                 [
-                    'label' => 'Sales',
+                    'label' => __('site.users'),
                     'backgroundColor' => 'rgba(75, 192, 192, 0.2)',
                     'borderColor' => 'rgba(75, 192, 192, 1)',
                     'borderWidth' => 1,
-                    'data' => [65, 59, 80, 81, 56],
+                    'data' => $monthlyData->values(),
                 ],
             ],
         ];
     }
-
-    public function updateChartData()
-    {
-        $this->chartData['datasets'][0]['data'] = [75, 88, 67, 90, 76];
-        $this->dispatch('updateChart');
-    }
-
 
     public function render()
     {
