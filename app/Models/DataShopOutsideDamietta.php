@@ -58,4 +58,18 @@ class DataShopOutsideDamietta extends Model
             $query->where('national_number', 'like', "%{$search}%");
         });
     }
+
+    public function scopeSearchByGovernmentId($query, $governmentId)
+    {
+        return $query->when($governmentId, function ($query) use ($governmentId) {
+            $query->where('government_id', '=', $governmentId);
+        });
+    }
+
+    public function scopeSearchByCityId($query, $cityId)
+    {
+        return $query->when($cityId, function ($query) use ($cityId) {
+            $query->where('city_id', '=', $cityId);
+        });
+    }
 }

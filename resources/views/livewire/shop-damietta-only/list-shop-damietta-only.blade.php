@@ -20,7 +20,7 @@
         <div class="p-6 lg:p-8 bg-white border-b border-gray-200 rounded-md">
 
             <div class="flex justify-between">
-                <h1 class="text-2xl font-medium text-gray-900">
+                <h1 class="text-2xl font-medium text-gray-900 underline">
                     {{ __('site.list_shop_damietta_only') }}
                 </h1>
             </div>
@@ -28,13 +28,27 @@
             <div class="mt-6 text-gray-500 leading-relaxed">
                 <div class="mt-3">
                     <div class="md:flex justify-between">
-                        <div class="mb-2">
+                        <div class="mb-2 grid grid-cols-1 md:grid-cols-3 gap-4">
                             <x-input type="search" wire:model.live.debounce.500ms="search"
                                 placeholder="{{ __('site.search') }}..." />
+
+                            <x-select wire:model.live.debounce.500ms="search_by_government" wire:change="cities">
+                                {{$this->search_by_government = 19}}
+                                <option value="">{{ __('site.search_by_government') }}</option>
+                                @foreach ($this->governments() as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                                @endforeach
+                            </x-select>
+
+                            <x-select wire:model.live.debounce.500ms="search_by_city">
+                                <option value=""> {{ __('site.search_by_city') }}</option>
+                                @foreach ($this->cities() as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                                @endforeach
+                            </x-select>
                         </div>
-                        <div class="flex mb-2">
+                        <div class="mb-2 grid grid-cols-2 md:grid-cols-2 gap-4">
                             <x-create-button permission="create-shop-damietta-only" />
-                            <div class="mx-1"></div>
                             <x-export-button permission="export-shop-damietta-only" />
                         </div>
                     </div>

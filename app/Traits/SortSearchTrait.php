@@ -11,6 +11,12 @@ trait SortSearchTrait
     public string $search = '';
 
     #[Url('')]
+    public string $search_by_government = '';
+
+    #[Url('')]
+    public string $search_by_city = '';
+
+    #[Url('')]
     public string $child_search = '';
 
     #[Url('')]

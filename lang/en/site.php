@@ -48,6 +48,8 @@ return [
     'remove' => 'Remove',
     'save' => 'Save',
     'search' => 'Search',
+    'search_by_government' => 'Search by government',
+    'search_by_city' => 'Search by city',
     'EGP' => 'EGP',
     'H' => 'H',
     'casher_name' => 'Casher Name',

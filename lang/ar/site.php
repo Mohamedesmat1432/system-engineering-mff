@@ -45,6 +45,8 @@ return [
     'remove' => 'حذف',
     'save' => 'حفظ',
     'search' => 'بحث',
+    'search_by_government' => 'بحث بالمحافظة',
+    'search_by_city' => 'بحث بالمدينة',
     'EGP' => 'جنيه',
     'H' => 'ساعة',
     'casher_name' => 'اسم الكاشير',

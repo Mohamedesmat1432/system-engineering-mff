@@ -13,7 +13,7 @@ class DataShopDamiettaOnly extends Model
     protected $table = 'data_shop_damietta_onlies';
 
     protected $fillable = [
-        'government_id',
+        'governmentId',
         'auction_date',
         'city_id',
         'center',
@@ -57,7 +57,22 @@ class DataShopDamiettaOnly extends Model
     public function scopeSearch($query, $search)
     {
         return $query->when($search, function ($query) use ($search) {
-            $query->where('national_number', 'like', "%{$search}%");
+            $query->where('national_number', 'like', "%{$search}%")
+                ->orWhere('buyer_name', 'like', "%{$search}%");
+        });
+    }
+
+    public function scopeSearchByGovernmentId($query, $governmentId)
+    {
+        return $query->when($governmentId, function ($query) use ($governmentId) {
+            $query->where('government_id', '=', $governmentId);
+        });
+    }
+
+    public function scopeSearchByCityId($query, $cityId)
+    {
+        return $query->when($cityId, function ($query) use ($cityId) {
+            $query->where('city_id', '=', $cityId);
         });
     }
 }

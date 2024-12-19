@@ -59,13 +59,12 @@ trait ShopDamiettaOnlyTrait
 
     public function governments()
     {
-        $this->government_id = 19;
         return Government::pluck('name_' . app()->getLocale(), 'id')->toArray();
     }
 
     public function cities()
     {
-        return City::where('government_id', $this->government_id)
+        return City::where('government_id', $this->government_id ?? $this->search_by_government)
             ->pluck('name_' . app()->getLocale(), 'id')->toArray() ?? [];
     }
 

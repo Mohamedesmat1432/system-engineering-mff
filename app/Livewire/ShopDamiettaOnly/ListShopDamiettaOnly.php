@@ -16,7 +16,10 @@ class ListShopDamiettaOnly extends Component
     {
         $this->authorize('view-shop-damietta-only');
 
-        $shops = DataShopDamiettaOnly::search($this->search)->paginate($this->page_element);
+        $shops = DataShopDamiettaOnly::search($this->search)
+            ->searchByGovernmentId($this->search_by_government)
+            ->searchByCityId($this->search_by_city)
+            ->paginate($this->page_element);
 
         $this->checkbox_all = DataShopDamiettaOnly::pluck('id')->toArray();
 

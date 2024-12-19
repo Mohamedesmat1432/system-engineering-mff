@@ -44,6 +44,7 @@
                     <div class="mt-2">
                         <x-label for="government_id" value="{{ __('site.government_id') }}" />
                         <x-select class="mt-1 block w-full" wire:model="government_id" wire:change="cities">
+                            {{$this->government_id = 19}}
                             <option value="">{{ __('site.select') }}</option>
                             @foreach ($this->governments() as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>

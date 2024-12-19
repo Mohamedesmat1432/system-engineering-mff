@@ -24,9 +24,36 @@ class ChartUser extends Component
             'labels' => $monthlyData->keys(),
             'datasets' => [
                 [
-                    'label' => __('site.users'),
-                    'backgroundColor' => 'rgba(75, 192, 192, 0.2)',
-                    'borderColor' => 'rgba(75, 192, 192, 1)',
+                    'label' => 'Number Of Users',
+                    'backgroundColor' => [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgba(75, 192, 192, 0.4)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(75, 192, 192, 0.9)',
+                        'rgba(75, 192, 192, 0.10)',
+                        'rgba(75, 192, 192, 0.11)',
+                        'rgba(75, 192, 192, 0.12)',
+                    ],
+                    'borderColor' => [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)',
+                        'rgba(75, 192, 192, 0.4)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(75, 192, 192, 0.9)',
+                        'rgba(75, 192, 192, 0.10)',
+                        'rgba(75, 192, 192, 0.11)',
+                        'rgba(75, 192, 192, 0.12)',
+                    ],
+                    'hoverOffset' => 4,
                     'borderWidth' => 1,
                     'data' => $monthlyData->values(),
                 ],
@@ -37,7 +64,7 @@ class ChartUser extends Component
     public function render()
     {
         $this->authorize('view-chart');
-        
+
         return view('livewire.chart.chart-user');
     }
 }

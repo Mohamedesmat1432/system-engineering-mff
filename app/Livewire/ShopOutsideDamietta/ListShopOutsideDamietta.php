@@ -16,7 +16,10 @@ class ListShopOutsideDamietta extends Component
     {
         $this->authorize('view-shop-outside-damietta');
 
-        $shops = DataShopOutsideDamietta::search($this->search)->paginate($this->page_element);
+        $shops = DataShopOutsideDamietta::search($this->search)
+            ->searchByGovernmentId($this->search_by_government)
+            ->searchByCityId($this->search_by_city)
+            ->paginate($this->page_element);
 
         $this->checkbox_all = DataShopOutsideDamietta::pluck('id')->toArray();
 
