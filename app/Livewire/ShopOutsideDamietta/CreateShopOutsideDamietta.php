@@ -3,9 +3,11 @@
 namespace App\Livewire\ShopOutsideDamietta;
 
 use App\Traits\ShopOutsideDamiettaTrait;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class CreateShopOutsideDamietta extends Component
 {
     use ShopOutsideDamiettaTrait;

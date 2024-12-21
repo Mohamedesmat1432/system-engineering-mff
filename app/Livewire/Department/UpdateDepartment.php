@@ -3,9 +3,11 @@
 namespace App\Livewire\Department;
 
 use App\Traits\DepartmentTrait;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class UpdateDepartment extends Component
 {
     use DepartmentTrait;

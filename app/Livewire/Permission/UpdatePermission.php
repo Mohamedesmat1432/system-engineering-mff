@@ -3,9 +3,11 @@
 namespace App\Livewire\Permission;
 
 use App\Traits\PermissionTrait;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class UpdatePermission extends Component
 {
     use PermissionTrait;

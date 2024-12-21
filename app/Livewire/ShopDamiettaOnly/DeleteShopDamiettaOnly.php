@@ -3,10 +3,12 @@
 namespace App\Livewire\ShopDamiettaOnly;
 
 use App\Traits\ShopDamiettaOnlyTrait;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class DeleteShopDamiettaOnly extends Component
 {
     use ShopDamiettaOnlyTrait;

@@ -12,7 +12,10 @@ class Government extends Model
 
     protected $table = 'governments';
 
-    protected $fillable = ['name_ar, name_en'];
+    protected $fillable = [
+        'name_ar',
+        'name_en'
+    ];
 
     public function cities(): HasMany
     {
@@ -23,7 +26,7 @@ class Government extends Model
     {
         return $query->when($search, function ($query) use ($search) {
             $query->where('name_ar', 'like', "%{$search}%")
-                ->orWhere('name_en' ,'like', "%{$search}%");
+                ->orWhere('name_en', 'like', "%{$search}%");
         });
     }
 }

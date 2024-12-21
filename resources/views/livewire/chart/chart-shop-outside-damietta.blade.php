@@ -1,45 +1,51 @@
 <div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-3">
-        <canvas id="chartShopOutsideDamiettaId" x-data="chartShopOutsideDamietta" x-init="initChartShopOutsideDamietta()" class="w-full"></canvas>
+    <div x-data="chartShopOutsideDamietta" class="grid grid-cols-1 gap-6 mt-3 place-items-center">
+        <canvas id="chartShopOutsideDamiettaId" x-init="initChartShopOutsideDamietta()"></canvas>
+        <x-select x-model="chartType" @change="updateChartShopOutsideDamiettaType">
+            <option value="doughnut">Doughnut</option>
+            <option value="bar">Bar</option>
+            <option value="line">Line</option>
+        </x-select>
     </div>
 
     @push('scripts')
     <script>
         function chartShopOutsideDamietta() {
-                return {
-                    chart: null,
-                    initChartShopOutsideDamietta() {
-                        const ctx = document.getElementById('chartShopOutsideDamiettaId').getContext('2d');
+            return {
+                chart: null,
+                chartType: localStorage.getItem('chartTypeShopOutsideDamietta') || 'doughnut',
+                initChartShopOutsideDamietta() {
+                    const ctx = document.getElementById('chartShopOutsideDamiettaId').getContext('2d');
 
-                        // Ensure any existing chart is destroyed before creating a new one
-                        if (this.chart) {
-                            this.chart.destroy();
-                        }
+                    // Ensure any existing chart is destroyed before creating a new one
+                    if (this.chart) {
+                        this.chart.destroy();
+                    }
 
-                        // Fetch data dynamically from Livewire (replace this with your actual data)
-                        const chartDataShopOutsideDamietta = @js($chartDataShopOutsideDamietta);
+                    // Fetch data dynamically from Livewire (replace this with your actual data)
+                    const chartDataShopOutsideDamietta = @js($chartDataShopOutsideDamietta);
 
-                        // Create a new Chart.js instance
-                        this.chart = new Chart(ctx, {
-                            type: 'doughnut',
-                            data: chartDataShopOutsideDamietta,
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
+                    // Create a new Chart.js instance
+                    this.chart = new Chart(ctx, {
+                        type: this.chartType,
+                        data: chartDataShopOutsideDamietta,
+                        options: {
+                            responsive: false,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true
                                 }
-                            },
-                        });
-                    },
-                    updateChartShopOutsideDamietta() {
-                        // Reinitialize the chart on Livewire navigation
-                        this.initChartShopOutsideDamietta();
-                    },
-                };
-            }
+                            }
+                        },
+                    });
+                },
+                updateChartShopOutsideDamiettaType() {
+                    localStorage.setItem('chartTypeShopOutsideDamietta', this.chartType);
+                    this.initChartShopOutsideDamietta();
+                },
+            };
+        }
     </script>
     @endpush
 </div>

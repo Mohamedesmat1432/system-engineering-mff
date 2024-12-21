@@ -27,10 +27,10 @@
                 @endforeach
             </div>
             @can('view-chart')
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
                 <livewire:chart.chart-user />
-                <livewire:chart.chart-shop-damietta-only />
                 <livewire:chart.chart-shop-outside-damietta />
+                <livewire:chart.chart-shop-damietta-only />
             </div>
             @endcan
         </div>

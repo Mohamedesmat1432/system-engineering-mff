@@ -21,10 +21,13 @@ use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', HomeComponent::class);
+
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', HomeComponent::class);
+});
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
-    Route::get('/user/profile',[UserProfileController::class,'show'])->name('profile.show');
+    Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile.show');
     Route::get('/backup', ListBackup::class)->name('backup');
     Route::get('/dashboard', DashboardComponent::class)->name('dashboard');
     Route::get('/users', ListUser::class)->name('users');

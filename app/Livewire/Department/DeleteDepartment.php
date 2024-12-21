@@ -3,10 +3,12 @@
 namespace App\Livewire\Department;
 
 use App\Traits\DepartmentTrait;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class DeleteDepartment extends Component
 {
     use DepartmentTrait;

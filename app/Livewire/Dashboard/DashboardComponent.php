@@ -4,11 +4,14 @@ namespace App\Livewire\Dashboard;
 
 use App\Models\DataShopDamiettaOnly;
 use App\Models\DataShopOutsideDamietta;
+use App\Models\Department;
 use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class DashboardComponent extends Component
 {
     public function dashboardLinks()
@@ -28,8 +31,8 @@ class DashboardComponent extends Component
                 'value' => __('site.roles'),
                 'icon' => 'lock-closed',
                 'role' => 'view-role',
-                'bg' => 'bg-blue-500',
-                'hover' => 'hover:bg-blue-600',
+                'bg' => 'bg-blue-600',
+                'hover' => 'hover:bg-blue-700',
                 'count' => Role::count(),
             ],
             [
@@ -44,7 +47,7 @@ class DashboardComponent extends Component
             [
                 'name' => 'shops.outside.damietta',
                 'value' => __('site.list_shop_outside_damietta'),
-                'icon' => 'lock-open',
+                'icon' => 'list-bullet',
                 'role' => 'view-shop-outside-damietta',
                 'bg' => 'bg-gray-800',
                 'hover' => 'hover:bg-gray-900',
@@ -53,11 +56,20 @@ class DashboardComponent extends Component
             [
                 'name' => 'shops.damietta.only',
                 'value' => __('site.list_shop_damietta_only'),
-                'icon' => 'lock-open',
+                'icon' => 'clipboard-document-list',
                 'role' => 'view-shop-damietta-only',
                 'bg' => 'bg-gray-500',
                 'hover' => 'hover:bg-gray-600',
                 'count' => DataShopDamiettaOnly::count(),
+            ],
+            [
+                'name' => 'departments',
+                'value' => __('site.departments'),
+                'icon' => 'squares-2x2',
+                'role' => 'view-department',
+                'bg' => 'bg-red-600',
+                'hover' => 'hover:bg-red-700',
+                'count' => Department::count(),
             ],
         ];
     }

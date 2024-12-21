@@ -3,10 +3,12 @@
 namespace App\Livewire\User;
 
 use App\Traits\UserTrait;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class ForceDeleteUser extends Component
 {
     use UserTrait;

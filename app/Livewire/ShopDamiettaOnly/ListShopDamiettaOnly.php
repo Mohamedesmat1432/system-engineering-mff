@@ -4,9 +4,11 @@ namespace App\Livewire\ShopDamiettaOnly;
 
 use App\Models\DataShopDamiettaOnly;
 use App\Traits\ShopDamiettaOnlyTrait;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class ListShopDamiettaOnly extends Component
 {
     use ShopDamiettaOnlyTrait;

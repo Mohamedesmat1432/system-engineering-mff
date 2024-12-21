@@ -4,9 +4,11 @@ namespace App\Livewire\ShopOutsideDamietta;
 
 use App\Exports\ShopOutsideDamiettaExport;
 use App\Traits\ShopOutsideDamiettaTrait;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class ExportShopOutsideDamietta extends Component
 {
     use ShopOutsideDamiettaTrait;

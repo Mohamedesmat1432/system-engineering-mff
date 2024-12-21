@@ -3,10 +3,12 @@
 namespace App\Livewire\Role;
 
 use App\Traits\RoleTrait;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class DeleteRole extends Component
 {
     use RoleTrait;

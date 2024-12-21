@@ -3,7 +3,9 @@ declare(strict_types=1);
 namespace App\Livewire;
 
 use Laravel\Jetstream\Http\Livewire\NavigationMenu;
+use Livewire\Attributes\Layout;
 
+#[Layout('layouts.app')]
 class NavigateMenu extends NavigationMenu
 {
     public function dropdwonLinks()
@@ -54,13 +56,13 @@ class NavigateMenu extends NavigationMenu
             [
                 'name' => 'shops.outside.damietta',
                 'value' => 'site.list_shop_outside_damietta',
-                'icon' => 'squares-2x2',
+                'icon' => 'list-bullet',
                 'role' => 'view-shop-outside-damietta',
             ],
             [
                 'name' => 'shops.damietta.only',
                 'value' => 'site.list_shop_damietta_only',
-                'icon' => 'squares-2x2',
+                'icon' => 'clipboard-document-list',
                 'role' => 'view-shop-damietta-only',
             ],
         ];

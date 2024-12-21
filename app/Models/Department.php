@@ -12,7 +12,10 @@ class Department extends Model
 
     protected $table = 'departments';
 
-    protected $fillable = ['name_ar, name_en'];
+    protected $fillable = [
+        'name_ar', 
+        'name_en'
+    ];
 
     public function users(): HasMany
     {

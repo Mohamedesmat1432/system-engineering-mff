@@ -4,9 +4,11 @@ namespace App\Livewire\Role;
 
 use App\Models\Role;
 use App\Traits\RoleTrait;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class ListRole extends Component
 {
     use RoleTrait;

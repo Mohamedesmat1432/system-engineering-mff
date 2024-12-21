@@ -4,8 +4,10 @@ namespace App\Livewire\Chart;
 
 use App\Models\User;
 use Carbon\Carbon;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class ChartUser extends Component
 {
     public $chartDataUser;

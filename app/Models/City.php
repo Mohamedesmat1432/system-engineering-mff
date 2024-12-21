@@ -12,7 +12,7 @@ class City extends Model
 
     protected $table = 'cities';
 
-    protected $fillable = ['government_id', 'name_ar, name_en'];
+    protected $fillable = ['government_id', 'name_ar', 'name_en'];
 
     public function government(): BelongsTo
     {
@@ -23,7 +23,7 @@ class City extends Model
     {
         return $query->when($search, function ($query) use ($search) {
             $query->where('name_ar', 'like', "%{$search}%")
-                ->orWhere('name_en' ,'like', "%{$search}%");
+                ->orWhere('name_en', 'like', "%{$search}%");
         });
     }
 }
