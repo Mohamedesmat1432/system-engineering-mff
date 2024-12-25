@@ -2,13 +2,11 @@ version: '3.8'
 
 services:
   app:
-    depends_on:
-      - db
     build:
       context: .
       dockerfile: Dockerfile
-    image: laravel-app
-    container_name: laravel-app
+    image: app
+    container_name: app
     restart: unless-stopped
     working_dir: /var/www
     volumes:
@@ -18,6 +16,8 @@ services:
       - "9000:9000"
     networks:
       - laravel
+    depends_on:
+      - db
 
   webserver:
     image: nginx:alpine
@@ -49,8 +49,24 @@ services:
     networks:
       - laravel
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: secret
+    ports:
+      - "9090:90"
+    networks:
+      - laravel
+    depends_on:
+      - db
+
 networks:
   laravel:
+    driver: bridge
 
 volumes:
   db_data:
+    driver: local
