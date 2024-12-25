@@ -8,6 +8,11 @@ services:
     image: app
     container_name: app
     restart: unless-stopped
+    environment:
+      DB_HOST: db  # Ensure this matches the service name below
+      DB_DATABASE: laravel_db
+      DB_USERNAME: root
+      DB_PASSWORD: secret
     working_dir: /var/www
     volumes:
       - .:/var/www
@@ -38,10 +43,10 @@ services:
     container_name: mysql
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: laravel
+      MYSQL_DATABASE: laravel_db
       MYSQL_USER: root
       MYSQL_PASSWORD: secret
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: secret  # Set your root password here
     ports:
       - "3306:3306"
     volumes:
@@ -53,7 +58,7 @@ services:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
     environment:
-      PMA_HOST: mysql
+      PMA_HOST: db
       PMA_USER: root
       PMA_PASSWORD: secret
     ports:
@@ -65,8 +70,6 @@ services:
 
 networks:
   laravel:
-    driver: bridge
 
 volumes:
   db_data:
-    driver: local
