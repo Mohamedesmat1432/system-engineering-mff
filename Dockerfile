@@ -32,7 +32,9 @@ WORKDIR /var/www
 COPY . .
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache var/www/public/files
+
+RUN chmod -R 777 /var/www/bootstrap/cache /var/www/storage var/www/public/files
 
 # Install composer dependencies (if composer.json exists)
 RUN if [ -f composer.json ]; then composer install; fi
@@ -44,4 +46,4 @@ RUN if [ -f package.json ]; then npm install && npm run build; fi
 EXPOSE 9000
 
 # Start PHP-FPM
-CMD ["php-fpm"]
+CMD ["php-fpm", "-F"]

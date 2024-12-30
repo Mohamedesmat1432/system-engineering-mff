@@ -44,7 +44,6 @@
                     <div class="mt-2">
                         <x-label for="government_id" value="{{ __('site.government_id') }}" />
                         <x-select class="mt-1 block w-full" wire:model="government_id" wire:change="cities">
-                            {{$this->government_id = 19}}
                             <option value="">{{ __('site.select') }}</option>
                             @foreach ($this->governments() as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
@@ -142,16 +141,16 @@
                     <h3 class="mt-2 text-xl underline">{{ __('site.insurance') }}</h3>
                     <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
                         <div class="mt-2">
-                            <x-label for="insurance.amount" value="{{ __('site.amount') }}" />
-                            <x-input type="number" class="mt-1 block w-full" wire:model="insurance.amount"
+                            <x-label for="insurance_amount" value="{{ __('site.amount') }}" />
+                            <x-input type="number" class="mt-1 block w-full" wire:model="insurance_amount"
                                 placeholder="{{ __('site.amount') }}" />
-                            <x-input-error for="insurance.amount" class="mt-2" />
+                            <x-input-error for="insurance_amount" class="mt-2" />
                         </div>
                         <div class="mt-2">
-                            <x-label for="insurance.date" value="{{ __('site.date') }}" />
-                            <x-input type="date" class="mt-1 block w-full" wire:model="insurance.date"
+                            <x-label for="insurance_date" value="{{ __('site.date') }}" />
+                            <x-input type="date" class="mt-1 block w-full" wire:model="insurance_date"
                                 placeholder="{{ __('site.date') }}" />
-                            <x-input-error for="insurance.date" class="mt-2" />
+                            <x-input-error for="insurance_date" class="mt-2" />
                         </div>
                     </div>
                 </div>
@@ -159,16 +158,16 @@
                     <h3 class="mt-2 text-xl underline">{{ __('site.remaining_amount_sale') }}</h3>
                     <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
                         <div class="mt-2">
-                            <x-label for="remaining_sale.amount" value="{{ __('site.amount') }}" />
-                            <x-input type="number" class="mt-1 block w-full" wire:model="remaining_sale.amount"
+                            <x-label for="remaining_sale_amount" value="{{ __('site.amount') }}" />
+                            <x-input type="number" class="mt-1 block w-full" wire:model="remaining_sale_amount"
                                 placeholder="{{ __('site.amount') }}" />
-                            <x-input-error for="remaining_sale.amount" class="mt-2" />
+                            <x-input-error for="remaining_sale_amount" class="mt-2" />
                         </div>
                         <div class="mt-2">
-                            <x-label for="remaining_sale.date" value="{{ __('site.date') }}" />
-                            <x-input type="date" class="mt-1 block w-full" wire:model="remaining_sale.date"
+                            <x-label for="remaining_sale_date" value="{{ __('site.date') }}" />
+                            <x-input type="date" class="mt-1 block w-full" wire:model="remaining_sale_date"
                                 placeholder="{{ __('site.date') }}" />
-                            <x-input-error for="remaining_sale.date" class="mt-2" />
+                            <x-input-error for="remaining_sale_date" class="mt-2" />
                         </div>
                     </div>
                 </div>
@@ -178,41 +177,40 @@
                     <h3 class="mt-2 text-xl underline">{{ __('site.maintenance_deposit') }}</h3>
                     <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
                         <div class="mt-2">
-                            <x-label for="maintenance_deposit.amount" value="{{ __('site.amount') }}" />
-                            <x-input type="number" class="mt-1 block w-full" wire:model="maintenance_deposit.amount"
+                            <x-label for="maintenance_deposit_amount" value="{{ __('site.amount') }}" />
+                            <x-input type="number" class="mt-1 block w-full" wire:model="maintenance_deposit_amount"
                                 placeholder="{{ __('site.amount') }}" />
-                            <x-input-error for="maintenance_deposit.amount" class="mt-2" />
+                            <x-input-error for="maintenance_deposit_amount" class="mt-2" />
                         </div>
                         <div class="mt-2">
-                            <x-label for="maintenance_deposit.date" value="{{ __('site.date') }}" />
-                            <x-input type="date" class="mt-1 block w-full" wire:model="maintenance_deposit.date"
+                            <x-label for="maintenance_deposit_date" value="{{ __('site.date') }}" />
+                            <x-input type="date" class="mt-1 block w-full" wire:model="maintenance_deposit_date"
                                 placeholder="{{ __('site.date') }}" />
-                            <x-input-error for="maintenance_deposit.date" class="mt-2" />
+                            <x-input-error for="maintenance_deposit_date" class="mt-2" />
                         </div>
                     </div>
                 </div>
-                @foreach ($installments as $key => $installment)
+                @for ($i = 1; $i<=15 ; $i++)
                 <div class="installments">
-                    <h3 class="mt-2 text-xl underline">{{ __("site.installment_{$key}") }}</h3>
+                    <h3 class="mt-2 text-xl underline">{{ __("site.installment_{$i}") }}</h3>
                     <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
                         <div class="mt-2">
-                            <x-label for="installments.{{ $key }}.amount" value="{{ __('site.amount') }}" />
-                            <x-input type="number" class="mt-1 block w-full" wire:model="installments.{{ $key }}.amount"
+                            <x-label for="installment_amount_{{ $i }}" value="{{ __('site.amount') }}" />
+                            <x-input type="number" class="mt-1 block w-full" wire:model="installment_amount_{{ $i }}"
                                 placeholder="{{ __('site.amount') }}" />
-                            <x-input-error for="installments.{{ $key }}.amount" class="mt-2" />
+                            <x-input-error for="installment_amount_{{ $i }}" class="mt-2" />
                         </div>
                         <div class="mt-2">
-                            <x-label for="installments.{{ $key }}.date" value="{{ __('site.date') }}" />
-                            <x-input type="date" class="mt-1 block w-full" wire:model="installments.{{ $key }}.date"
+                            <x-label for="installment_date_{{ $i }}" value="{{ __('site.date') }}" />
+                            <x-input type="date" class="mt-1 block w-full" wire:model="installment_date_{{ $i }}"
                                 placeholder="{{ __('site.date') }}" />
-                            <x-input-error for="installments.{{ $key }}.date" class="mt-2" />
+                            <x-input-error for="installment_date_{{ $i }}" class="mt-2" />
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @endfor
             </div>
         </x-slot>
-
 
         <x-slot name="footer">
             <x-indigo-button type="submit" wire:loading.attr="disabled">

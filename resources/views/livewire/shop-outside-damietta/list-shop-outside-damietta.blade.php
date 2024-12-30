@@ -13,6 +13,9 @@
         @can('bulk-delete-shop-outside-damietta')
         <livewire:shop-outside-damietta.bulk-delete-shop-outside-damietta />
         @endcan
+        @can('import-shop-outside-damietta')
+        <livewire:shop-outside-damietta.import-shop-outside-damietta />
+        @endcan
         @can('export-shop-outside-damietta')
         <livewire:shop-outside-damietta.export-shop-outside-damietta />
         @endcan
@@ -44,8 +47,9 @@
                                 @endforeach
                             </x-select>
                         </div>
-                        <div class="mb-2 grid grid-cols-2 md:grid-cols-2 gap-4">
+                        <div class="mb-2 grid grid-cols-3 md:grid-cols-3 gap-4">
                             <x-create-button permission="create-shop-outside-damietta" />
+                            <x-import-button permission="import-shop-outside-damietta" />
                             <x-export-button permission="export-shop-outside-damietta" />
                         </div>
                     </div>
@@ -215,10 +219,10 @@
                             </td>
                             <td class="px-2 border" colspan="2">
                                 <div class="flex justify-center">
-                                    <button wire:click="sortByField('insurance')">
+                                    <button wire:click="sortByField('insurance_date')">
                                         {{ __('site.insurance') }}
                                     </button>
-                                    <x-sort-icon sort_field="insurance" :sort_by="$sort_by" :sort_asc="$sort_asc" />
+                                    <x-sort-icon sort_field="insurance_date" :sort_by="$sort_by" :sort_asc="$sort_asc" />
                                 </div>
                                 <div class="flex justify-between">
                                     <span>{{ __('site.amount') }}</span>
@@ -227,10 +231,10 @@
                             </td>
                             <td class="px-2 py-2 border" colspan="2">
                                 <div class="flex justify-center">
-                                    <button wire:click="sortByField('remaining_sale')">
+                                    <button wire:click="sortByField('remaining_sale_date')">
                                         {{ __('site.remaining_amount_sale') }}
                                     </button>
-                                    <x-sort-icon sort_field="remaining_sale" :sort_by="$sort_by"
+                                    <x-sort-icon sort_field="remaining_sale_date" :sort_by="$sort_by"
                                         :sort_asc="$sort_asc" />
                                 </div>
                                 <div class="flex justify-between">
@@ -240,10 +244,10 @@
                             </td>
                             <td class="px-2 py-2 border" colspan="2">
                                 <div class="flex justify-center">
-                                    <button wire:click="sortByField('maintenance_deposit')">
+                                    <button wire:click="sortByField('maintenance_deposit_date')">
                                         {{ __('site.maintenance_deposit') }}
                                     </button>
-                                    <x-sort-icon sort_field="maintenance_deposit" :sort_by="$sort_by"
+                                    <x-sort-icon sort_field="maintenance_deposit_date" :sort_by="$sort_by"
                                         :sort_asc="$sort_asc" />
                                 </div>
                                 <div class="flex justify-between">
@@ -322,22 +326,22 @@
                                 {{ $shop->payment_method }}
                             </td>
                             <td class="p-2 border">
-                                {{ $shop->insurance['amount'] }}
+                                {{ $shop->insurance_amount }}
                             </td>
                             <td class="p-2 border">
-                                {{ $shop->insurance['date'] }}
+                                {{ $shop->insurance_date }}
                             </td>
                             <td class="p-2 border">
-                                {{ $shop->remaining_sale['amount'] }}
+                                {{ $shop->remaining_sale_amount }}
                             </td>
                             <td class="p-2 border">
-                                {{ $shop->remaining_sale['date'] }}
+                                {{ $shop->remaining_sale_date }}
                             </td>
                             <td class="p-2 border">
-                                {{ $shop->maintenance_deposit['amount'] }}
+                                {{ $shop->maintenance_deposit_amount }}
                             </td>
                             <td class="p-2 border">
-                                {{ $shop->maintenance_deposit['date'] }}
+                                {{ $shop->maintenance_deposit_date }}
                             </td>
                             <td class="p-2 border">
                                 <div class="flex justify-center">

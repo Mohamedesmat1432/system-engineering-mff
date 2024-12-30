@@ -13,7 +13,7 @@ class DataShopDamiettaOnly extends Model
     protected $table = 'data_shop_damietta_onlies';
 
     protected $fillable = [
-        'governmentId',
+        'government_id',
         'auction_date',
         'city_id',
         'center',
@@ -31,18 +31,45 @@ class DataShopDamiettaOnly extends Model
         'sell_price',
         'sell_price_for_meter',
         'payment_method',
-        'insurance',
-        'remaining_sale',
-        'maintenance_deposit',
-        'installments'
+        'insurance_amount',
+        'insurance_date',
+        'remaining_sale_amount',
+        'remaining_sale_date',
+        'maintenance_deposit_amount',
+        'maintenance_deposit_date',
+        'installment_amount_1',
+        'installment_date_1',
+        'installment_amount_2',
+        'installment_date_2',
+        'installment_amount_3',
+        'installment_date_3',
+        'installment_amount_4',
+        'installment_date_4',
+        'installment_amount_5',
+        'installment_date_5',
+        'installment_amount_6',
+        'installment_date_6',
+        'installment_amount_7',
+        'installment_date_7',
+        'installment_amount_8',
+        'installment_date_8',
+        'installment_amount_9',
+        'installment_date_9',
+        'installment_amount_10',
+        'installment_date_10',
+        'installment_amount_11',
+        'installment_date_11',
+        'installment_amount_12',
+        'installment_date_12',
+        'installment_amount_13',
+        'installment_date_13',
+        'installment_amount_14',
+        'installment_date_14',
+        'installment_amount_15',
+        'installment_date_15',
     ];
 
-    protected $casts = [
-        'insurance' => 'array',
-        'remaining_sale' => 'array',
-        'maintenance_deposit' => 'array',
-        'installments' => 'array',
-    ];
+    protected $casts = [];
 
     public function government(): BelongsTo
     {
@@ -54,24 +81,14 @@ class DataShopDamiettaOnly extends Model
         return $this->belongsTo(City::class);
     }
 
-    public function scopeSearch($query, $search)
+    public function scopeSearch($query, $search = null, $governmentId = null, $cityId = null)
     {
         return $query->when($search, function ($query) use ($search) {
             $query->where('national_number', 'like', "%{$search}%")
                 ->orWhere('buyer_name', 'like', "%{$search}%");
-        });
-    }
-
-    public function scopeSearchByGovernmentId($query, $governmentId)
-    {
-        return $query->when($governmentId, function ($query) use ($governmentId) {
+        })->when($governmentId, function ($query) use ($governmentId) {
             $query->where('government_id', '=', $governmentId);
-        });
-    }
-
-    public function scopeSearchByCityId($query, $cityId)
-    {
-        return $query->when($cityId, function ($query) use ($cityId) {
+        })->when($cityId, function ($query) use ($cityId) {
             $query->where('city_id', '=', $cityId);
         });
     }

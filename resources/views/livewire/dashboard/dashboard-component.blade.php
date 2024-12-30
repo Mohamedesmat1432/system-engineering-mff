@@ -26,13 +26,17 @@
                 @endcan
                 @endforeach
             </div>
-            @can('view-chart')
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
+                @can('view-chart-user')
                 <livewire:chart.chart-user />
+                @endcan
+                @can('view-chart-shop-outside-damietta')
                 <livewire:chart.chart-shop-outside-damietta />
+                @endcan
+                @can('view-chart-shop-damietta-only')
                 <livewire:chart.chart-shop-damietta-only />
+                @endcan
             </div>
-            @endcan
         </div>
     </x-page-content>
 </div>

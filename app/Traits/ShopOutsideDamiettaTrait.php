@@ -14,17 +14,15 @@ trait ShopOutsideDamiettaTrait
     public ?DataShopOutsideDamietta $shop;
 
     public $shop_id, $government_id, $auction_date, $city_id, $center, $location,
-    $building_number, $building_entrance_number, $shop_number, $type_of_shop,
-    $shop_area, $buyer_name, $national_number, $count_of_national_number,
-    $phone_number, $home_number, $sell_price, $sell_price_for_meter, $payment_method;
-    
-    public array $insurance = ['amount' => '', 'date' => ''];
-    public array $maintenance_deposit = ['amount' => '', 'date' => ''];
-    public array $remaining_sale = ['amount' => '', 'date' => ''];
+        $building_number, $building_entrance_number, $shop_number, $type_of_shop,
+        $shop_area, $buyer_name, $national_number, $count_of_national_number,
+        $phone_number, $home_number, $sell_price, $sell_price_for_meter, $payment_method,
+        $insurance_amount, $insurance_date, $remaining_sale_amount, $remaining_sale_date,
+        $maintenance_deposit_amount, $maintenance_deposit_date;
 
     protected function rules()
     {
-        $rules = [
+        return [
             'government_id' => 'required|numeric|exists:governments,id',
             'auction_date' => 'required|date',
             'city_id' => 'required|numeric|exists:cities,id',
@@ -42,27 +40,14 @@ trait ShopOutsideDamiettaTrait
             'home_number' => 'nullable|string|min:7|max:10',
             'sell_price' => 'required|numeric',
             'sell_price_for_meter' => 'required|numeric',
-            'payment_method' => 'required|string',
-            'insurance.amount' => 'required|numeric',
-            'insurance.date' => 'required|date',
-            'remaining_sale.amount' => 'required|numeric',
-            'remaining_sale.date' => 'required|date',
-            'maintenance_deposit.amount' => 'required|numeric',
-            'maintenance_deposit.date' => 'required|date',
+            'payment_method' => 'nullable|string',
+            'insurance_amount' => 'nullable|numeric',
+            'insurance_date' => 'nullable|date',
+            'remaining_sale_amount' => 'nullable|numeric',
+            'remaining_sale_date' => 'nullable|date',
+            'maintenance_deposit_amount' => 'nullable|numeric',
+            'maintenance_deposit_date' => 'nullable|date',
         ];
-
-        return $rules;
-    }
-
-    public function remove($key)
-    {
-        unset($this->installments[$key]);
-        $this->installments = array_values($this->installments);
-    }
-
-    public function add()
-    {
-        $this->installments[] = ['amount' => '', 'date' => ''];
     }
 
     public function governments()
@@ -103,9 +88,12 @@ trait ShopOutsideDamiettaTrait
         $this->sell_price = $this->shop->sell_price;
         $this->sell_price_for_meter = $this->shop->sell_price_for_meter;
         $this->payment_method = $this->shop->payment_method;
-        $this->insurance = $this->shop->insurance;
-        $this->remaining_sale = $this->shop->remaining_sale;
-        $this->maintenance_deposit = $this->shop->maintenance_deposit;
+        $this->insurance_amount = $this->shop->insurance_amount;
+        $this->insurance_date = $this->shop->insurance_date;
+        $this->remaining_sale_amount = $this->shop->remaining_sale_amount;
+        $this->remaining_sale_date = $this->shop->remaining_sale_date;
+        $this->maintenance_deposit_amount = $this->shop->maintenance_deposit_amount;
+        $this->maintenance_deposit_date = $this->shop->maintenance_deposit_date;
     }
 
     public function storeShop()

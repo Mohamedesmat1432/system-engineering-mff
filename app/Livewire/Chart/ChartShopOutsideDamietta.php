@@ -66,6 +66,8 @@ class ChartShopOutsideDamietta extends Component
 
     public function render()
     {
+        $this->authorize('view-chart-shop-outside-damietta');
+
         return view('livewire.chart.chart-shop-outside-damietta');
     }
 }

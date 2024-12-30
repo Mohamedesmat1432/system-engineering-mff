@@ -31,16 +31,15 @@ class DataShopOutsideDamietta extends Model
         'sell_price',
         'sell_price_for_meter',
         'payment_method',
-        'insurance',
-        'remaining_sale',
-        'maintenance_deposit',
+        'insurance_amount',
+        'insurance_date',
+        'remaining_sale_amount',
+        'remaining_sale_date',
+        'maintenance_deposit_amount',
+        'maintenance_deposit_date',
     ];
 
-    protected $casts = [
-        'insurance' => 'array',
-        'remaining_sale' => 'array',
-        'maintenance_deposit' => 'array',
-    ];
+    protected $casts = [];
 
     public function government(): BelongsTo
     {
@@ -52,24 +51,20 @@ class DataShopOutsideDamietta extends Model
         return $this->belongsTo(City::class);
     }
 
-    public function scopeSearch($query, $search)
+    public function scopeSearch($query, $search = null, $governmentId = null, $cityId = null)
     {
-        return $query->when($search, function ($query) use ($search) {
+        if ($search) {
             $query->where('national_number', 'like', "%{$search}%");
-        });
-    }
+        }
 
-    public function scopeSearchByGovernmentId($query, $governmentId)
-    {
-        return $query->when($governmentId, function ($query) use ($governmentId) {
+        if ($governmentId) {
             $query->where('government_id', '=', $governmentId);
-        });
-    }
+        }
 
-    public function scopeSearchByCityId($query, $cityId)
-    {
-        return $query->when($cityId, function ($query) use ($cityId) {
+        if ($cityId) {
             $query->where('city_id', '=', $cityId);
-        });
+        }
+
+        return $query;
     }
 }

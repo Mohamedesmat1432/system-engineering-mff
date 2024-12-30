@@ -52,14 +52,18 @@ class PermissionSeeder extends Seeder
             'edit-shop-outside-damietta',
             'delete-shop-outside-damietta',
             'bulk-delete-shop-outside-damietta',
+            'import-shop-outside-damietta',
             'export-shop-outside-damietta',
             'view-shop-damietta-only',
             'create-shop-damietta-only',
             'edit-shop-damietta-only',
             'delete-shop-damietta-only',
             'bulk-delete-shop-damietta-only',
+            'import-shop-damietta-only',
             'export-shop-damietta-only',
-            'view-chart',
+            'view-chart-user',
+            'view-chart-shop-outside-damietta',
+            'view-chart-shop-damietta-only',
         ];
 
         foreach ($permissions as $permission) {

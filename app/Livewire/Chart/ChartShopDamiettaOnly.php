@@ -66,6 +66,8 @@ class ChartShopDamiettaOnly extends Component
 
     public function render()
     {
+        $this->authorize('view-chart-shop-damietta-only');
+
         return view('livewire.chart.chart-shop-damietta-only');
     }
 }

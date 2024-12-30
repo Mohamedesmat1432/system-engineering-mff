@@ -2,7 +2,7 @@
 
 <x-modal :id="$id" :maxWidth="$maxWidth" {{ $attributes }}>
     @if ($submit)
-        <form wire:submit="{{ $submit }}">
+        <form wire:submit="{{ $submit }}" enctype="multipart/form-data">
             @csrf
             @method($method)
     @endif

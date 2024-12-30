@@ -65,7 +65,7 @@ class ChartUser extends Component
 
     public function render()
     {
-        $this->authorize('view-chart');
+        $this->authorize('view-chart-user');
 
         return view('livewire.chart.chart-user');
     }

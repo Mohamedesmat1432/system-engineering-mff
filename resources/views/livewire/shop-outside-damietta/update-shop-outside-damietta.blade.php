@@ -11,7 +11,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <div class="mt-2">
                         <x-label for="buyer_name" value="{{ __('site.buyer_name') }}" />
-                        <x-input type="text" required class="mt-1 block w-full" wire:model="buyer_name"
+                        <x-input type="text" class="mt-1 block w-full" wire:model="buyer_name"
                             placeholder="{{ __('site.buyer_name') }}" />
                         <x-input-error for="buyer_name" class="mt-2" />
                     </div>
@@ -20,19 +20,19 @@
                             <x-label for="national_number" value="{{ __('site.national_number') }}" />
                             <span class="text-red-600 mx-2">{{ $this->count_of_national_number }}</span>
                         </div>
-                        <x-input type="text" required class="mt-1 block w-full" wire:model="national_number"
+                        <x-input type="text" class="mt-1 block w-full" wire:model="national_number"
                             wire:keyup="countNationalId" placeholder="{{ __('site.national_number') }}" />
                         <x-input-error for="national_number" class="mt-2" />
                     </div>
                     <div class="mt-2">
                         <x-label for="phone_number" value="{{ __('site.phone_number') }}" />
-                        <x-input type="text" required class="mt-1 block w-full" wire:model="phone_number"
+                        <x-input type="text" class="mt-1 block w-full" wire:model="phone_number"
                             placeholder="{{ __('site.phone_number') }}" />
                         <x-input-error for="phone_number" class="mt-2" />
                     </div>
                     <div class="mt-2">
                         <x-label for="home_number" value="{{ __('site.home_number') }}" />
-                        <x-input type="text" required class="mt-1 block w-full" wire:model="home_number"
+                        <x-input type="text" class="mt-1 block w-full" wire:model="home_number"
                             placeholder="{{ __('site.home_number') }}" />
                         <x-input-error for="home_number" class="mt-2" />
                     </div>
@@ -66,13 +66,13 @@
                     </div>
                     <div class="mt-2">
                         <x-label for="center" value="{{ __('site.center') }}" />
-                        <x-input type="text" required class="mt-1 block w-full" wire:model="center"
+                        <x-input type="text" class="mt-1 block w-full" wire:model="center"
                             placeholder="{{ __('site.center') }}" />
                         <x-input-error for="center" class="mt-2" />
                     </div>
                     <div class="mt-2">
                         <x-label for="location" value="{{ __('site.location') }}" />
-                        <x-input type="text" required class="mt-1 block w-full" wire:model="location"
+                        <x-input type="text" class="mt-1 block w-full" wire:model="location"
                             placeholder="{{ __('site.location') }}" />
                         <x-input-error for="location" class="mt-2" />
                     </div>
@@ -141,16 +141,16 @@
                     <h3 class="mt-2 text-xl underline">{{ __('site.insurance') }}</h3>
                     <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
                         <div class="mt-2">
-                            <x-label for="insurance.amount" value="{{ __('site.amount') }}" />
-                            <x-input type="number" class="mt-1 block w-full" wire:model="insurance.amount"
+                            <x-label for="insurance_amount" value="{{ __('site.amount') }}" />
+                            <x-input type="number" class="mt-1 block w-full" wire:model="insurance_amount"
                                 placeholder="{{ __('site.amount') }}" />
-                            <x-input-error for="insurance.amount" class="mt-2" />
+                            <x-input-error for="insurance_amount" class="mt-2" />
                         </div>
                         <div class="mt-2">
-                            <x-label for="insurance.date" value="{{ __('site.date') }}" />
-                            <x-input type="date" class="mt-1 block w-full" wire:model="insurance.date"
+                            <x-label for="insurance_date" value="{{ __('site.date') }}" />
+                            <x-input type="date" class="mt-1 block w-full" wire:model="insurance_date"
                                 placeholder="{{ __('site.date') }}" />
-                            <x-input-error for="insurance.date" class="mt-2" />
+                            <x-input-error for="insurance_date" class="mt-2" />
                         </div>
                     </div>
                 </div>
@@ -158,16 +158,16 @@
                     <h3 class="mt-2 text-xl underline">{{ __('site.remaining_amount_sale') }}</h3>
                     <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
                         <div class="mt-2">
-                            <x-label for="remaining_sale.amount" value="{{ __('site.amount') }}" />
-                            <x-input type="number" class="mt-1 block w-full" wire:model="remaining_sale.amount"
+                            <x-label for="remaining_sale_amount" value="{{ __('site.amount') }}" />
+                            <x-input type="number" class="mt-1 block w-full" wire:model="remaining_sale_amount"
                                 placeholder="{{ __('site.amount') }}" />
-                            <x-input-error for="remaining_sale.amount" class="mt-2" />
+                            <x-input-error for="remaining_sale_amount" class="mt-2" />
                         </div>
                         <div class="mt-2">
-                            <x-label for="remaining_sale.date" value="{{ __('site.date') }}" />
-                            <x-input type="date" class="mt-1 block w-full" wire:model="remaining_sale.date"
+                            <x-label for="remaining_sale_date" value="{{ __('site.date') }}" />
+                            <x-input type="date" class="mt-1 block w-full" wire:model="remaining_sale_date"
                                 placeholder="{{ __('site.date') }}" />
-                            <x-input-error for="remaining_sale.date" class="mt-2" />
+                            <x-input-error for="remaining_sale_date" class="mt-2" />
                         </div>
                     </div>
                 </div>
@@ -177,16 +177,16 @@
                     <h3 class="mt-2 text-xl underline">{{ __('site.maintenance_deposit') }}</h3>
                     <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
                         <div class="mt-2">
-                            <x-label for="maintenance_deposit.amount" value="{{ __('site.amount') }}" />
-                            <x-input type="number" class="mt-1 block w-full" wire:model="maintenance_deposit.amount"
+                            <x-label for="maintenance_deposit_amount" value="{{ __('site.amount') }}" />
+                            <x-input type="number" class="mt-1 block w-full" wire:model="maintenance_deposit_amount"
                                 placeholder="{{ __('site.amount') }}" />
-                            <x-input-error for="maintenance_deposit.amount" class="mt-2" />
+                            <x-input-error for="maintenance_deposit_amount" class="mt-2" />
                         </div>
                         <div class="mt-2">
-                            <x-label for="maintenance_deposit.date" value="{{ __('site.date') }}" />
-                            <x-input type="date" class="mt-1 block w-full" wire:model="maintenance_deposit.date"
+                            <x-label for="maintenance_deposit_date" value="{{ __('site.date') }}" />
+                            <x-input type="date" class="mt-1 block w-full" wire:model="maintenance_deposit_date"
                                 placeholder="{{ __('site.date') }}" />
-                            <x-input-error for="maintenance_deposit.date" class="mt-2" />
+                            <x-input-error for="maintenance_deposit_date" class="mt-2" />
                         </div>
                     </div>
                 </div>
