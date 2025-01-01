@@ -64,6 +64,8 @@ class PermissionSeeder extends Seeder
             'view-chart-user',
             'view-chart-shop-outside-damietta',
             'view-chart-shop-damietta-only',
+            'delete-profile-account',
+            'logout-profile-sessions',
         ];
 
         foreach ($permissions as $permission) {
