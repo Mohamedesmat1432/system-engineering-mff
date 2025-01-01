@@ -2,9 +2,9 @@
     <div x-data="chartShopOutsideDamietta" class="grid grid-cols-1 gap-6 mt-3 place-items-center">
         <canvas id="chartShopOutsideDamiettaId" x-init="initChartShopOutsideDamietta()"></canvas>
         <x-select x-model="chartType" @change="updateChartShopOutsideDamiettaType">
-            <option value="doughnut">Doughnut</option>
-            <option value="bar">Bar</option>
-            <option value="line">Line</option>
+            <option value="doughnut">{{ __('site.doughnut') }}</option>
+            <option value="bar">{{ __('site.bar') }}</option>
+            <option value="line">{{ __('site.line') }}</option>
         </x-select>
     </div>
 

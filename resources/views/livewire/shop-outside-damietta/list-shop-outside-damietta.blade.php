@@ -255,6 +255,19 @@
                                     <span>{{ __('site.date') }}</span>
                                 </div>
                             </td>
+                            <td class="px-2 py-2 border" colspan="2">
+                                <div class="flex justify-center">
+                                    <button wire:click="sortByField('afine_date')">
+                                        {{ __('site.afine') }}
+                                    </button>
+                                    <x-sort-icon sort_field="afine_date" :sort_by="$sort_by"
+                                        :sort_asc="$sort_asc" />
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>{{ __('site.amount') }}</span>
+                                    <span>{{ __('site.date') }}</span>
+                                </div>
+                            </td>
                             <td class="px-4 py-2 border">
                                 <div class="flex justify-center">
                                     {{ __('site.action') }}
@@ -344,6 +357,12 @@
                                 {{ $shop->maintenance_deposit_date }}
                             </td>
                             <td class="p-2 border">
+                                {{ $shop->afine_amount }}
+                            </td>
+                            <td class="p-2 border">
+                                {{ $shop->afine_date }}
+                            </td>
+                            <td class="p-2 border">
                                 <div class="flex justify-center">
                                     <x-edit-button permission="edit-shop-outside-damietta" id="{{ $shop->id }}" />
                                     <div class="mx-1"></div>
@@ -354,7 +373,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="12" class="p-2 border text-center">
+                            <td colspan="42" class="p-2 border text-center">
                                 {{ __('site.no_data_found') }}
                             </td>
                         </tr>

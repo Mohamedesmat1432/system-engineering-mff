@@ -190,6 +190,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="afine">
+                    <h3 class="mt-2 text-xl underline">{{ __('site.afine') }}</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
+                        <div class="mt-2">
+                            <x-label for="afine_amount" value="{{ __('site.amount') }}" />
+                            <x-input type="number" class="mt-1 block w-full" wire:model="afine_amount"
+                                placeholder="{{ __('site.amount') }}" />
+                            <x-input-error for="afine_amount" class="mt-2" />
+                        </div>
+                        <div class="mt-2">
+                            <x-label for="afine_date" value="{{ __('site.date') }}" />
+                            <x-input type="date" class="mt-1 block w-full" wire:model="afine_date"
+                                placeholder="{{ __('site.date') }}" />
+                            <x-input-error for="afine_date" class="mt-2" />
+                        </div>
+                    </div>
+                </div>
                 @for ($i = 1; $i<=15 ; $i++)
                 <div class="installments">
                     <h3 class="mt-2 text-xl underline">{{ __("site.installment_{$i}") }}</h3>

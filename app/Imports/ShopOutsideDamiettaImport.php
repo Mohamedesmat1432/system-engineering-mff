@@ -45,6 +45,8 @@ class ShopOutsideDamiettaImport implements ToModel, WithHeadingRow, WithValidati
             'remaining_sale_date' => $row['remaining_sale_date'],
             'maintenance_deposit_amount' => $row['maintenance_deposit_amount'],
             'maintenance_deposit_date' => $row['maintenance_deposit_date'],
+            'afine_amount' => $row['afine_amount'],
+            'afine_date' => $row['afine_date'],
         ]);
     }
 
@@ -75,6 +77,8 @@ class ShopOutsideDamiettaImport implements ToModel, WithHeadingRow, WithValidati
             'remaining_sale_date' => 'nullable|date',
             'maintenance_deposit_amount' => 'nullable|numeric',
             'maintenance_deposit_date' => 'nullable|date',
+            'afine_amount' => 'nullable|numeric',
+            'afine_date' => 'nullable|date',
         ];
     }
 }

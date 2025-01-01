@@ -11,7 +11,7 @@
 <?php endif; ?>
 <?php $component->withAttributes(['wire:model.live' => 'import_modal','submit' => 'import()','method' => 'POST']); ?>
          <?php $__env->slot('title', null, []); ?> 
-            <?php echo e(__('site.import_orders')); ?>
+            <?php echo e(__('site.import_shop_outside_damietta')); ?>
 
          <?php $__env->endSlot(); ?>
 

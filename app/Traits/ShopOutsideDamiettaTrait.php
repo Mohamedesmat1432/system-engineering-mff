@@ -18,7 +18,7 @@ trait ShopOutsideDamiettaTrait
         $shop_area, $buyer_name, $national_number, $count_of_national_number,
         $phone_number, $home_number, $sell_price, $sell_price_for_meter, $payment_method,
         $insurance_amount, $insurance_date, $remaining_sale_amount, $remaining_sale_date,
-        $maintenance_deposit_amount, $maintenance_deposit_date;
+        $maintenance_deposit_amount, $maintenance_deposit_date, $afine_amount, $afine_date;
 
     protected function rules()
     {
@@ -47,6 +47,8 @@ trait ShopOutsideDamiettaTrait
             'remaining_sale_date' => 'nullable|date',
             'maintenance_deposit_amount' => 'nullable|numeric',
             'maintenance_deposit_date' => 'nullable|date',
+            'afine_amount' => 'nullable|numeric',
+            'afine_date' => 'nullable|date',
         ];
     }
 
@@ -94,6 +96,8 @@ trait ShopOutsideDamiettaTrait
         $this->remaining_sale_date = $this->shop->remaining_sale_date;
         $this->maintenance_deposit_amount = $this->shop->maintenance_deposit_amount;
         $this->maintenance_deposit_date = $this->shop->maintenance_deposit_date;
+        $this->afine_amount = $this->shop->afine_amount;
+        $this->afine_date = $this->shop->afine_date;
     }
 
     public function storeShop()

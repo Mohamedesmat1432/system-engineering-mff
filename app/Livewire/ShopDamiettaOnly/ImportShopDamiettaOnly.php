@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Livewire\ShopOutsideDamietta;
+namespace App\Livewire\ShopDamiettaOnly;
 
-use App\Imports\ShopOutsideDamiettaImport;
-use App\Traits\ShopOutsideDamiettaTrait;
+use App\Imports\ShopDamiettaOnlyImport;
+use App\Traits\ShopDamiettaOnlyTrait;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 #[Layout('layouts.app')]
-class ImportShopOutsideDamietta extends Component
+class ImportShopDamiettaOnly extends Component
 {
-    use ShopOutsideDamiettaTrait, WithFileUploads;
+    use ShopDamiettaOnlyTrait, WithFileUploads;
 
     public $file;
 
@@ -25,13 +25,13 @@ class ImportShopOutsideDamietta extends Component
     }
 
     
-    public function import(ShopOutsideDamiettaImport $import)
+    public function import(ShopDamiettaOnlyImport $import)
     {
         $this->validate(['file' => 'required|file|mimes:xlsx,xls,csv|max:1024']);
         try {
             $this->import_modal = false;
-            $this->dispatch('refresh-list-shop-outside-damietta');
-            $this->successNotify(__('site.shop_outside_damietta_imported'));
+            $this->dispatch('refresh-list-shop-damietta-only');
+            $this->successNotify(__('site.shop_damietta_only_imported'));
             return $import->import($this->file->getRealPath());
         } catch (\Throwable $e) {
             $this->errorNotify($e->getMessage());
@@ -40,8 +40,8 @@ class ImportShopOutsideDamietta extends Component
 
     public function render()
     {
-        $this->authorize('import-shop-outside-damietta');
+        $this->authorize('import-shop-damietta-only');
 
-        return view('livewire.shop-outside-damietta.import-shop-outside-damietta');
+        return view('livewire.shop-damietta-only.import-shop-damietta-only');
     }
 }

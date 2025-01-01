@@ -925,6 +925,38 @@ if (isset($__slots)) unset($__slots);
                                     <span><?php echo e(__('site.date')); ?></span>
                                 </div>
                             </td>
+                            <td class="px-2 py-2 border" colspan="2">
+                                <div class="flex justify-center">
+                                    <button wire:click="sortByField('afine_date')">
+                                        <?php echo e(__('site.afine')); ?>
+
+                                    </button>
+                                    <?php if (isset($component)) { $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sort-icon','data' => ['sortField' => 'afine_date','sortBy' => $sort_by,'sortAsc' => $sort_asc]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('sort-icon'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['sort_field' => 'afine_date','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
+<?php $attributes = $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
+<?php unset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
+<?php $component = $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
+<?php unset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
+<?php endif; ?>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span><?php echo e(__('site.amount')); ?></span>
+                                    <span><?php echo e(__('site.date')); ?></span>
+                                </div>
+                            </td>
                             <td class="px-4 py-2 border">
                                 <div class="flex justify-center">
                                     <?php echo e(__('site.action')); ?>
@@ -1057,6 +1089,14 @@ if (isset($__slots)) unset($__slots);
 
                             </td>
                             <td class="p-2 border">
+                                <?php echo e($shop->afine_amount); ?>
+
+                            </td>
+                            <td class="p-2 border">
+                                <?php echo e($shop->afine_date); ?>
+
+                            </td>
+                            <td class="p-2 border">
                                 <div class="flex justify-center">
                                     <?php if (isset($component)) { $__componentOriginal8417baeedcb6c131165d53e37e61cc07 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal8417baeedcb6c131165d53e37e61cc07 = $attributes; } ?>
@@ -1104,7 +1144,7 @@ if (isset($__slots)) unset($__slots);
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <tr>
-                            <td colspan="12" class="p-2 border text-center">
+                            <td colspan="42" class="p-2 border text-center">
                                 <?php echo e(__('site.no_data_found')); ?>
 
                             </td>

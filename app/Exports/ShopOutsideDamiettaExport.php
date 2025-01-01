@@ -68,6 +68,8 @@ class ShopOutsideDamiettaExport implements FromCollection, WithHeadings, WithSty
             Helper::formatDate($shop->remaining_sale_date),
             $shop->maintenance_deposit_amount,
             Helper::formatDate($shop->maintenance_deposit_date),
+            $shop->afine_amount,
+            Helper::formatDate($shop->afine_date),
         ];
     }
 
@@ -94,12 +96,14 @@ class ShopOutsideDamiettaExport implements FromCollection, WithHeadings, WithSty
                 __('site.sell_price'),
                 __('site.sell_price_for_meter'),
                 __('site.payment_method'),
-                __('site.insurance_price'),
+                __('site.insurance_amount'),
                 __('site.insurance_date'),
-                __('site.remaining_amount_sale_price'),
+                __('site.remaining_amount_sale_amount'),
                 __('site.remaining_amount_sale_date'),
-                __('site.maintenance_deposit_price'),
+                __('site.maintenance_deposit_amount'),
                 __('site.maintenance_deposit_date'),
+                __('site.afine_amount'),
+                __('site.afine_date'),
             ];
         } else {
             return [
@@ -128,6 +132,8 @@ class ShopOutsideDamiettaExport implements FromCollection, WithHeadings, WithSty
                 'remaining_sale_date',
                 'maintenance_deposit_amount',
                 'maintenance_deposit_date',
+                'afine_amount',
+                'afine_date',
             ];
         }
     }

@@ -2,9 +2,9 @@
     <div x-data="chartUser" class="grid grid-cols-1 place-items-center gap-6 mt-3">
         <canvas id="chartUserId" x-init="initChartUser()"></canvas>
         <x-select x-model="chartType" @change="updateChartUserType">
-            <option value="doughnut">Doughnut</option>
-            <option value="bar">Bar</option>
-            <option value="line">Line</option>
+            <option value="doughnut">{{ __('site.doughnut') }}</option>
+            <option value="bar">{{ __('site.bar') }}</option>
+            <option value="line">{{ __('site.line') }}</option>
         </x-select>
     </div>
 

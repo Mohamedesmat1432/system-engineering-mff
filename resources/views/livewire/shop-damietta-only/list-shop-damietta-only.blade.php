@@ -46,8 +46,9 @@
                                 @endforeach
                             </x-select>
                         </div>
-                        <div class="mb-2 grid grid-cols-2 md:grid-cols-2 gap-4">
+                        <div class="mb-2 grid grid-cols-3 md:grid-cols-3 gap-4">
                             <x-create-button permission="create-shop-damietta-only" />
+                            <x-import-button permission="import-shop-damietta-only" />
                             <x-export-button permission="export-shop-damietta-only" />
                         </div>
                     </div>
@@ -253,6 +254,19 @@
                                     <span>{{ __('site.date') }}</span>
                                 </div>
                             </td>
+                            <td class="px-2 py-2 border" colspan="2">
+                                <div class="flex justify-center">
+                                    <button wire:click="sortByField('afine_date')">
+                                        {{ __('site.afine') }}
+                                    </button>
+                                    <x-sort-icon sort_field="afine_date" :sort_by="$sort_by"
+                                        :sort_asc="$sort_asc" />
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>{{ __('site.amount') }}</span>
+                                    <span>{{ __('site.date') }}</span>
+                                </div>
+                            </td>
                             @for ($i = 1; $i <= 15; $i++) 
                             <td class="px-2 py-2 border" colspan="2">
                             <div class="flex justify-center">
@@ -286,7 +300,7 @@
                                 {{ $shop->id }}
                             </td>
                             <td class="p-2 border">
-                                {{ app()->getLocale() === 'ar' ? $shop->government?->name_ar : $shop->government->name_en }}
+                                {{ app()->getLocale() === 'ar' ? $shop->government->name_ar : $shop->government->name_en }}
                             </td>
                             <td class="p-2 border">
                                 {{ app()->getLocale() === 'ar' ? $shop->city->name_ar : $shop->city->name_en }}
@@ -354,6 +368,12 @@
                             <td class="p-2 border">
                                 {{ $shop->maintenance_deposit_date }}
                             </td>
+                            <td class="p-2 border">
+                                {{ $shop->afine_amount }}
+                            </td>
+                            <td class="p-2 border">
+                                {{ $shop->afine_date }}
+                            </td>
                             @for ($i = 1; $i<= 15; $i++)
                             <td class="p-2 border">
                                 {{ $shop->{'installment_amount_' . $i} }}
@@ -373,7 +393,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="12" class="p-2 border text-center">
+                            <td colspan="58" class="p-2 border text-center">
                                 {{ __('site.no_data_found') }}
                             </td>
                         </tr>

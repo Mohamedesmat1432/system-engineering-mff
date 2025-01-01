@@ -2,7 +2,7 @@
     @if ($this->import_modal)
     <x-dialog-modal wire:model.live="import_modal" submit="import()" method="POST">
         <x-slot name="title">
-            {{ __('site.import_shop_outside_damietta') }}
+            {{ __('site.import_shop_damietta_only') }}
         </x-slot>
 
         <x-slot name="content">

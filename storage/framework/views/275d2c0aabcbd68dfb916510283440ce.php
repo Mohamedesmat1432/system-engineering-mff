@@ -11,9 +11,9 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['x-model' => 'chartType','@change' => 'updateChartUserType']); ?>
-            <option value="doughnut">Doughnut</option>
-            <option value="bar">Bar</option>
-            <option value="line">Line</option>
+            <option value="doughnut"><?php echo e(__('site.doughnut')); ?></option>
+            <option value="bar"><?php echo e(__('site.bar')); ?></option>
+            <option value="line"><?php echo e(__('site.line')); ?></option>
          <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginaled2cde6083938c436304f332ba96bb7c)): ?>

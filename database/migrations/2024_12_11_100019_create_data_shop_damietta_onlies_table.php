@@ -37,6 +37,8 @@ return new class extends Migration
             $table->date('remaining_sale_date')->nullable();
             $table->decimal('maintenance_deposit_amount', 10, 2)->nullable();
             $table->date('maintenance_deposit_date')->nullable();
+            $table->decimal('afine_amount', 10, 2)->nullable();
+            $table->date('afine_date')->nullable();
             $table->decimal('installment_amount_1', 10, 2)->nullable();
             $table->date('installment_date_1')->nullable();
             $table->decimal('installment_amount_2', 10, 2)->nullable();

@@ -15,12 +15,14 @@ class DepartmentSeeder extends Seeder
     public function run(): void
     {
         $departments = [
-            ['نظم المعاومات', 'IT'],
+            ['نظم المعلومات', 'IT'],
             ['المالية', 'Financial'],
             ['الهندسية', 'Engineering'],
             ['المكتب الفني', 'COE'],
             ['الدعم', 'Support'],
             ['البحوث', 'Research'],
+            ['الاستثمار', 'Investment'],
+            ['القانونية', 'Law'],
         ];
 
         foreach ($departments as $department) {

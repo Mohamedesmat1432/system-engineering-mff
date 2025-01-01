@@ -37,6 +37,8 @@ class DataShopOutsideDamietta extends Model
         'remaining_sale_date',
         'maintenance_deposit_amount',
         'maintenance_deposit_date',
+        'afine_amount',
+        'afine_date',
     ];
 
     protected $casts = [];
