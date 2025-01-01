@@ -42,8 +42,8 @@ class DbBackup extends Command
 
         // Build the mysqldump command
         $command = sprintf(
-            "mysqldump --host=$(sudo docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mysql) --port=%s --user=%s --password=%s %s > %s",
-            // escapeshellarg($dbHost),
+            "mysqldump --host=%s --port=%s --user=%s --password=%s %s > %s",
+            escapeshellarg($dbHost),
             escapeshellarg($dbPort),
             escapeshellarg($dbUser),
             escapeshellarg($dbPass),

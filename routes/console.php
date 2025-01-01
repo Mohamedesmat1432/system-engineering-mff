@@ -27,10 +27,9 @@ Artisan::command('livewire:init {name}', function (string $name) {
     Artisan::call("make:livewire {$name}.Show{$name}");
     Artisan::call("make:livewire {$name}.Delete{$name}");
     Artisan::call("make:livewire {$name}.BulkDelete{$name}");
-    Artisan::call("make:livewire {$name}.ImportExport{$name}");
     Artisan::call("make:import {$name}sImport --model={$name}");
     Artisan::call("make:export {$name}sExport --model={$name}");
-    Artisan::call("make:livewire {$name}.Restore{$name}");
-    Artisan::call("make:livewire {$name}.ForceDelete{$name}");
-    Artisan::call("make:livewire {$name}.ForceBulkDelete{$name}");
+    // Artisan::call("make:livewire {$name}.Restore{$name}");
+    // Artisan::call("make:livewire {$name}.ForceDelete{$name}");
+    // Artisan::call("make:livewire {$name}.ForceBulkDelete{$name}");
 })->describe('Running commands');

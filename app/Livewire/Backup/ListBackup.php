@@ -33,7 +33,7 @@ class ListBackup extends Component
     {
         $this->authorize('view-backup-database');
 
-        $files = File::allFiles(storage_path('app/backup'));
+        $files = is_dir(storage_path('app/backup')) ? File::allFiles(storage_path('app/backup')) : [];
 
         return view('livewire.backup.list-backup',[
             'files' => $files

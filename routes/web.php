@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Backup\ListBackup;
+use App\Livewire\Customer\ListCustomer;
 use App\Livewire\Dashboard\DashboardComponent;
 use App\Livewire\Department\ListDepartment;
 use App\Livewire\Home\HomeComponent;
@@ -36,4 +37,5 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/departments', ListDepartment::class)->name('departments');
     Route::get('/shops-outside-damietta', ListShopOutsideDamietta::class)->name('shops.outside.damietta');
     Route::get('/shops-damietta-only', ListShopDamiettaOnly::class)->name('shops.damietta.only');
+    Route::get('/customers', ListCustomer::class)->name('customers');
 });

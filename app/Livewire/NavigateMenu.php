@@ -47,6 +47,12 @@ class NavigateMenu extends NavigationMenu
                 'icon' => 'inbox-stack',
                 'role' => 'view-backup-database',
             ],
+            [
+                'name' => 'customers',
+                'value' => 'site.customers',
+                'icon' => 'inbox-stack',
+                'role' => 'view-customer',
+            ],
         ];
     }
     

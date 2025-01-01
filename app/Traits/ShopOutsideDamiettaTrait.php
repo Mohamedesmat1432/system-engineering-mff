@@ -62,6 +62,7 @@ trait ShopOutsideDamiettaTrait
         return City::where('government_id', $this->government_id ?? $this->search_by_government)
             ->pluck('name_' . app()->getLocale(), 'id')->toArray() ?? [];
     }
+    
     public function countNationalId()
     {
         $this->count_of_national_number = strlen($this->national_number);
