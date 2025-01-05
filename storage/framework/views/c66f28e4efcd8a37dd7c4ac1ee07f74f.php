@@ -11,7 +11,7 @@
 <?php endif; ?>
 <?php $component->withAttributes(['wire:model' => 'bulk_delete_modal','submit' => 'delete','method' => 'DELETE']); ?>
          <?php $__env->slot('title', null, []); ?> 
-            <?php echo e(__('site.bulk_delete_shop_outside_damietta')); ?>
+            <?php echo e(__('site.bulk_delete_shop')); ?>
 
          <?php $__env->endSlot(); ?>
 
@@ -30,7 +30,7 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['type' => 'submit','wire:loading.attr' => 'disabled']); ?>
-                <?php echo e(__('site.bulk_delete_shop_outside_damietta')); ?>
+                <?php echo e(__('site.bulk_delete_shop')); ?>
 
              <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -77,4 +77,4 @@
 <?php endif; ?>
     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
 </div>
-<?php /**PATH /home/mohammed/Desktop/projects/laravels/system-engineering-mff/resources/views/livewire/shop-outside-damietta/bulk-delete-shop-outside-damietta.blade.php ENDPATH**/ ?>
+<?php /**PATH /home/mohammed/Desktop/projects/laravels/system-engineering-mff/resources/views/livewire/shop/bulk-delete-shop.blade.php ENDPATH**/ ?>

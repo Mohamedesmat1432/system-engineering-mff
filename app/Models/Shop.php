@@ -35,4 +35,25 @@ class Shop extends Model
     {
         return $this->hasManyThrough(Installment::class, Sale::class);
     }
+
+    public function government()
+    {
+        return $this->belongsTo(Government::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    public function scopeSearch($query, $search = null, $governmentId = null, $cityId = null)
+    {
+        return $query->when($search, function ($query) use ($search) {
+            $query->where('auction_date', 'like', "%{$search}%");
+        })->when($governmentId, function ($query) use ($governmentId) {
+            $query->where('government_id', '=', $governmentId);
+        })->when($cityId, function ($query) use ($cityId) {
+            $query->where('city_id', '=', $cityId);
+        });
+    }
 }

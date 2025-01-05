@@ -7,6 +7,7 @@ use App\Livewire\Department\ListDepartment;
 use App\Livewire\Home\HomeComponent;
 use App\Livewire\Permission\ListPermission;
 use App\Livewire\Role\ListRole;
+use App\Livewire\Shop\ListShop;
 use App\Livewire\ShopOutsideDamietta\ListShopOutsideDamietta;
 use App\Livewire\ShopDamiettaOnly\ListShopDamiettaOnly;
 use App\Livewire\User\ListUser;
@@ -38,4 +39,5 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/shops-outside-damietta', ListShopOutsideDamietta::class)->name('shops.outside.damietta');
     Route::get('/shops-damietta-only', ListShopDamiettaOnly::class)->name('shops.damietta.only');
     Route::get('/customers', ListCustomer::class)->name('customers');
+    Route::get('/shops', ListShop::class)->name('shops');
 });
