@@ -68,9 +68,9 @@ services:
 
 volumes:
   db_data:
-    driver: local
+    # driver: local
 
 networks:
   system_engineering_network:
-    driver: bridge
+    # driver: bridge
 

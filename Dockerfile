@@ -32,15 +32,15 @@ WORKDIR /var/www
 COPY . .
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www /var/www/storage /var/www/bootstrap/cache /var/www/public
+# RUN chown -R www-data:www-data /var/www /var/www/storage /var/www/bootstrap/cache /var/www/public
 
-RUN chmod -R 777 /var/www /var/www/bootstrap/cache /var/www/storage /var/www/public
+# RUN chmod -R 777 /var/www /var/www/bootstrap/cache /var/www/storage /var/www/public
 
 # Install composer dependencies (if composer.json exists)
-# RUN if [ -f composer.json ]; then composer clear-cache && composer install && php artisan key:generate; fi
+RUN if [ -f composer.json ]; then composer clear-cache && composer install; fi
 
 # Install npm dependencies (if package.json exists)
-# RUN if [ -f package.json ]; then npm install && npm run build; fi
+RUN if [ -f package.json ]; then npm install && npm run build; fi
 
 # Expose port
 EXPOSE 9000
