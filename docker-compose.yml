@@ -17,10 +17,6 @@ services:
     working_dir: /var/www
     volumes:
       - .:/var/www
-      - ./bootstrap/cache:/var/www/bootstrap/cache
-      - ./storage:/var/www/storage
-      - ./public:/var/www/public
-    user: www-data
     ports:
       - "9000:9000"
     depends_on:
@@ -72,7 +68,9 @@ services:
 
 volumes:
   db_data:
+    driver: local
 
 networks:
   system_engineering_network:
+    driver: bridge
 
