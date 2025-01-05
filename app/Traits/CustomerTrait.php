@@ -5,7 +5,7 @@ namespace App\Traits;
 use App\Models\Customer;
 use Livewire\WithPagination;
 
-trait customerTrait
+trait CustomerTrait
 {
     use WithNotify, SortSearchTrait, WithPagination, ModalTrait;
 
