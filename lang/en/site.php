@@ -203,6 +203,7 @@ return [
     'type_of_shop' => 'Type Of Shop',
     'shop_area' => 'Shop Area',
     'customer_name' => 'Customer Name',
+    'buyer_name' => 'Customer Name',
     'national_number' => 'National ID',
     'count_national_number' => 'Count Of National ID',
     'count_of_national_number' => 'Count Of National ID',

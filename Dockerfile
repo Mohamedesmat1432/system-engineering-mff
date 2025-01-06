@@ -32,18 +32,18 @@ WORKDIR /var/www
 # Copy project files
 COPY . .
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache /var/www/public
-RUN chmod -R 777 /var/www/bootstrap/cache /var/www/storage /var/www/public
-
 # Install composer dependencies (if composer.json exists)
 RUN if [ -f composer.json ]; then composer install; fi
 
 # Install npm dependencies (if package.json exists)
 RUN if [ -f package.json ]; then npm install && npm run build; fi
 
+# Set permissions
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+RUN chmod -R 777 /var/www/bootstrap/cache /var/www/storage
+
 # Expose port
-EXPOSE 9000
+EXPOSE 3000
 
 # Start PHP-FPM
 CMD ["php-fpm", "-F"]

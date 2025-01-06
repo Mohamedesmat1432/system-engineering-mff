@@ -17,6 +17,7 @@ return [
     'action' => 'اﻷحداث',
     'id' => 'رقم',
     'customer_name' => 'اسم العميل',
+    'buyer_name' => 'اسم العميل',
     'customer_phone' => 'هاتف العميل',
     'start_date' => 'تاريخ البدأ',
     'end_date' => 'تاريخ الانتهاء',
