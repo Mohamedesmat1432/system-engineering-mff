@@ -196,6 +196,7 @@ return [
     'customer_name' => 'اسم العميل',
     'national_number' => 'الرقم القومي',
     'count_national_number' => 'عدد الرقم القومي',
+    'count_of_national_number' => 'عدد الرقم القومي',
     'phone_number' => 'رقم الهاتف',
     'home_number' => 'رقم المنزل',
     'sell_price' => 'سعر البيع',

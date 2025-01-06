@@ -205,6 +205,7 @@ return [
     'customer_name' => 'Customer Name',
     'national_number' => 'National ID',
     'count_national_number' => 'Count Of National ID',
+    'count_of_national_number' => 'Count Of National ID',
     'phone_number' => 'Phone Number',
     'home_number' => 'Home Number',
     'sell_price' => 'Sell Price',
