@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class DbBackup extends Command
 {
@@ -25,7 +27,17 @@ class DbBackup extends Command
      */
     public function handle()
     {
+        $this->info('Starting database backup from Docker...');
 
+        // // Get the container's IP address
+        // $process = new Process(['docker', 'inspect', '-f', '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}', 'db']);
+        // $process->run();
+
+        // if (!$process->isSuccessful()) {
+        //     throw new ProcessFailedException($process);
+        // }
+
+        // $dbHost = $process->getOutput();
         $dbHost = env('DB_HOST');
         $dbPort = env('DB_PORT');
         $dbName = env('DB_DATABASE');
@@ -40,7 +52,19 @@ class DbBackup extends Command
         // Define the backup file name and path
         $backupFile = $backupPath . '/' . $dbName . '_' . date('Y-m-d_H-i-s') . '.sql';
 
-        // Build the mysqldump command
+        // $process = new Process([
+        //     'mysqldump', '--host', $dbHost, '--port', $dbPort, '-user', $dbUser, '-password', $dbPass, $dbName, '>', $backupFile
+        // ]);
+        // $process->run();
+
+        // if (!$process->isSuccessful()) {
+        //     throw new ProcessFailedException($process);
+        // }
+
+        // $this->info('Database backup completed successfully!');
+
+
+        // // Build the mysqldump command
         $command = sprintf(
             "mysqldump --host=%s --port=%s --user=%s --password=%s %s > %s",
             escapeshellarg($dbHost),

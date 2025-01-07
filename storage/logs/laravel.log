@@ -3916,3 +3916,287 @@ Did you mean this?
 #74 /var/www/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #75 {main}
 "} 
+[2025-01-06 22:48:49] local.ERROR: syntax error, unexpected identifier "docker", expecting ")" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected identifier \"docker\", expecting \")\" at /home/mohammed/Desktop/projects/laravels/system-engineering-mff/app/Console/Commands/DbBackup.php:45)
+[stacktrace]
+#0 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/composer/ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#2 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(346): is_subclass_of()
+#3 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/app/Console/Kernel.php(28): Illuminate\\Foundation\\Console\\Kernel->load()
+#4 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(453): App\\Console\\Kernel->commands()
+#5 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(199): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#6 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle()
+#7 {main}
+"} 
+[2025-01-06 22:48:49] local.ERROR: syntax error, unexpected identifier "docker", expecting ")" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected identifier \"docker\", expecting \")\" at /home/mohammed/Desktop/projects/laravels/system-engineering-mff/app/Console/Commands/DbBackup.php:45)
+[stacktrace]
+#0 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/composer/ClassLoader.php(433): Composer\\Autoload\\{closure}()
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass()
+#2 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(346): is_subclass_of()
+#3 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/app/Console/Kernel.php(28): Illuminate\\Foundation\\Console\\Kernel->load()
+#4 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(453): App\\Console\\Kernel->commands()
+#5 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(199): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#6 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle()
+#7 {main}
+"} 
+[2025-01-06 23:05:14] local.ERROR: The "--only-db" option does not exist. {"userId":1,"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): The \"--only-db\" option does not exist. at /var/www/vendor/symfony/console/Input/ArgvInput.php:223)
+[stacktrace]
+#0 /var/www/vendor/symfony/console/Input/ArgvInput.php(152): Symfony\\Component\\Console\\Input\\ArgvInput->addLongOption('only-db', NULL)
+#1 /var/www/vendor/symfony/console/Input/ArgvInput.php(85): Symfony\\Component\\Console\\Input\\ArgvInput->parseLongOption('--only-db')
+#2 /var/www/vendor/symfony/console/Input/ArgvInput.php(74): Symfony\\Component\\Console\\Input\\ArgvInput->parseToken('--only-db', true)
+#3 /var/www/vendor/symfony/console/Input/Input.php(56): Symfony\\Component\\Console\\Input\\ArgvInput->parse()
+#4 /var/www/vendor/symfony/console/Command/Command.php(285): Symfony\\Component\\Console\\Input\\Input->bind(Object(Symfony\\Component\\Console\\Input\\InputDefinition))
+#5 /var/www/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\StringInput), Object(Illuminate\\Console\\OutputStyle))
+#6 /var/www/vendor/symfony/console/Application.php(1096): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\StringInput), Object(Symfony\\Component\\Console\\Output\\BufferedOutput))
+#7 /var/www/vendor/symfony/console/Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand(Object(App\\Console\\Commands\\DbBackup), Object(Symfony\\Component\\Console\\Input\\StringInput), Object(Symfony\\Component\\Console\\Output\\BufferedOutput))
+#8 /var/www/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\StringInput), Object(Symfony\\Component\\Console\\Output\\BufferedOutput))
+#9 /var/www/vendor/laravel/framework/src/Illuminate/Console/Application.php(162): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\StringInput), Object(Symfony\\Component\\Console\\Output\\BufferedOutput))
+#10 /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(400): Illuminate\\Console\\Application->call('db:backup', Array, NULL)
+#11 /var/www/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(355): Illuminate\\Foundation\\Console\\Kernel->call('db:backup --onl...')
+#12 /var/www/app/Livewire/Backup/ListBackup.php(22): Illuminate\\Support\\Facades\\Facade::__callStatic('call', Array)
+#13 /var/www/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Livewire\\Backup\\ListBackup->backupDB()
+#14 /var/www/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 /var/www/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 /var/www/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 /var/www/vendor/livewire/livewire/src/Wrapped.php(23): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array)
+#18 /var/www/vendor/livewire/livewire/src/Mechanisms/HandleComponents/HandleComponents.php(468): Livewire\\Wrapped->__call('backupDB', Array)
+#19 /var/www/vendor/livewire/livewire/src/Mechanisms/HandleComponents/HandleComponents.php(100): Livewire\\Mechanisms\\HandleComponents\\HandleComponents->callMethods(Object(App\\Livewire\\Backup\\ListBackup), Array, Object(Livewire\\Mechanisms\\HandleComponents\\ComponentContext))
+#20 /var/www/vendor/livewire/livewire/src/LivewireManager.php(97): Livewire\\Mechanisms\\HandleComponents\\HandleComponents->update(Array, Array, Array)
+#21 /var/www/vendor/livewire/livewire/src/Mechanisms/HandleRequests/HandleRequests.php(89): Livewire\\LivewireManager->update(Array, Array, Array)
+#22 /var/www/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(46): Livewire\\Mechanisms\\HandleRequests\\HandleRequests->handleUpdate()
+#23 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Route.php(259): Illuminate\\Routing\\ControllerDispatcher->dispatch(Object(Illuminate\\Routing\\Route), Object(Livewire\\Mechanisms\\HandleRequests\\HandleRequests), 'handleUpdate')
+#24 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Route.php(205): Illuminate\\Routing\\Route->runController()
+#25 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php(806): Illuminate\\Routing\\Route->run()
+#26 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(144): Illuminate\\Routing\\Router->Illuminate\\Routing\\{closure}(Object(Illuminate\\Http\\Request))
+#27 /var/www/vendor/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Middleware/LaravelLocalizationRedirectFilter.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#28 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Mcamara\\LaravelLocalization\\Middleware\\LaravelLocalizationRedirectFilter->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#29 /var/www/vendor/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Middleware/LaravelLocalizationViewPath.php(22): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#30 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Mcamara\\LaravelLocalization\\Middleware\\LaravelLocalizationViewPath->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#31 /var/www/vendor/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Middleware/LocaleSessionRedirect.php(23): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#32 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Mcamara\\LaravelLocalization\\Middleware\\LocaleSessionRedirect->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#33 /var/www/vendor/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Middleware/LocaleCookieRedirect.php(23): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#34 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Mcamara\\LaravelLocalization\\Middleware\\LocaleCookieRedirect->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#35 /var/www/vendor/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Middleware/LaravelLocalizationRoutes.php(21): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#36 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Mcamara\\LaravelLocalization\\Middleware\\LaravelLocalizationRoutes->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#37 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php(50): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#38 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Routing\\Middleware\\SubstituteBindings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#39 /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(78): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#40 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#41 /var/www/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#42 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\View\\Middleware\\ShareErrorsFromSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#43 /var/www/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(121): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#44 /var/www/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate\\Session\\Middleware\\StartSession->handleStatefulRequest(Object(Illuminate\\Http\\Request), Object(Illuminate\\Session\\Store), Object(Closure))
+#45 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Session\\Middleware\\StartSession->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#46 /var/www/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#47 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Cookie\\Middleware\\AddQueuedCookiesToResponse->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#48 /var/www/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(67): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#49 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Cookie\\Middleware\\EncryptCookies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#50 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#51 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php(805): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#52 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php(784): Illuminate\\Routing\\Router->runRouteWithinStack(Object(Illuminate\\Routing\\Route), Object(Illuminate\\Http\\Request))
+#53 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php(748): Illuminate\\Routing\\Router->runRoute(Object(Illuminate\\Http\\Request), Object(Illuminate\\Routing\\Route))
+#54 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php(737): Illuminate\\Routing\\Router->dispatchToRoute(Object(Illuminate\\Http\\Request))
+#55 /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(200): Illuminate\\Routing\\Router->dispatch(Object(Illuminate\\Http\\Request))
+#56 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(144): Illuminate\\Foundation\\Http\\Kernel->Illuminate\\Foundation\\Http\\{closure}(Object(Illuminate\\Http\\Request))
+#57 /var/www/vendor/livewire/livewire/src/Features/SupportDisablingBackButtonCache/DisableBackButtonCacheMiddleware.php(19): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#58 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Livewire\\Features\\SupportDisablingBackButtonCache\\DisableBackButtonCacheMiddleware->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#59 /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#60 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#61 /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php(36): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#62 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\TrimStrings->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#63 /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php(27): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#64 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#65 /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php(99): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#66 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#67 /var/www/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php(49): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#68 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Http\\Middleware\\HandleCors->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#69 /var/www/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php(39): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#70 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(183): Illuminate\\Http\\Middleware\\TrustProxies->handle(Object(Illuminate\\Http\\Request), Object(Closure))
+#71 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(119): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Illuminate\\Http\\Request))
+#72 /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(175): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#73 /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(144): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#74 /var/www/public/index.php(51): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#75 {main}
+"} 
+[2025-01-07 00:08:51] local.ERROR: 7 arguments are required, 6 given {"exception":"[object] (ArgumentCountError(code: 0): 7 arguments are required, 6 given at /home/mohammed/Desktop/projects/laravels/system-engineering-mff/app/Console/Commands/DbBackup.php:56)
+[stacktrace]
+#0 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/app/Console/Commands/DbBackup.php(56): sprintf()
+#1 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Console\\Commands\\DbBackup->handle()
+#2 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#3 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#4 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#5 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/Container.php(662): Illuminate\\Container\\BoundMethod::call()
+#6 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Console/Command.php(211): Illuminate\\Container\\Container->call()
+#7 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Command/Command.php(326): Illuminate\\Console\\Command->execute()
+#8 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run()
+#9 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(1096): Illuminate\\Console\\Command->run()
+#10 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand()
+#11 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun()
+#12 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run()
+#13 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle()
+#14 {main}
+"} 
+[2025-01-07 00:09:00] local.ERROR: 7 arguments are required, 6 given {"exception":"[object] (ArgumentCountError(code: 0): 7 arguments are required, 6 given at /home/mohammed/Desktop/projects/laravels/system-engineering-mff/app/Console/Commands/DbBackup.php:56)
+[stacktrace]
+#0 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/app/Console/Commands/DbBackup.php(56): sprintf()
+#1 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Console\\Commands\\DbBackup->handle()
+#2 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#3 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#4 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#5 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/Container.php(662): Illuminate\\Container\\BoundMethod::call()
+#6 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Console/Command.php(211): Illuminate\\Container\\Container->call()
+#7 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Command/Command.php(326): Illuminate\\Console\\Command->execute()
+#8 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run()
+#9 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(1096): Illuminate\\Console\\Command->run()
+#10 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand()
+#11 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun()
+#12 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run()
+#13 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle()
+#14 {main}
+"} 
+[2025-01-07 00:14:28] local.ERROR: The command "'mysqldump' '-h' '172.18.0.2
+' '-u' 'root' '-pQ@W#E$P@ssw0rd' 'system_engineering_db' '>' '/home/mohammed/Desktop/projects/laravels/system-engineering-mff/storage/app/backup/system_engineering_db_2025-01-07_00-14-28.sql'" failed.
+
+Exit Code: 2(Misuse of shell builtins)
+
+Working directory: /home/mohammed/Desktop/projects/laravels/system-engineering-mff
+
+Output:
+================
+
+
+Error Output:
+================
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
+mysqldump: Got error: 2005: Unknown MySQL server host '172.18.0.2
+' (-2) when trying to connect
+ {"exception":"[object] (Symfony\\Component\\Process\\Exception\\ProcessFailedException(code: 0): The command \"'mysqldump' '-h' '172.18.0.2
+' '-u' 'root' '-pQ@W#E$P@ssw0rd' 'system_engineering_db' '>' '/home/mohammed/Desktop/projects/laravels/system-engineering-mff/storage/app/backup/system_engineering_db_2025-01-07_00-14-28.sql'\" failed.
+
+Exit Code: 2(Misuse of shell builtins)
+
+Working directory: /home/mohammed/Desktop/projects/laravels/system-engineering-mff
+
+Output:
+================
+
+
+Error Output:
+================
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
+mysqldump: Got error: 2005: Unknown MySQL server host '172.18.0.2
+' (-2) when trying to connect
+ at /home/mohammed/Desktop/projects/laravels/system-engineering-mff/app/Console/Commands/DbBackup.php:61)
+[stacktrace]
+#0 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Console\\Commands\\DbBackup->handle()
+#1 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#2 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#3 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#4 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/Container.php(662): Illuminate\\Container\\BoundMethod::call()
+#5 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Console/Command.php(211): Illuminate\\Container\\Container->call()
+#6 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Command/Command.php(326): Illuminate\\Console\\Command->execute()
+#7 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run()
+#8 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(1096): Illuminate\\Console\\Command->run()
+#9 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand()
+#10 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun()
+#11 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run()
+#12 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle()
+#13 {main}
+"} 
+[2025-01-07 00:15:40] local.ERROR: The command "'mysqldump' '-h' '172.18.0.2
+' '-p' '3306' '-u' 'root' '-pQ@W#E$P@ssw0rd' 'system_engineering_db' '>' '/home/mohammed/Desktop/projects/laravels/system-engineering-mff/storage/app/backup/system_engineering_db_2025-01-07_00-15-40.sql'" failed.
+
+Exit Code: 2(Misuse of shell builtins)
+
+Working directory: /home/mohammed/Desktop/projects/laravels/system-engineering-mff
+
+Output:
+================
+
+
+Error Output:
+================
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
+mysqldump: Got error: 2005: Unknown MySQL server host '172.18.0.2
+' (-2) when trying to connect
+ {"exception":"[object] (Symfony\\Component\\Process\\Exception\\ProcessFailedException(code: 0): The command \"'mysqldump' '-h' '172.18.0.2
+' '-p' '3306' '-u' 'root' '-pQ@W#E$P@ssw0rd' 'system_engineering_db' '>' '/home/mohammed/Desktop/projects/laravels/system-engineering-mff/storage/app/backup/system_engineering_db_2025-01-07_00-15-40.sql'\" failed.
+
+Exit Code: 2(Misuse of shell builtins)
+
+Working directory: /home/mohammed/Desktop/projects/laravels/system-engineering-mff
+
+Output:
+================
+
+
+Error Output:
+================
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
+mysqldump: Got error: 2005: Unknown MySQL server host '172.18.0.2
+' (-2) when trying to connect
+ at /home/mohammed/Desktop/projects/laravels/system-engineering-mff/app/Console/Commands/DbBackup.php:61)
+[stacktrace]
+#0 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Console\\Commands\\DbBackup->handle()
+#1 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#2 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#3 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#4 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/Container.php(662): Illuminate\\Container\\BoundMethod::call()
+#5 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Console/Command.php(211): Illuminate\\Container\\Container->call()
+#6 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Command/Command.php(326): Illuminate\\Console\\Command->execute()
+#7 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run()
+#8 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(1096): Illuminate\\Console\\Command->run()
+#9 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand()
+#10 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun()
+#11 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run()
+#12 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle()
+#13 {main}
+"} 
+[2025-01-07 00:17:34] local.ERROR: The command "'mysqldump' '--host' '172.18.0.2
+' '--port' '3306' '-user' 'root' '-password' 'Q@W#E$P@ssw0rd' 'system_engineering_db' '>' '/home/mohammed/Desktop/projects/laravels/system-engineering-mff/storage/app/backup/system_engineering_db_2025-01-07_00-17-34.sql'" failed.
+
+Exit Code: 2(Misuse of shell builtins)
+
+Working directory: /home/mohammed/Desktop/projects/laravels/system-engineering-mff
+
+Output:
+================
+
+
+Error Output:
+================
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
+mysqldump: Got error: 2005: Unknown MySQL server host '172.18.0.2
+' (-2) when trying to connect
+ {"exception":"[object] (Symfony\\Component\\Process\\Exception\\ProcessFailedException(code: 0): The command \"'mysqldump' '--host' '172.18.0.2
+' '--port' '3306' '-user' 'root' '-password' 'Q@W#E$P@ssw0rd' 'system_engineering_db' '>' '/home/mohammed/Desktop/projects/laravels/system-engineering-mff/storage/app/backup/system_engineering_db_2025-01-07_00-17-34.sql'\" failed.
+
+Exit Code: 2(Misuse of shell builtins)
+
+Working directory: /home/mohammed/Desktop/projects/laravels/system-engineering-mff
+
+Output:
+================
+
+
+Error Output:
+================
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
+mysqldump: Got error: 2005: Unknown MySQL server host '172.18.0.2
+' (-2) when trying to connect
+ at /home/mohammed/Desktop/projects/laravels/system-engineering-mff/app/Console/Commands/DbBackup.php:61)
+[stacktrace]
+#0 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): App\\Console\\Commands\\DbBackup->handle()
+#1 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/Util.php(41): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#2 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure()
+#3 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod()
+#4 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Container/Container.php(662): Illuminate\\Container\\BoundMethod::call()
+#5 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Console/Command.php(211): Illuminate\\Container\\Container->call()
+#6 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Command/Command.php(326): Illuminate\\Console\\Command->execute()
+#7 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Console/Command.php(180): Symfony\\Component\\Console\\Command\\Command->run()
+#8 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(1096): Illuminate\\Console\\Command->run()
+#9 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(324): Symfony\\Component\\Console\\Application->doRunCommand()
+#10 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/symfony/console/Application.php(175): Symfony\\Component\\Console\\Application->doRun()
+#11 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(201): Symfony\\Component\\Console\\Application->run()
+#12 /home/mohammed/Desktop/projects/laravels/system-engineering-mff/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle()
+#13 {main}
+"} 

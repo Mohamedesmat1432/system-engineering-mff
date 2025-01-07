@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     pkg-config \
     libzip-dev \
-    nano
+    nano \
+    iputils-ping
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
@@ -43,7 +44,7 @@ RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 RUN chmod -R 777 /var/www/bootstrap/cache /var/www/storage
 
 # Expose port
-EXPOSE 3000
+EXPOSE 9000
 
 # Start PHP-FPM
 CMD ["php-fpm", "-F"]
