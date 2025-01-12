@@ -90,6 +90,17 @@ trait ShopDamiettaOnlyTrait
         ];
     }
 
+    public function governments()
+    {
+        return Government::pluck('name_' . app()->getLocale(), 'id')->toArray();
+    }
+
+    public function cities()
+    {
+        return City::where('government_id', $this->government_id ?? $this->search_by_government)
+            ->pluck('name_' . app()->getLocale(), 'id')->toArray() ?? [];
+    }
+
     public function countNationalId()
     {
         $this->count_of_national_number = strlen($this->national_number);
@@ -156,17 +167,6 @@ trait ShopDamiettaOnlyTrait
         $this->installment_date_14 = $this->shop->installment_date_14;
         $this->installment_amount_15 = $this->shop->installment_amount_15;
         $this->installment_date_15 = $this->shop->installment_date_15;
-    }
-
-    public function governments()
-    {
-        return Government::pluck('name_' . app()->getLocale(), 'id')->toArray();
-    }
-
-    public function cities()
-    {
-        return City::where('government_id', $this->government_id ?? $this->search_by_government)
-            ->pluck('name_' . app()->getLocale(), 'id')->toArray() ?? [];
     }
 
     public function storeShop()

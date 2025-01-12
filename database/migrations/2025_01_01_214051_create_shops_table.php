@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('auction_date')->nullable();
             $table->foreignId('government_id')->constrained('governments');
             $table->foreignId('city_id')->constrained('cities');
             $table->string('center')->nullable();

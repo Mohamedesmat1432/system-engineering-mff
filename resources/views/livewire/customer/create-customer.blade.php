@@ -23,9 +23,12 @@
                     <x-input-error for="national_number" class="mt-2" />
                 </div>
                 <div class="mt-2">
-                    <x-label for="phone_number" value="{{ __('site.phone_number') }}" />
+                    <div class="flex">
+                        <x-label for="phone_number" value="{{ __('site.phone_number') }}" />
+                        <span class="text-red-600 mx-2">{{ $this->count_phone_number }}</span>
+                    </div>                    
                     <x-input type="text" class="mt-1 block w-full" wire:model="phone_number"
-                        placeholder="{{ __('site.phone_number') }}" />
+                        wire:keyup="countPhoneNumber" placeholder="{{ __('site.phone_number') }}" />
                     <x-input-error for="phone_number" class="mt-2" />
                 </div>
                 <div class="mt-2">

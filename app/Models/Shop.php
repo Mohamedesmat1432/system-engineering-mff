@@ -12,7 +12,6 @@ class Shop extends Model
     protected $table = 'shops';
 
     protected $fillable = [
-        'auction_date',
         'government_id',
         'city_id',
         'center',
@@ -29,11 +28,6 @@ class Shop extends Model
     public function sales()
     {
         return $this->hasMany(Sale::class);
-    }
-
-    public function installments()
-    {
-        return $this->hasManyThrough(Installment::class, Sale::class);
     }
 
     public function government()

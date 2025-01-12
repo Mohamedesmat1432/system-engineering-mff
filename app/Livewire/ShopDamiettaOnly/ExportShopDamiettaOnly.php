@@ -32,6 +32,7 @@ class ExportShopDamiettaOnly extends Component
             $this->errorNotify($e->getMessage());
         }
     }
+    
     public function render()
     {
         $this->authorize('export-shop-damietta-only');

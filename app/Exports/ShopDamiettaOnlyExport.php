@@ -30,8 +30,8 @@ class ShopDamiettaOnlyExport implements FromCollection, WithHeadings, WithStyles
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->getStyle('A1:Z' . DataShopDamiettaOnly::count() + 1)->getAlignment()->setHorizontal('center');
-        $sheet->getStyle('A1:Z1')->getFont()->setBold(true);
+        $sheet->getStyle('A1:BF' . DataShopDamiettaOnly::count() + 1)->getAlignment()->setHorizontal('center');
+        $sheet->getStyle('A1:BF1')->getFont()->setBold(true);
         return;
     }
 
@@ -44,9 +44,9 @@ class ShopDamiettaOnlyExport implements FromCollection, WithHeadings, WithStyles
     {
         return [
             $shop->id,
-            $shop->government_id,
             Helper::formatDate($shop->auction_date),
-            $shop->city_id,
+            $shop->government->name,
+            $shop->city->name,
             $shop->center,
             $shop->location,
             $shop->building_number,
@@ -108,8 +108,8 @@ class ShopDamiettaOnlyExport implements FromCollection, WithHeadings, WithStyles
         if ($this->originalCoulmns) {
             return [
                 __('site.id'),
-                __('site.government_id'),
                 __('site.auction_date'),
+                __('site.government_id'),
                 __('site.city_id'),
                 __('site.center'),
                 __('site.location'),
@@ -168,8 +168,8 @@ class ShopDamiettaOnlyExport implements FromCollection, WithHeadings, WithStyles
         } else {
             return [
                 'id',
-                'government_id',
                 'auction_date',
+                'government_id',
                 'city_id',
                 'center',
                 'location',

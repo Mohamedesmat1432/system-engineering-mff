@@ -11,7 +11,8 @@ trait CustomerTrait
 
     public ?Customer $customer;
 
-    public $customer_id, $customer_name, $national_number, $count_national_number, $phone_number, $home_number;
+    public $customer_id, $customer_name, $national_number, $count_national_number, 
+        $count_phone_number, $phone_number, $home_number;
 
     protected function rules()
     {
@@ -19,14 +20,19 @@ trait CustomerTrait
             'customer_name' => 'required|string|max:255',
             'national_number' => 'required|string|min:14|max:14|unique:customers,national_number,' . $this->customer_id,
             'count_national_number' => 'nullable|numeric',
-            'phone_number' => 'required|string|min:11|max:15',
-            'home_number' => 'nullable|string|min:7|max:10',
+            'phone_number' => 'required|string|min:11|max:11',
+            'home_number' => 'nullable|string|min:10|max:11',
         ];
     }
 
     public function countNationalId()
     {
         $this->count_national_number = strlen($this->national_number);
+    }
+
+    public function countPhoneNumber()
+    {
+        $this->count_phone_number = strlen($this->phone_number);
     }
 
     public function setCustomer($id)
@@ -38,6 +44,7 @@ trait CustomerTrait
         $this->count_national_number = $this->customer->count_national_number;
         $this->phone_number = $this->customer->phone_number;
         $this->home_number = $this->customer->home_number;
+        $this->countPhoneNumber();
     }
 
     public function storeCustomer()

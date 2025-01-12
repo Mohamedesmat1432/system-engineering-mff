@@ -17,6 +17,11 @@ class Government extends Model
         'name_en'
     ];
 
+    public function getNameAttribute()
+    {
+        return (app()->getLocale() === 'ar') ? $this->name_ar : $this->name_en;
+    }
+
     public function cities(): HasMany
     {
         return $this->hasMany(City::class, 'government_id');

@@ -102,20 +102,28 @@
                             </td>
                             <td class="px-4 py-2 border">
                                 <div class="flex justify-center">
+                                    <button wire:click="sortByField('department_id')">
+                                        {{ __('site.department_id') }}
+                                    </button>
+                                    <x-sort-icon sort_field="department_id" :sort_by="$sort_by" :sort_asc="$sort_asc" />
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border">
+                                <div class="flex justify-center">
+                                    <button>
+                                        {{ __('site.roles') }}
+                                    </button>
+                                    <x-sort-icon sort_field="" :sort_by="$sort_by" :sort_asc="$sort_asc" />
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border">
+                                <div class="flex justify-center">
                                     <button wire:click="sortByField('status')">
                                         {{ __('site.status') }}
                                     </button>
                                     <x-sort-icon sort_field="status" :sort_by="$sort_by" :sort_asc="$sort_asc" />
                                 </div>
                             </td>
-                            {{-- <td class="px-4 py-2 border">
-                            <div class="flex justify-center">
-                                <button wire:click="sortByField('role')">
-                                    {{ __('Role') }}
-                                </button>
-                                <x-sort-icon sort_field="role" :sort_by="$sort_by" :sort_asc="$sort_asc" />
-                            </div>
-                        </td> --}}
                             <td class="px-4 py-2 border">
                                 <div class="flex justify-center">
                                     {{ __('site.action') }}
@@ -149,6 +157,12 @@
                                     {{ $user->email }}
                                 </td>
                                 <td class="p-2 border">
+                                    {{ $user->department->name }}
+                                </td>    
+                                <td class="p-2 border">
+                                    {{ $user->getRoleNames()[0] }}
+                                </td>
+                                <td class="p-2 border">
                                     @if ($user->status)
                                         <span class="p-2 bg-green-500 rounded-full text-white">
                                             {{ __('site.active') }}
@@ -159,9 +173,6 @@
                                         </span>
                                     @endif
                                 </td>
-                                {{-- <td class="p-2 border">
-                                    {{ $user->getRoleNames() }}
-                                </td> --}}
                                 @if ($this->trash)
                                     <td class="p-2 border">
                                         <div class="flex justify-center">

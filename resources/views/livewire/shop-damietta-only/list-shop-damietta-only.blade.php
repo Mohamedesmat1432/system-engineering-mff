@@ -13,6 +13,9 @@
         @can('bulk-delete-shop-damietta-only')
         <livewire:shop-damietta-only.bulk-delete-shop-damietta-only />
         @endcan
+        @can('import-shop-damietta-only')
+        <livewire:shop-damietta-only.import-shop-damietta-only />
+        @endcan
         @can('export-shop-damietta-only')
         <livewire:shop-damietta-only.export-shop-damietta-only />
         @endcan
@@ -300,10 +303,10 @@
                                 {{ $shop->id }}
                             </td>
                             <td class="p-2 border">
-                                {{ app()->getLocale() === 'ar' ? $shop->government->name_ar : $shop->government->name_en }}
+                                {{ $shop->government->name }}
                             </td>
                             <td class="p-2 border">
-                                {{ app()->getLocale() === 'ar' ? $shop->city->name_ar : $shop->city->name_en }}
+                                {{ $shop->city->name }}
                             </td>
                             <td class="p-2 border">
                                 {{ $shop->auction_date }}

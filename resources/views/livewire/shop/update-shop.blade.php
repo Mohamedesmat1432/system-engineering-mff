@@ -50,11 +50,6 @@
                 <h3 class="mt-2 text-xl underline">{{ __('site.shop_data') }}</h3>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="mt-2">
-                        <x-label for="auction_date" value="{{ __('site.auction_date') }}" />
-                        <x-input type="date" class="mt-1 block w-full" wire:model="auction_date" />
-                        <x-input-error for="auction_date" class="mt-2" />
-                    </div>
-                    <div class="mt-2">
                         <x-label for="building_number" value="{{ __('site.building_number') }}" />
                         <x-input type="text" required class="mt-1 block w-full" wire:model="building_number"
                             placeholder="{{ __('site.building_number') }}" />

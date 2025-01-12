@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DataShopOutsideDamietta extends Model
 {
@@ -43,12 +42,12 @@ class DataShopOutsideDamietta extends Model
 
     protected $casts = [];
 
-    public function government(): BelongsTo
+    public function government()
     {
         return $this->belongsTo(Government::class);
     }
 
-    public function city(): BelongsTo
+    public function city()
     {
         return $this->belongsTo(City::class);
     }

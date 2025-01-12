@@ -224,6 +224,8 @@ return [
         'installment_date_14' => 'تاريخ القسط الرابع عشر',
         'installment_amount_15' => 'مبلغ القسط الخامس عشر',
         'installment_date_15' => 'تاريخ القسط الخامس عشر',
+        'customer_id' => 'العميل',
+        'shop_id' => 'المحل',
     ],
 
 ];

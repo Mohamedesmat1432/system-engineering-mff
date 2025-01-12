@@ -13,14 +13,13 @@ trait ShopTrait
 
     public ?Shop $shop;
 
-    public $shop_id, $government_id, $auction_date, $city_id, $center, $location,
+    public $shop_id, $government_id, $city_id, $center, $location,
         $building_number, $building_entrance_number, $shop_number, $type_of_shop,
         $shop_area, $sell_price, $sell_price_for_meter;
 
     protected function rules()
     {
         return [
-            'auction_date' => 'required|date',
             'government_id' => 'required|numeric|exists:governments,id',
             'city_id' => 'required|numeric|exists:cities,id',
             'center' => 'required|string|max:255',
@@ -46,11 +45,15 @@ trait ShopTrait
             ->pluck('name_' . app()->getLocale(), 'id')->toArray() ?? [];
     }
 
+    public function sellPriceForMeter()
+    {
+        $this->sell_price_for_meter = intval($this->sell_price / $this->shop_area);
+    }
+
     public function setShop($id)
     {
         $this->shop = Shop::findOrFail($id);
         $this->shop_id = $this->shop->id;
-        $this->auction_date = $this->shop->auction_date;
         $this->government_id = $this->shop->government_id;
         $this->city_id = $this->shop->city_id;
         $this->center = $this->shop->center;

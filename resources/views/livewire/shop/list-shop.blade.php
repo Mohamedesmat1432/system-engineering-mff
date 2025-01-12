@@ -77,14 +77,6 @@
                             </td>
                             <td class="px-4 py-2 border">
                                 <div class="flex justify-center">
-                                    <button wire:click="sortByField('auction_date')">
-                                        {{ __('site.auction_date') }}
-                                    </button>
-                                    <x-sort-icon sort_field="auction_date" :sort_by="$sort_by" :sort_asc="$sort_asc" />
-                                </div>
-                            </td>
-                            <td class="px-4 py-2 border">
-                                <div class="flex justify-center">
                                     <button wire:click="sortByField('government_id')">
                                         {{ __('site.government_id') }}
                                     </button>
@@ -195,9 +187,6 @@
                             <td class="p-2 border">
                                 {{ app()->getLocale() === 'ar' ? $shop->government->name_ar : $shop->government->name_en
                                 }}
-                            </td>
-                            <td class="p-2 border">
-                                {{ $shop->auction_date }}
                             </td>
                             <td class="p-2 border">
                                 {{ app()->getLocale() === 'ar' ? $shop->city->name_ar : $shop->city->name_en }}

@@ -83,14 +83,14 @@
                                     {{ $department->id }}
                                 </td>
                                 <td class="p-2 border">
-                                    {{ app()->getLocale() === 'ar' ? $department->name_ar : $department->name_en }}
+                                    {{ $department->name }}
                                 </td>
                                 <td class="p-2 border">
                                     <div class="flex justify-center">
                                         <x-edit-button permission="edit-department" id="{{ $department->id }}" />
                                         <div class="mx-1"></div>
                                         <x-delete-button permission="delete-department" id="{{ $department->id }}"
-                                            name="{{ app()->getLocale() === 'ar' ? $department->name_ar : $department->name_en }}" />
+                                            name="{{ $department->name }}" />
                                     </div>
                                 </td>
                             </tr>

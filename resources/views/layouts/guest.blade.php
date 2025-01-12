@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div x-data="{ loading: true }" x-init="setTimeout(() => loading = false, 700)">
+    <div x-data="{ loading: true }" x-init="setTimeout(() => loading = false, 500)">
         <div x-show="loading" class="fixed inset-0 flex items-center justify-center"
             style="background: rgba(129, 129, 129, 0.077)">
             <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-t-blue-500 border-b-4 border-b-blue-500"></div>

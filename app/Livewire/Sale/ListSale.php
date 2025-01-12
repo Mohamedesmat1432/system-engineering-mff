@@ -2,12 +2,27 @@
 
 namespace App\Livewire\Sale;
 
+
+use App\Models\Sale;
+use App\Traits\SaleTrait;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
+#[Layout('layouts.app')]
 class ListSale extends Component
 {
+    use SaleTrait;
+
+    #[On('refresh-list-sale')]
     public function render()
     {
-        return view('livewire.sale.list-sale');
+        $this->authorize('view-sale');
+
+        $sales = Sale::with(['customer', 'shop'])->search($this->search)->paginate($this->page_element);
+
+        $this->checkbox_all = Sale::pluck('id')->toArray();
+
+        return view('livewire.sale.list-sale', ['sales' => $sales]);
     }
 }

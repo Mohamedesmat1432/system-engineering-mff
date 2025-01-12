@@ -2,7 +2,9 @@
 
 namespace App\Imports;
 
+use App\Models\City;
 use App\Models\DataShopOutsideDamietta;
+use App\Models\Government;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
@@ -21,9 +23,9 @@ class ShopOutsideDamiettaImport implements ToModel, WithHeadingRow, WithValidati
     public function model(array $row)
     {
         return new DataShopOutsideDamietta([
-            'government_id' => $row['government_id'],
             'auction_date' => $row['auction_date'],
-            'city_id'  => $row['city_id'],
+            'government_id' => Government::where('name_ar',$row['government_id'])->orWhere('name_en',$row['government_id'])->first()?->id,
+            'city_id'  => City::where('name_ar',$row['city_id'])->orWhere('name_en',$row['city_id'])->first()?->id,
             'center' => $row['center'],
             'location' => $row['location'],
             'building_number' => $row['building_number'],
@@ -53,9 +55,9 @@ class ShopOutsideDamiettaImport implements ToModel, WithHeadingRow, WithValidati
     public function rules(): array
     {
         return [
-            'government_id' => 'required|numeric|exists:governments,id',
             'auction_date' => 'required|Date',
-            'city_id' => 'required|numeric|exists:cities,id',
+            // 'government_id' => 'required|string|exists:governments,id',
+            // 'city_id' => 'required|string|exists:cities,id',
             'center' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'building_number' => 'required|numeric',

@@ -14,6 +14,11 @@ class City extends Model
 
     protected $fillable = ['government_id', 'name_ar', 'name_en'];
 
+    public function getNameAttribute()
+    {
+        return (app()->getLocale() === 'ar') ? $this->name_ar : $this->name_en;
+    }
+
     public function government(): BelongsTo
     {
         return $this->belongsTo(Government::class);

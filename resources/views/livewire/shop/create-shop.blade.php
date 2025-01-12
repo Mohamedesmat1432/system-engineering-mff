@@ -50,11 +50,6 @@
                 <h3 class="mt-2 text-xl underline">{{ __('site.shop_data') }}</h3>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="mt-2">
-                        <x-label for="auction_date" value="{{ __('site.auction_date') }}" />
-                        <x-input type="date" class="mt-1 block w-full" wire:model="auction_date" />
-                        <x-input-error for="auction_date" class="mt-2" />
-                    </div>
-                    <div class="mt-2">
                         <x-label for="building_number" value="{{ __('site.building_number') }}" />
                         <x-input type="text" class="mt-1 block w-full" wire:model="building_number"
                             placeholder="{{ __('site.building_number') }}" />
@@ -80,13 +75,13 @@
                     </div>
                     <div class="mt-2">
                         <x-label for="shop_area" value="{{ __('site.shop_area') }}" />
-                        <x-input type="number" class="mt-1 block w-full" wire:model="shop_area"
+                        <x-input type="number" class="mt-1 block w-full" wire:model="shop_area" wire:change="sellPriceForMeter"
                             placeholder="{{ __('site.shop_area') }}" />
                         <x-input-error for="shop_area" class="mt-2" />
                     </div>
                     <div class="mt-2">
                         <x-label for="sell_price" value="{{ __('site.sell_price') }}" />
-                        <x-input type="number" class="mt-1 block w-full" wire:model="sell_price"
+                        <x-input type="number" class="mt-1 block w-full" wire:model="sell_price" wire:change="sellPriceForMeter"
                             placeholder="{{ __('site.sell_price') }}" />
                         <x-input-error for="sell_price" class="mt-2" />
                     </div>

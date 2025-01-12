@@ -59,6 +59,12 @@ class NavigateMenu extends NavigationMenu
                 'icon' => 'inbox-stack',
                 'role' => 'view-shop',
             ],
+            [
+                'name' => 'sales',
+                'value' => 'site.sales',
+                'icon' => 'inbox-stack',
+                'role' => 'view-sale',
+            ],
         ];
     }
     

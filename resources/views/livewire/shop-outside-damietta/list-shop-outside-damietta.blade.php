@@ -222,7 +222,8 @@
                                     <button wire:click="sortByField('insurance_date')">
                                         {{ __('site.insurance') }}
                                     </button>
-                                    <x-sort-icon sort_field="insurance_date" :sort_by="$sort_by" :sort_asc="$sort_asc" />
+                                    <x-sort-icon sort_field="insurance_date" :sort_by="$sort_by"
+                                        :sort_asc="$sort_asc" />
                                 </div>
                                 <div class="flex justify-between">
                                     <span>{{ __('site.amount') }}</span>
@@ -260,8 +261,7 @@
                                     <button wire:click="sortByField('afine_date')">
                                         {{ __('site.afine') }}
                                     </button>
-                                    <x-sort-icon sort_field="afine_date" :sort_by="$sort_by"
-                                        :sort_asc="$sort_asc" />
+                                    <x-sort-icon sort_field="afine_date" :sort_by="$sort_by" :sort_asc="$sort_asc" />
                                 </div>
                                 <div class="flex justify-between">
                                     <span>{{ __('site.amount') }}</span>
@@ -287,11 +287,10 @@
                                 {{ $shop->id }}
                             </td>
                             <td class="p-2 border">
-                                {{ app()->getLocale() === 'ar' ? $shop->government->name_ar : $shop->government->name_en
-                                }}
+                                {{ $shop->government->name }}
                             </td>
                             <td class="p-2 border">
-                                {{ app()->getLocale() === 'ar' ? $shop->city->name_ar : $shop->city->name_en }}
+                                {{ $shop->city->name }}
                             </td>
                             <td class="p-2 border">
                                 {{ $shop->auction_date }}
