@@ -104,7 +104,7 @@ class SalesImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmpty
         return [
             'auction_date' => 'required|Date',
             'customer_name' => 'required|string|max:255',
-            'national_number' => 'required|string|min:14|max:14|unique:customers,national_number',
+            'national_number' => 'required',
             'count_national_number' => 'nullable|numeric',
             'phone_number' => 'required|string|min:11|max:11',
             'home_number' => 'nullable|string|min:10|max:11',

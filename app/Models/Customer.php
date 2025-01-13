@@ -28,7 +28,9 @@ class Customer extends Model
     {
         return $query->when($search, function ($query) use ($search) {
             $query->where('national_number', 'like', "%{$search}%")
-                ->orWhere('customer_name', 'like', "%{$search}%");
+                ->orWhere('customer_name', 'like', "%{$search}%")
+                ->orWhere('phone_number', 'like', "%{$search}%")
+                ->orWhere('home_number', 'like', "%{$search}%");
         });
     }
 }

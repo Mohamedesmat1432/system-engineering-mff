@@ -59,7 +59,19 @@ class Sale extends Model
     public function scopeSearch($query, $search)
     {
         return $query->when($search, function ($query) use ($search) {
-            $query->where('auction_date', 'like', "%{$search}%");
+            $query->where('auction_date', 'like', "%{$search}%")
+                ->orWhereHas('customer', function ($query) use ($search) {
+                    $query->where('national_number', 'like', "%{$search}%")
+                        ->orWhere('customer_name', 'like', "%{$search}%");
+                })
+                ->orWhereHas('shop.government', function ($query) use ($search) {
+                    $query->where('name_ar', 'like', "%{$search}%")
+                        ->orWhere('name_en', 'like', "%{$search}%");
+                })
+                ->orWhereHas('shop.city', function ($query) use ($search) {
+                    $query->where('name_ar', 'like', "%{$search}%")
+                        ->orWhere('name_en', 'like', "%{$search}%");
+                });
         });
     }
 
