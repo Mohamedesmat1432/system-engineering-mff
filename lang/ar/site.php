@@ -321,4 +321,8 @@ return [
     'sale_deleted' => 'تم حذف النموذج بنجاح',
     'sale_delete_all' => 'تم حذف النماذج بنجاح',
     'basic_data' => 'بيانات اساسية',
+    'customer_search' => 'بحث عن عميل',
+    'select_customer' => 'اختر العميل',
+    'shop_search' => 'بحث عن محل',
+    'select_shop' => 'اختر المحل',
 ];

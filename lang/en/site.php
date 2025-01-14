@@ -325,4 +325,8 @@ return [
     'sale_deleted' => 'Sale model has been deleted successfully',
     'sale_delete_all' => 'Sales model has been deleted successfully',
     'basic_data' => 'Basic Data',
+    'customer_search' => 'Search by customer',
+    'select_customer' => 'Select customer',
+    'shop_search' => 'Search by shop',
+    'select_shop' => 'Select shop',
 ];

@@ -13,7 +13,7 @@
         function chartUser() {
             return {
                 chart: null,
-                chartType: localStorage.getItem('chartTypeUser') || 'doughnut',
+                chartType: localStorage.getItem('chartTypeUser') || 'bar',
                 initChartUser() {
                     const ctx = document.getElementById('chartUserId').getContext('2d');
 
@@ -30,8 +30,8 @@
                         type: this.chartType,
                         data: chartDataUser,
                         options: {
-                            responsive: false,
-                            maintainAspectRatio: false,
+                            responsive: true,
+                            maintainAspectRatio: true,
                             scales: {
                                 y: {
                                     beginAtZero: true

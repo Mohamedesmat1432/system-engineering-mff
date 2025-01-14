@@ -14,17 +14,27 @@ trait SaleTrait
 
     public ?Sale $sale;
 
-    public $sale_id, $customer_id, $shop_id, $auction_date, $payment_method,
-        $insurance_amount, $insurance_date, $remaining_sale_amount, $remaining_sale_date,
-        $maintenance_deposit_amount, $maintenance_deposit_date, $afine_amount, $afine_date,
-        $installment_amount_1, $installment_date_1, $installment_amount_2, $installment_date_2,
-        $installment_amount_3, $installment_date_3, $installment_amount_4, $installment_date_4,
-        $installment_amount_5, $installment_date_5, $installment_amount_6, $installment_date_6,
-        $installment_amount_7, $installment_date_7, $installment_amount_8, $installment_date_8,
-        $installment_amount_9, $installment_date_9, $installment_amount_10, $installment_date_10,
-        $installment_amount_11, $installment_date_11, $installment_amount_12, $installment_date_12,
-        $installment_amount_13, $installment_date_13, $installment_amount_14, $installment_date_14,
-        $installment_amount_15, $installment_date_15;
+    public $sale_id, $customer_id, $shop_id, $auction_date, $payment_method;
+    public $insurance_amount, $insurance_date;
+    public $remaining_sale_amount, $remaining_sale_date;
+    public $maintenance_deposit_amount, $maintenance_deposit_date;
+    public $afine_amount, $afine_date;
+    public $installment_amount_1, $installment_date_1;
+    public $installment_amount_2, $installment_date_2;
+    public $installment_amount_3, $installment_date_3;
+    public $installment_amount_4, $installment_date_4;
+    public $installment_amount_5, $installment_date_5;
+    public $installment_amount_6, $installment_date_6;
+    public $installment_amount_7, $installment_date_7;
+    public $installment_amount_8, $installment_date_8;
+    public $installment_amount_9, $installment_date_9;
+    public $installment_amount_10, $installment_date_10;
+    public $installment_amount_11, $installment_date_11;
+    public $installment_amount_12, $installment_date_12;
+    public $installment_amount_13, $installment_date_13;
+    public $installment_amount_14, $installment_date_14;
+    public $installment_amount_15, $installment_date_15;
+    public $customer_search, $shop_search;
 
     protected function rules()
     {
@@ -32,13 +42,13 @@ trait SaleTrait
             'customer_id' => 'required|numeric|exists:customers,id',
             'shop_id' => 'required|numeric|exists:shops,id',
             'auction_date' => 'required|date',
-            'payment_method' => 'nullable|string',
-            'insurance_amount' => 'nullable|numeric',
-            'insurance_date' => 'nullable|date',
-            'remaining_sale_amount' => 'nullable|numeric',
-            'remaining_sale_date' => 'nullable|date',
-            'maintenance_deposit_amount' => 'nullable|numeric',
-            'maintenance_deposit_date' => 'nullable|date',
+            'payment_method' => 'required|string',
+            'insurance_amount' => 'required|numeric',
+            'insurance_date' => 'required|date',
+            'remaining_sale_amount' => 'required|numeric',
+            'remaining_sale_date' => 'required|date',
+            'maintenance_deposit_amount' => 'required|numeric',
+            'maintenance_deposit_date' => 'required|date',
             'afine_amount' => 'nullable|numeric',
             'afine_date' => 'nullable|date',
             'installment_amount_1' => 'nullable|numeric',
@@ -76,7 +86,7 @@ trait SaleTrait
 
     public function customers()
     {
-        return Customer::all() ?? [];
+        return Customer::search($this->customer_search)->get() ?? [];
     }
 
     public function shopSellPrice()
@@ -106,7 +116,7 @@ trait SaleTrait
             ? Sale::whereNot('shop_id', $this->sale->shop_id)->pluck('shop_id')->toArray()
             : Sale::pluck('shop_id')->toArray();
 
-        return Shop::whereNotIn('id', $saleShopIds)->get() ?? [];
+        return Shop::search($this->shop_search)->whereNotIn('id', $saleShopIds)->get() ?? [];
     }
 
     public function payments()

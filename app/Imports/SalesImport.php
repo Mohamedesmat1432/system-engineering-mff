@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Events\BeforeSheet;
 
 class SalesImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmptyRows
 {
@@ -22,6 +23,9 @@ class SalesImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmpty
      *
      * @return \Illuminate\Database\Eloquent\Model|null
      */
+
+    public $skippedRows = [];
+
     public function model(array $row)
     {
         $customer = Customer::firstOrCreate([
@@ -50,7 +54,8 @@ class SalesImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmpty
 
         if (in_array($shop->id, $saleShopIds)) {
             // throw new \Exception("Something went wrong");
-            return null; // Skips the row
+            $this->skippedRows[] = "Row skipped:{$row['id']}";
+            return null;  // Skips the row
         }
 
         return new Sale([

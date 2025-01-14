@@ -2,11 +2,14 @@
 
 namespace App\Livewire\Dashboard;
 
+use App\Models\Customer;
 use App\Models\DataShopDamiettaOnly;
 use App\Models\DataShopOutsideDamietta;
 use App\Models\Department;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\Sale;
+use App\Models\Shop;
 use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -31,8 +34,8 @@ class DashboardComponent extends Component
                 'value' => __('site.roles'),
                 'icon' => 'lock-closed',
                 'role' => 'view-role',
-                'bg' => 'bg-blue-600',
-                'hover' => 'hover:bg-blue-700',
+                'bg' => 'bg-blue-500',
+                'hover' => 'hover:bg-blue-600',
                 'count' => Role::count(),
             ],
             // [
@@ -44,6 +47,15 @@ class DashboardComponent extends Component
             //     'hover' => 'hover:bg-red-600',
             //     'count' => Permission::count(),
             // ],
+            [
+                'name' => 'departments',
+                'value' => __('site.departments'),
+                'icon' => 'squares-2x2',
+                'role' => 'view-department',
+                'bg' => 'bg-red-500',
+                'hover' => 'hover:bg-red-600',
+                'count' => Department::count(),
+            ],
             [
                 'name' => 'shops.outside.damietta',
                 'value' => __('site.list_shop_outside_damietta'),
@@ -63,13 +75,31 @@ class DashboardComponent extends Component
                 'count' => DataShopDamiettaOnly::count(),
             ],
             [
-                'name' => 'departments',
-                'value' => __('site.departments'),
-                'icon' => 'squares-2x2',
-                'role' => 'view-department',
-                'bg' => 'bg-red-600',
-                'hover' => 'hover:bg-red-700',
-                'count' => Department::count(),
+                'name' => 'customers',
+                'value' => __('site.customers'),
+                'icon' => 'user-group',
+                'role' => 'view-customer',
+                'bg' => 'bg-red-500',
+                'hover' => 'hover:bg-red-600',
+                'count' => Customer::count(),
+            ],
+            [
+                'name' => 'shops',
+                'value' => __('site.shops'),
+                'icon' => 'building-office',
+                'role' => 'view-shop',
+                'bg' => 'bg-gray-800',
+                'hover' => 'hover:bg-gray-900',
+                'count' => Shop::count(),
+            ],
+            [
+                'name' => 'sales',
+                'value' => __('site.sales'),
+                'icon' => 'document-text',
+                'role' => 'view-sale',
+                'bg' => 'bg-gray-500',
+                'hover' => 'hover:bg-gray-600',
+                'count' => Sale::count(),
             ],
         ];
     }

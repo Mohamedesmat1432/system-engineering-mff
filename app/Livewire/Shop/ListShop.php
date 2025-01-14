@@ -18,8 +18,8 @@ class ListShop extends Component
     {
         $this->authorize('view-shop');
 
-        $shops = Shop::search($this->search, $this->search_by_government, $this->search_by_city)
-            ->paginate($this->page_element);
+        $shops = Shop::search($this->search)->searchByGovernment($this->search_by_government)
+            ->searchByCity($this->search_by_city)->paginate($this->page_element);
 
         $this->checkbox_all = Shop::pluck('id')->toArray();
 

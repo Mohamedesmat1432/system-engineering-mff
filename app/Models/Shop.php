@@ -40,13 +40,34 @@ class Shop extends Model
         return $this->belongsTo(City::class);
     }
 
-    public function scopeSearch($query, $search = null, $governmentId = null, $cityId = null)
+    public function scopeSearch($query, $search = null)
     {
         return $query->when($search, function ($query) use ($search) {
-            $query->where('auction_date', 'like', "%{$search}%");
-        })->when($governmentId, function ($query) use ($governmentId) {
+            $query->where('center', 'like', "%{$search}%")
+                ->orWhere('location', 'like', "%{$search}%")
+                ->orWhere('type_of_shop', 'like', "%{$search}%")
+                ->orWhere('shop_area', 'like', "%{$search}%")
+                ->orWhere('sell_price', 'like', "%{$search}%")
+                ->orWhereHas('government', function ($query) use ($search) {
+                    $query->where('name_ar', 'like', "%{$search}%")
+                        ->orWhere('name_en', 'like', "%{$search}%");
+                })->orWhereHas('city', function ($query) use ($search) {
+                    $query->where('name_ar', 'like', "%{$search}%")
+                        ->orWhere('name_en', 'like', "%{$search}%");
+                });
+        });
+    }
+
+    public function scopeSearchByGovernment($query, $governmentId = null)
+    {
+        return $query->when($governmentId, function ($query) use ($governmentId) {
             $query->where('government_id', '=', $governmentId);
-        })->when($cityId, function ($query) use ($cityId) {
+        });
+    }
+
+    public function scopeSearchByCity($query, $cityId = null)
+    {
+        return $query->when($cityId, function ($query) use ($cityId) {
             $query->where('city_id', '=', $cityId);
         });
     }

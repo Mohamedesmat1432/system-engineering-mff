@@ -39,14 +39,14 @@
 <?php endif; ?>
                 <?php if (isset($component)) { $__componentOriginalc2fcfa88dc54fee60e0757a7e0572df1 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalc2fcfa88dc54fee60e0757a7e0572df1 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input','data' => ['type' => 'file','class' => 'mt-1 block w-full border p-1','wire:model' => 'file']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.input','data' => ['type' => 'file','class' => 'mt-1 block w-full border p-1','wire:model.live' => 'file','accept' => '.xlsx, .xls']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('input'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['type' => 'file','class' => 'mt-1 block w-full border p-1','wire:model' => 'file']); ?>
+<?php $component->withAttributes(['type' => 'file','class' => 'mt-1 block w-full border p-1','wire:model.live' => 'file','accept' => '.xlsx, .xls']); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginalc2fcfa88dc54fee60e0757a7e0572df1)): ?>
@@ -77,6 +77,25 @@
 <?php $component = $__componentOriginalf94ed9c5393ef72725d159fe01139746; ?>
 <?php unset($__componentOriginalf94ed9c5393ef72725d159fe01139746); ?>
 <?php endif; ?>
+
+                <!--[if BLOCK]><![endif]--><?php if($file): ?>
+                <?php
+                $extension = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+                $icons = [
+                'xlsx' => asset('images/icon-excel.png'),
+                'xls' => asset('images/icon-excel.png'),
+                'pdf' => asset('images/icon-pdf.png'),
+                'doc' => asset('images/icon-word.png'),
+                'docx' => asset('images/icon-word.png'),
+                ];
+                $icon_image = $icons[$extension] ?? asset('images/icon-file.png');
+                ?>
+
+                <div class="mt-4 flex items-center">
+                    <img src="<?php echo e($icon_image); ?>" alt="<?php echo e($extension); ?> Icon" class="w-8 h-8 mr-2">
+                    <span><?php echo e($file->getClientOriginalName()); ?></span>
+                </div>
+                <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
             </div>
          <?php $__env->endSlot(); ?>
 

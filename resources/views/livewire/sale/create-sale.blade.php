@@ -9,31 +9,39 @@
             <div class="basic_data">
                 <h3 class="mt-2 text-xl underline">{{ __('site.basic_data') }}</h3>
                 <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
-                    <div class="mt-2">
+                    <div class="mt-2" x-data="{ isFocused: false }">
                         <x-label for="customer_id" value="{{ __('site.customer_id') }}" />
+                        <x-input type="search" class="mt-1 block w-full" wire:model.live="customer_search"
+                            placeholder="{{ __('site.customer_search') }}" />
                         <x-select class="mt-1 block w-full" wire:model="customer_id">
-                            <option value="">{{ __('site.select') }}</option>
+                            <option value="">{{ __('site.select_customer') }}</option>
                             @foreach ($this->customers() as $customer)
                             <option value="{{ $customer->id }}">
                                 {{ $customer->customer_name }} /
-                                {{ $customer->national_number }}
+                                {{ $customer->national_number }} /
+                                {{ $customer->phone_number }}
                             </option>
                             @endforeach
                         </x-select>
                         <x-input-error for="customer_id" class="mt-2" />
                     </div>
-                    <div class="mt-2">
+                    <div class="mt-2" x-data="{ isFocused: false }">
                         <x-label for="shop_id" value="{{ __('site.shop_id') }}" />
+                        <x-input type="search" class="mt-1 block w-full" wire:model.live="shop_search"
+                            placeholder="{{ __('site.shop_search') }}" />
                         <x-select class="mt-1 block w-full" wire:model="shop_id" wire:change.live="shopSellPrice">
-                            <option value=""> {{ __('site.select') }}</option>
-                            @foreach ($this->shops() as  $shop)
+                            <option value=""> {{ __('site.select_shop') }}</option>
+                            @foreach ($this->shops() as $shop)
                             <option value="{{ $shop->id }}">
                                 {{ $shop->government->name }} /
                                 {{ $shop->city->name }} /
                                 {{ $shop->building_number }} /
+                                {{ $shop->building_entrance_number }} /
                                 {{ $shop->shop_number }} /
+                                {{ $shop->type_of_shop }} /
                                 {{ $shop->shop_area }} /
-                                {{ $shop->sell_price }}
+                                {{ $shop->sell_price }} /
+                                {{ $shop->sell_price_for_meter }}
                             </option>
                             @endforeach
                         </x-select>
@@ -137,25 +145,25 @@
                     </div>
                 </div>
                 @if ($payment_method == 'installment')
-                @for ($i = 1; $i<=15 ; $i++)
-                <div class="installments">
-                    <h3 class="mt-2 text-xl underline">{{ __("site.installment_{$i}") }}</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
-                        <div class="mt-2">
-                            <x-label for="installment_amount_{{ $i }}" value="{{ __('site.amount') }}" />
-                            <x-input type="number" class="mt-1 block w-full" wire:model="installment_amount_{{ $i }}"
-                                placeholder="{{ __('site.amount') }}" />
-                            <x-input-error for="installment_amount_{{ $i }}" class="mt-2" />
-                        </div>
-                        <div class="mt-2">
-                            <x-label for="installment_date_{{ $i }}" value="{{ __('site.date') }}" />
-                            <x-input type="date" class="mt-1 block w-full" wire:model="installment_date_{{ $i }}"
-                                placeholder="{{ __('site.date') }}" />
-                            <x-input-error for="installment_date_{{ $i }}" class="mt-2" />
+                    @for ($i = 1; $i <= 15; $i++) 
+                    <div class="installments">
+                        <h3 class="mt-2 text-xl underline">{{ __("site.installment_{$i}") }}</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
+                            <div class="mt-2">
+                                <x-label for="installment_amount_{{ $i }}" value="{{ __('site.amount') }}" />
+                                <x-input type="number" class="mt-1 block w-full"
+                                    wire:model="installment_amount_{{ $i }}" placeholder="{{ __('site.amount') }}" />
+                                <x-input-error for="installment_amount_{{ $i }}" class="mt-2" />
+                            </div>
+                            <div class="mt-2">
+                                <x-label for="installment_date_{{ $i }}" value="{{ __('site.date') }}" />
+                                <x-input type="date" class="mt-1 block w-full" wire:model="installment_date_{{ $i }}"
+                                    placeholder="{{ __('site.date') }}" />
+                                <x-input-error for="installment_date_{{ $i }}" class="mt-2" />
+                            </div>
                         </div>
                     </div>
-                </div>
-                @endfor
+                    @endfor
                 @endif
             </div>
         </x-slot>

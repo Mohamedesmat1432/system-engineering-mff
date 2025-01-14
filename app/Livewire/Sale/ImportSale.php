@@ -33,6 +33,9 @@ class ImportSale extends Component
             $import->import($this->file->getRealPath());
             $this->dispatch('refresh-list-sale');
             $this->successNotify(__('site.sale_imported'));
+            if(!empty($import->skippedRows)) {
+                $this->errorNotify(json_encode($import->skippedRows));
+            }
             return;
         } catch (\Throwable $e) {
             $this->errorNotify($e->getMessage());

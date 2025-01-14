@@ -31,7 +31,7 @@
         function chartShopOutsideDamietta() {
             return {
                 chart: null,
-                chartType: localStorage.getItem('chartTypeShopOutsideDamietta') || 'doughnut',
+                chartType: localStorage.getItem('chartTypeShopOutsideDamietta') || 'bar',
                 initChartShopOutsideDamietta() {
                     const ctx = document.getElementById('chartShopOutsideDamiettaId').getContext('2d');
 
@@ -48,8 +48,8 @@
                         type: this.chartType,
                         data: chartDataShopOutsideDamietta,
                         options: {
-                            responsive: false,
-                            maintainAspectRatio: false,
+                            responsive: true,
+                            maintainAspectRatio: true,
                             scales: {
                                 y: {
                                     beginAtZero: true

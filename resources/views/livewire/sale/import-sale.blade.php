@@ -8,8 +8,27 @@
         <x-slot name="content">
             <div class="col-span-6 sm:col-span-4">
                 <x-label for="file" value="{{ __('site.choose_file') }}" />
-                <x-input type="file" class="mt-1 block w-full border p-1" wire:model="file" />
+                <x-input type="file" class="mt-1 block w-full border p-1" wire:model.live="file" accept=".xlsx, .xls" />
                 <x-input-error for="file" class="mt-2" />
+
+                @if ($file)
+                @php
+                $extension = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+                $icons = [
+                'xlsx' => asset('images/icon-excel.png'),
+                'xls' => asset('images/icon-excel.png'),
+                'pdf' => asset('images/icon-pdf.png'),
+                'doc' => asset('images/icon-word.png'),
+                'docx' => asset('images/icon-word.png'),
+                ];
+                $icon_image = $icons[$extension] ?? asset('images/icon-file.png');
+                @endphp
+
+                <div class="mt-4 flex items-center">
+                    <img src="{{ $icon_image }}" alt="{{ $extension }} Icon" class="w-8 h-8 mr-2">
+                    <span>{{ $file->getClientOriginalName() }}</span>
+                </div>
+                @endif
             </div>
         </x-slot>
 

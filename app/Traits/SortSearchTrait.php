@@ -3,43 +3,53 @@
 namespace App\Traits;
 
 use Livewire\Attributes\On;
-use Livewire\Attributes\Url;
 
 trait SortSearchTrait
 {
-    #[Url('')]
     public string $search = '';
 
-    #[Url('')]
     public string $search_by_government = '';
 
-    #[Url('')]
     public string $search_by_city = '';
 
-    #[Url('')]
     public string $child_search = '';
 
-    #[Url('')]
     public string $date = '';
 
-    #[Url('')]
     public string $filter = '';
 
-    #[Url('')]
     public string $sort_by = 'id';
 
-    #[Url('')]
     public bool $sort_asc = false;
 
-    #[Url('')]
     public int $page_element = 25;
 
     public string $extension = 'xlsx';
+
     public bool $trash = false;
+
     public $status = false;
-    public $checkbox_arr = [];
-    public $checkbox_all = [];
+    
     public $checkbox_status = false;
+    
+    public $checkbox_arr = [];
+
+    public $checkbox_all = [];
+
+    protected $queryString = [
+        'search', 
+        'search_by_government', 
+        'search_by_city',
+        'child_search',
+        'date',
+        'filter',
+        'sort_by',
+        'sort_asc',
+        'status',
+        'trash',
+        'checkbox_status'
+    ];
+
 
     public function toggleStatus()
     {
@@ -96,7 +106,7 @@ trait SortSearchTrait
     public function updatingTrash()
     {
         $this->resetPage();
-        $this->reset();  
+        $this->reset();
     }
 
     public function updatingFilter()
