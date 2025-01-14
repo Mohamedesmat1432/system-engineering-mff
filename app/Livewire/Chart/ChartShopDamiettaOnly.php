@@ -28,7 +28,7 @@ class ChartShopDamiettaOnly extends Component
             'labels' => $monthlyData->keys(),
             'datasets' => [
                 [
-                    'label' => 'Shop Damietta Only by government',
+                    'label' => __('site.list_shop_damietta_only'),
                     'backgroundColor' => [
                         'rgb(255, 99, 132)',
                         'rgb(54, 162, 235)',

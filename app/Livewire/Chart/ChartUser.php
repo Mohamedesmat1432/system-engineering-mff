@@ -26,7 +26,7 @@ class ChartUser extends Component
             'labels' => $monthlyData->keys(),
             'datasets' => [
                 [
-                    'label' => 'Number Of Users',
+                    'label' => __('site.users'),
                     'backgroundColor' => [
                         'rgb(255, 99, 132)',
                         'rgb(54, 162, 235)',

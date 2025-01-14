@@ -74,6 +74,60 @@ unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
                 <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view-customer')): ?>
+                <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('chart.chart-customer', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-346497878-1', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view-chart-shop')): ?>
+                <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('chart.chart-shop', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-346497878-2', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view-chart-sale')): ?>
+                <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('chart.chart-sale', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-346497878-3', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+                <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view-chart-shop-outside-damietta')): ?>
                 <?php
 $__split = function ($name, $params = []) {
@@ -81,7 +135,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('chart.chart-shop-outside-damietta', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-346497878-1', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-346497878-4', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -99,7 +153,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('chart.chart-shop-damietta-only', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-346497878-2', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-346497878-5', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 

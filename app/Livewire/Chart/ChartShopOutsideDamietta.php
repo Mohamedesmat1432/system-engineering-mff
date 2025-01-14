@@ -28,7 +28,7 @@ class ChartShopOutsideDamietta extends Component
             'labels' => $monthlyData->keys(),
             'datasets' => [
                 [
-                    'label' => 'Shop Outside Damietta by government',
+                    'label' => __('site.list_shop_outside_damietta'),
                     'backgroundColor' => [
                         'rgb(255, 99, 132)',
                         'rgb(54, 162, 235)',

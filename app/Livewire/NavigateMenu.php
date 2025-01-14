@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Livewire;
 
 use Laravel\Jetstream\Http\Livewire\NavigationMenu;
@@ -48,30 +50,6 @@ class NavigateMenu extends NavigationMenu
                 'role' => 'view-backup-database',
             ],
             [
-                'name' => 'customers',
-                'value' => 'site.customers',
-                'icon' => 'inbox-stack',
-                'role' => 'view-customer',
-            ],
-            [
-                'name' => 'shops',
-                'value' => 'site.shops',
-                'icon' => 'inbox-stack',
-                'role' => 'view-shop',
-            ],
-            [
-                'name' => 'sales',
-                'value' => 'site.sales',
-                'icon' => 'inbox-stack',
-                'role' => 'view-sale',
-            ],
-        ];
-    }
-    
-    public function responsiveLinks()
-    {
-        return [
-            [
                 'name' => 'shops.outside.damietta',
                 'value' => 'site.list_shop_outside_damietta',
                 'icon' => 'list-bullet',
@@ -82,6 +60,30 @@ class NavigateMenu extends NavigationMenu
                 'value' => 'site.list_shop_damietta_only',
                 'icon' => 'clipboard-document-list',
                 'role' => 'view-shop-damietta-only',
+            ],
+        ];
+    }
+
+    public function responsiveLinks()
+    {
+        return [
+            [
+                'name' => 'customers',
+                'value' => 'site.customers',
+                'icon' => 'user-group',
+                'role' => 'view-customer',
+            ],
+            [
+                'name' => 'shops',
+                'value' => 'site.shops',
+                'icon' => 'building-office',
+                'role' => 'view-shop',
+            ],
+            [
+                'name' => 'sales',
+                'value' => 'site.sales',
+                'icon' => 'document-text',
+                'role' => 'view-sale',
             ],
         ];
     }
