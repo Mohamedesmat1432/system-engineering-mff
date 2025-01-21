@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Backup\ListBackup;
+use App\Livewire\Company\ListCompany;
 use App\Livewire\Customer\ListCustomer;
 use App\Livewire\Dashboard\DashboardComponent;
 use App\Livewire\Department\ListDepartment;
@@ -9,8 +10,6 @@ use App\Livewire\Permission\ListPermission;
 use App\Livewire\Role\ListRole;
 use App\Livewire\Sale\ListSale;
 use App\Livewire\Shop\ListShop;
-use App\Livewire\ShopOutsideDamietta\ListShopOutsideDamietta;
-use App\Livewire\ShopDamiettaOnly\ListShopDamiettaOnly;
 use App\Livewire\User\ListUser;
 use Illuminate\Support\Facades\Route;
 use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
@@ -37,9 +36,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/roles', ListRole::class)->name('roles');
     Route::get('/permissions', ListPermission::class)->name('permissions');
     Route::get('/departments', ListDepartment::class)->name('departments');
-    Route::get('/shops-outside-damietta', ListShopOutsideDamietta::class)->name('shops.outside.damietta');
-    Route::get('/shops-damietta-only', ListShopDamiettaOnly::class)->name('shops.damietta.only');
     Route::get('/customers', ListCustomer::class)->name('customers');
+    Route::get('/companies', ListCompany::class)->name('companies');
     Route::get('/shops', ListShop::class)->name('shops');
     Route::get('/sales', ListSale::class)->name('sales');
 });

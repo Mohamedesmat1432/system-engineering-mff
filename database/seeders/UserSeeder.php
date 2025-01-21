@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,10 +20,12 @@ class UserSeeder extends Seeder
             'name' => 'SuperAdmin',
             'email' => 'superadmin@gmail.com',
             'password' => Hash::make('Q@W#E$P@ssw0rd'),
-            'department_id' => 1
         ]);
 
-        // Adding permissions via a role
-        $user->syncRoles(['Super Admin']);
+        $role = Role::where('name', 'Super Admin')->first();
+        if (!$role) {
+            dd('Role not found');
+        }
+        $user->assignRole($role->name);
     }
 }

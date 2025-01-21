@@ -43,8 +43,7 @@
 <?php $component = $__componentOriginal9be913854797e04f92894da13b6df713; ?>
 <?php unset($__componentOriginal9be913854797e04f92894da13b6df713); ?>
 <?php endif; ?>
-        <?php echo e(__('site.delete')); ?>
-
+        
      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal656e8c5ea4d9a4fa173298297bfe3f11)): ?>
@@ -86,8 +85,7 @@
 <?php $component = $__componentOriginal9be913854797e04f92894da13b6df713; ?>
 <?php unset($__componentOriginal9be913854797e04f92894da13b6df713); ?>
 <?php endif; ?>
-        <?php echo e(__('site.delete')); ?>
-
+        
      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal656e8c5ea4d9a4fa173298297bfe3f11)): ?>

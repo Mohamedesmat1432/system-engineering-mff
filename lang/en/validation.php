@@ -8,14 +8,14 @@ return [
     |--------------------------------------------------------------------------
     |
     | The following language lines contain the default error messages used by
-    | the validator class. Some of these rules have multiple versions such
-    | as the size rules. Feel free to tweak each of these messages here.
+    | the validator class. some of these rules have multiple versions such
+    | as the size rules. feel free to tweak each of these messages here.
     |
     */
 
     'accepted' => 'The :attribute field must be accepted.',
     'accepted_if' => 'The :attribute field must be accepted when :other is :value.',
-    'active_url' => 'The :attribute field must be a valid URL.',
+    'active_url' => 'The :attribute field must be a valid UrL.',
     'after' => 'The :attribute field must be a date after :date.',
     'after_or_equal' => 'The :attribute field must be a date after or equal to :date.',
     'alpha' => 'The :attribute field must only contain letters.',
@@ -70,10 +70,10 @@ return [
     'in' => 'The selected :attribute is invalid.',
     'in_array' => 'The :attribute field must exist in :other.',
     'integer' => 'The :attribute field must be an integer.',
-    'ip' => 'The :attribute field must be a valid IP address.',
-    'ipv4' => 'The :attribute field must be a valid IPv4 address.',
-    'ipv6' => 'The :attribute field must be a valid IPv6 address.',
-    'json' => 'The :attribute field must be a valid JSON string.',
+    'ip' => 'The :attribute field must be a valid Ip address.',
+    'ipv4' => 'The :attribute field must be a valid Ipv4 address.',
+    'ipv6' => 'The :attribute field must be a valid Ipv6 address.',
+    'json' => 'The :attribute field must be a valid JsoN string.',
     'lowercase' => 'The :attribute field must be lowercase.',
     'lt' => [
         'array' => 'The :attribute field must have less than :value items.',
@@ -87,7 +87,7 @@ return [
         'numeric' => 'The :attribute field must be less than or equal to :value.',
         'string' => 'The :attribute field must be less than or equal to :value characters.',
     ],
-    'mac_address' => 'The :attribute field must be a valid MAC address.',
+    'mac_address' => 'The :attribute field must be a valid mac address.',
     'max' => [
         'array' => 'The :attribute field must not have more than :max items.',
         'file' => 'The :attribute field must not be greater than :max kilobytes.',
@@ -118,7 +118,7 @@ return [
         'mixed' => 'The :attribute field must contain at least one uppercase and one lowercase letter.',
         'numbers' => 'The :attribute field must contain at least one number.',
         'symbols' => 'The :attribute field must contain at least one symbol.',
-        'uncompromised' => 'The given :attribute has appeared in a data leak. Please choose a different :attribute.',
+        'uncompromised' => 'The given :attribute has appeared in a data leak. please choose a different :attribute.',
     ],
     'present' => 'The :attribute field must be present.',
     'prohibited' => 'The :attribute field is prohibited.',
@@ -148,13 +148,13 @@ return [
     'unique' => 'The :attribute has already been taken.',
     'uploaded' => 'The :attribute failed to upload.',
     'uppercase' => 'The :attribute field must be uppercase.',
-    'url' => 'The :attribute field must be a valid URL.',
-    'ulid' => 'The :attribute field must be a valid ULID.',
-    'uuid' => 'The :attribute field must be a valid UUID.',
+    'url' => 'The :attribute field must be a valid UrL.',
+    'ulid' => 'The :attribute field must be a valid ULid.',
+    'uuid' => 'The :attribute field must be a valid UUid.',
 
     /*
     |--------------------------------------------------------------------------
-    | Custom Validation Language Lines
+    | custom Validation Language Lines
     |--------------------------------------------------------------------------
     |
     | Here you may specify custom validation messages for attributes using the
@@ -171,11 +171,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Custom Validation Attributes
+    | custom Validation attributes
     |--------------------------------------------------------------------------
     |
     | The following language lines are used to swap our attribute placeholder
-    | with something more reader friendly such as "E-Mail Address" instead
+    | with something more reader friendly such as "E-mail address" instead
     | of "email". This simply helps us make our message more expressive.
     |
     */
@@ -197,6 +197,40 @@ return [
         'note' => 'note',
         'government_id' => 'government ',
         'city_id' => 'city',
+        'center' => 'center',
+        'location' => 'Location',
+        'auction_date' => 'auction date',
+        'building_number' => 'building number',
+        'building_entrance_number' => 'building Enter number',
+        'shop_number' => 'shop number',
+        'type_of_shop' => 'Type of shop',
+        'shop_area' => 'shop area',
+        'customer_name' => 'customer Name',
+        'buyer_name' => 'customer Name',
+        'national_number' => 'national id',
+        'count_national_number' => 'count of national id',
+        'count_of_national_number' => 'count of national id',
+        'phone_number' => 'phone number',
+        'home_number' => 'Home number',
+        'sell_price' => 'sell price',
+        'sell_price_for_meter' => 'sell price for meter',
+        'payment_method' => 'payment method',
+        'insurance_amount' => 'Insurance amount',
+        'insurance_date' => 'Insurance date',
+        'remaining_amount_sale_amount' => 'remianing amount of shop amount',
+        'remaining_amount_sale_date' => 'remianing amount of shop date',
+        'maintenance_deposit_amount' => 'maintenance deposit amount',
+        'maintenance_deposit_date' => 'maintenance deposit date',
+        'afine_amount' => 'a fine amount',
+        'afine_date' => 'a fine date',
+        'afine' => 'a fine',
+        'government_id' => 'government ',
+        'insurance' => 'Insurance',
+        'remaining_amount_sale' => 'remaining amount sale',
+        'maintenance_deposit' => 'maintenance deposit',
+        'amount' => 'amount',
+        'date' => 'date',
+        'department_id' => 'Department',
     ],
 
 ];

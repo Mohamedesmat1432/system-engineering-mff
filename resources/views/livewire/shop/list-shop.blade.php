@@ -13,12 +13,12 @@
         @can('bulk-delete-shop')
         <livewire:shop.bulk-delete-shop />
         @endcan
-        {{-- @can('import-shop')
+        @can('import-shop')
         <livewire:shop.import-shop />
         @endcan
         @can('export-shop')
         <livewire:shop.export-shop />
-        @endcan --}}
+        @endcan
 
         <div class="p-6 lg:p-8 bg-white border-b border-gray-200 rounded-md">
 
@@ -47,10 +47,10 @@
                                 @endforeach
                             </x-select>
                         </div>
-                        <div class="mb-2 grid grid-cols-1 md:grid-cols-1 gap-4">
+                        <div class="mb-2 grid grid-cols-3 md:grid-cols-3 gap-4">
                             <x-create-button permission="create-shop" />
-                            {{-- <x-import-button permission="import-shop" />
-                            <x-export-button permission="export-shop" /> --}}
+                            <x-import-button permission="import-shop" />
+                            <x-export-button permission="export-shop" />
                         </div>
                     </div>
                 </div>
@@ -73,6 +73,30 @@
                                         {{ __('site.id') }}
                                     </button>
                                     <x-sort-icon sort_field="id" :sort_by="$sort_by" :sort_asc="$sort_asc" />
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border">
+                                <div class="flex justify-center">
+                                    <button wire:click="sortByField('shop_code')">
+                                        {{ __('site.shop_code') }}
+                                    </button>
+                                    <x-sort-icon sort_field="shop_code" :sort_by="$sort_by" :sort_asc="$sort_asc" />
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border">
+                                <div class="flex justify-center">
+                                    <button wire:click="sortByField('auction_date')">
+                                        {{ __('site.auction_date') }}
+                                    </button>
+                                    <x-sort-icon sort_field="auction_date" :sort_by="$sort_by" :sort_asc="$sort_asc" />
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border">
+                                <div class="flex justify-center">
+                                    <button wire:click="sortByField('company_id')">
+                                        {{ __('site.company_id') }}
+                                    </button>
+                                    <x-sort-icon sort_field="company_id" :sort_by="$sort_by" :sort_asc="$sort_asc" />
                                 </div>
                             </td>
                             <td class="px-4 py-2 border">
@@ -185,11 +209,19 @@
                                 {{ $shop->id }}
                             </td>
                             <td class="p-2 border">
-                                {{ app()->getLocale() === 'ar' ? $shop->government->name_ar : $shop->government->name_en
-                                }}
+                                {{ $shop->shop_code }}
                             </td>
                             <td class="p-2 border">
-                                {{ app()->getLocale() === 'ar' ? $shop->city->name_ar : $shop->city->name_en }}
+                                {{ $shop->auction_date }}
+                            </td>
+                            <td class="p-2 border">
+                                {{ $shop->company?->name }}
+                            </td>
+                            <td class="p-2 border">
+                                {{ $shop->government->name }}
+                            </td>
+                            <td class="p-2 border">
+                                {{ $shop->city->name }}
                             </td>
                             <td class="p-2 border">
                                 {{ $shop->center }}

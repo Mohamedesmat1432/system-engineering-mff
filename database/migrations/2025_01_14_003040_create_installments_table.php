@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('installments', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->foreignId('installment_sale_id')->constrained('sales')->onDelete('cascade');
-            $table->string('installment_number')->nullable();
-            $table->decimal('installment_amount', 10, 2)->nullable();
-            $table->date('installment_date')->nullable();
-            $table->boolean('installment_is_paid')->default(false);
+            $table->uuid('id')->primary();
+            $table->uuid('sale_id')->nullable();
+            $table->foreign('sale_id')->references('id')->on('sales')->onDelete('cascade');
+            $table->decimal('amount', 10, 2)->nullable();
+            $table->date('date')->nullable();
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

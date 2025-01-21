@@ -19,7 +19,9 @@ class ListShop extends Component
         $this->authorize('view-shop');
 
         $shops = Shop::search($this->search)->searchByGovernment($this->search_by_government)
-            ->searchByCity($this->search_by_city)->paginate($this->page_element);
+            ->searchByCity($this->search_by_city)
+            ->orderBy($this->sort_by, $this->sort_asc ? 'ASC' : 'DESC')
+            ->paginate($this->page_element);
 
         $this->checkbox_all = Shop::pluck('id')->toArray();
 

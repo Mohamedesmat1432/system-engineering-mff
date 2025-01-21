@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -24,12 +25,14 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use HasRoles;
     use SoftDeletes;
+    // use UuidTrait;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+
     protected $table = 'users';
 
     protected $fillable = ['name', 'email', 'password', 'status', 'department_id'];

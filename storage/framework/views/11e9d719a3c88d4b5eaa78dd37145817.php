@@ -43,8 +43,7 @@
 <?php $component = $__componentOriginal9be913854797e04f92894da13b6df713; ?>
 <?php unset($__componentOriginal9be913854797e04f92894da13b6df713); ?>
 <?php endif; ?>
-        <?php echo e(__('site.edit')); ?>
-
+        
      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal7fa57d00c29530b074487861a28c29f3)): ?>
@@ -86,8 +85,7 @@
 <?php $component = $__componentOriginal9be913854797e04f92894da13b6df713; ?>
 <?php unset($__componentOriginal9be913854797e04f92894da13b6df713); ?>
 <?php endif; ?>
-        <?php echo e(__('site.edit')); ?>
-
+        
      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal7fa57d00c29530b074487861a28c29f3)): ?>

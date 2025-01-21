@@ -74,7 +74,7 @@ unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view-customer')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view-chart-customer')): ?>
                 <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
@@ -128,42 +128,6 @@ unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view-chart-shop-outside-damietta')): ?>
-                <?php
-$__split = function ($name, $params = []) {
-    return [$name, $params];
-};
-[$__name, $__params] = $__split('chart.chart-shop-outside-damietta', []);
-
-$__html = app('livewire')->mount($__name, $__params, 'lw-346497878-4', $__slots ?? [], get_defined_vars());
-
-echo $__html;
-
-unset($__html);
-unset($__name);
-unset($__params);
-unset($__split);
-if (isset($__slots)) unset($__slots);
-?>
-                <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('view-chart-shop-damietta-only')): ?>
-                <?php
-$__split = function ($name, $params = []) {
-    return [$name, $params];
-};
-[$__name, $__params] = $__split('chart.chart-shop-damietta-only', []);
-
-$__html = app('livewire')->mount($__name, $__params, 'lw-346497878-5', $__slots ?? [], get_defined_vars());
-
-echo $__html;
-
-unset($__html);
-unset($__name);
-unset($__params);
-unset($__split);
-if (isset($__slots)) unset($__slots);
-?>
-                <?php endif; ?>
             </div>
         </div>
      <?php echo $__env->renderComponent(); ?>
@@ -176,4 +140,5 @@ if (isset($__slots)) unset($__slots);
 <?php $component = $__componentOriginal562cb1477a8769da678d472fe5deeba8; ?>
 <?php unset($__componentOriginal562cb1477a8769da678d472fe5deeba8); ?>
 <?php endif; ?>
-</div><?php /**PATH /var/www/resources/views/livewire/dashboard/dashboard-component.blade.php ENDPATH**/ ?>
+</div>
+<?php /**PATH /var/www/resources/views/livewire/dashboard/dashboard-component.blade.php ENDPATH**/ ?>

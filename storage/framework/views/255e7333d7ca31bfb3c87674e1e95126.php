@@ -82,6 +82,42 @@ unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
         <?php endif; ?>
+        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('import-customer')): ?>
+            <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('customer.import-customer', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-1999227986-4', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+        <?php endif; ?>
+        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('export-customer')): ?>
+            <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('customer.export-customer', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-1999227986-5', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+        <?php endif; ?>
 
         <div class="p-6 lg:p-8 bg-white border-b border-gray-200 rounded-md">
 
@@ -117,7 +153,7 @@ if (isset($__slots)) unset($__slots);
 <?php unset($__componentOriginalc2fcfa88dc54fee60e0757a7e0572df1); ?>
 <?php endif; ?>
                         </div>
-                        <div class="mb-2">
+                        <div class="mb-2 grid grid-cols-3 md:grid-cols-3 gap-4">
                             <?php if (isset($component)) { $__componentOriginala6d15d77335de01bd81addac814f21ff = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginala6d15d77335de01bd81addac814f21ff = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.create-button','data' => ['permission' => 'create-customer']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
@@ -137,6 +173,46 @@ if (isset($__slots)) unset($__slots);
 <?php if (isset($__componentOriginala6d15d77335de01bd81addac814f21ff)): ?>
 <?php $component = $__componentOriginala6d15d77335de01bd81addac814f21ff; ?>
 <?php unset($__componentOriginala6d15d77335de01bd81addac814f21ff); ?>
+<?php endif; ?>
+                            <?php if (isset($component)) { $__componentOriginal7ae5148aeeb2b2d62934bb7031ad38f9 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal7ae5148aeeb2b2d62934bb7031ad38f9 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.import-button','data' => ['permission' => 'import-customer']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('import-button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['permission' => 'import-customer']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal7ae5148aeeb2b2d62934bb7031ad38f9)): ?>
+<?php $attributes = $__attributesOriginal7ae5148aeeb2b2d62934bb7031ad38f9; ?>
+<?php unset($__attributesOriginal7ae5148aeeb2b2d62934bb7031ad38f9); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal7ae5148aeeb2b2d62934bb7031ad38f9)): ?>
+<?php $component = $__componentOriginal7ae5148aeeb2b2d62934bb7031ad38f9; ?>
+<?php unset($__componentOriginal7ae5148aeeb2b2d62934bb7031ad38f9); ?>
+<?php endif; ?>
+                            <?php if (isset($component)) { $__componentOriginalead669e33878677f706bb89fd3f8e06c = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalead669e33878677f706bb89fd3f8e06c = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.export-button','data' => ['permission' => 'export-customer']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('export-button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['permission' => 'export-customer']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalead669e33878677f706bb89fd3f8e06c)): ?>
+<?php $attributes = $__attributesOriginalead669e33878677f706bb89fd3f8e06c; ?>
+<?php unset($__attributesOriginalead669e33878677f706bb89fd3f8e06c); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalead669e33878677f706bb89fd3f8e06c)): ?>
+<?php $component = $__componentOriginalead669e33878677f706bb89fd3f8e06c; ?>
+<?php unset($__componentOriginalead669e33878677f706bb89fd3f8e06c); ?>
 <?php endif; ?>
                         </div>
                     </div>

@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             UserSeeder::class,
             GovernmentSeeder::class,
-            CitySeeder::class,
+            // CitySeeder::class,
         ]);
     }
 }

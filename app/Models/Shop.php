@@ -2,16 +2,20 @@
 
 namespace App\Models;
 
+use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Shop extends Model
 {
-    use HasFactory;
+    use HasFactory, UuidTrait;
 
     protected $table = 'shops';
 
     protected $fillable = [
+        'shop_code',
+        'auction_date',
+        'company_id',
         'government_id',
         'city_id',
         'center',
@@ -25,9 +29,9 @@ class Shop extends Model
         'sell_price_for_meter',
     ];
 
-    public function sales()
+    public function company()
     {
-        return $this->hasMany(Sale::class);
+        return $this->belongsTo(Company::class);
     }
 
     public function government()
@@ -40,10 +44,17 @@ class Shop extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+
     public function scopeSearch($query, $search = null)
     {
         return $query->when($search, function ($query) use ($search) {
-            $query->where('center', 'like', "%{$search}%")
+            $query->where('auction_date', 'like', "%{$search}%")
+                ->orWhere('shop_code', 'like', "%{$search}%")
+                ->orWhere('center', 'like', "%{$search}%")
                 ->orWhere('location', 'like', "%{$search}%")
                 ->orWhere('type_of_shop', 'like', "%{$search}%")
                 ->orWhere('shop_area', 'like', "%{$search}%")

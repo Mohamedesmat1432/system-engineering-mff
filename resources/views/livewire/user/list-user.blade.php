@@ -157,7 +157,7 @@
                                     {{ $user->email }}
                                 </td>
                                 <td class="p-2 border">
-                                    {{ $user->department->name }}
+                                    {{ $user->department?->name }}
                                 </td>    
                                 <td class="p-2 border">
                                     {{ $user->getRoleNames()[0] }}

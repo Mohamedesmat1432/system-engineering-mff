@@ -2,21 +2,21 @@
 
 namespace App\Models;
 
+use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Installment extends Model
 {
-    use HasFactory;
+    use HasFactory, UuidTrait;
 
     protected $table = 'installments';
 
     protected $fillable = [
-        'installment_sale_id',
-        'installment_number',
-        'installment_amount',
-        'installment_date',
-        'installment_is_paid',
+        'sale_id',
+        'amount',
+        'date',
+        'status',
     ];
 
     public function sale()

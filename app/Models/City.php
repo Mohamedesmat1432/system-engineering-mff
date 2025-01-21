@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class City extends Model
 {
-    use HasFactory;
+    use HasFactory, UuidTrait;
 
     protected $table = 'cities';
 
@@ -19,7 +19,7 @@ class City extends Model
         return (app()->getLocale() === 'ar') ? $this->name_ar : $this->name_en;
     }
 
-    public function government(): BelongsTo
+    public function government()
     {
         return $this->belongsTo(Government::class);
     }

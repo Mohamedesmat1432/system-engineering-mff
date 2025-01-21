@@ -19,6 +19,7 @@ class CreateSale extends Component
         $this->reset();
         $this->resetValidation();
         $this->create_modal = true;
+        $this->addInstallment();
     }
     
     public function save()

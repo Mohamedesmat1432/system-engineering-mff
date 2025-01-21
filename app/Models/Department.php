@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
+use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model
 {
-    use HasFactory;
+    use HasFactory, UuidTrait;
 
     protected $table = 'departments';
 
     protected $fillable = [
-        'name_ar', 
+        'name_ar',
         'name_en'
     ];
 
@@ -30,7 +31,7 @@ class Department extends Model
     {
         return $query->when($search, function ($query) use ($search) {
             $query->where('name_ar', 'like', "%{$search}%")
-                ->orWhere('name_en' ,'like', "%{$search}%");
+                ->orWhere('name_en', 'like', "%{$search}%");
         });
     }
 }

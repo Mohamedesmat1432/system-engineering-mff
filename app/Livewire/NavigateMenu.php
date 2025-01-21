@@ -49,18 +49,6 @@ class NavigateMenu extends NavigationMenu
                 'icon' => 'inbox-stack',
                 'role' => 'view-backup-database',
             ],
-            [
-                'name' => 'shops.outside.damietta',
-                'value' => 'site.list_shop_outside_damietta',
-                'icon' => 'list-bullet',
-                'role' => 'view-shop-outside-damietta',
-            ],
-            [
-                'name' => 'shops.damietta.only',
-                'value' => 'site.list_shop_damietta_only',
-                'icon' => 'clipboard-document-list',
-                'role' => 'view-shop-damietta-only',
-            ],
         ];
     }
 
@@ -74,9 +62,15 @@ class NavigateMenu extends NavigationMenu
                 'role' => 'view-customer',
             ],
             [
+                'name' => 'companies',
+                'value' => 'site.companies',
+                'icon' => 'building-office-2',
+                'role' => 'view-company',
+            ],
+            [
                 'name' => 'shops',
                 'value' => 'site.shops',
-                'icon' => 'building-office',
+                'icon' => 'building-storefront',
                 'role' => 'view-shop',
             ],
             [

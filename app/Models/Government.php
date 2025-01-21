@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Government extends Model
 {
-    use HasFactory;
+    use HasFactory, UuidTrait;
 
     protected $table = 'governments';
 
@@ -22,9 +22,9 @@ class Government extends Model
         return (app()->getLocale() === 'ar') ? $this->name_ar : $this->name_en;
     }
 
-    public function cities(): HasMany
+    public function cities()
     {
-        return $this->hasMany(City::class, 'government_id');
+        return $this->hasMany(City::class);
     }
 
     public function scopeSearch($query, $search)

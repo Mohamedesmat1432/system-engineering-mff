@@ -14,73 +14,36 @@ trait SaleTrait
 
     public ?Sale $sale;
 
-    public $sale_id, $customer_id, $shop_id, $auction_date, $payment_method;
-    public $insurance_amount, $insurance_date;
-    public $remaining_sale_amount, $remaining_sale_date;
-    public $maintenance_deposit_amount, $maintenance_deposit_date;
-    public $afine_amount, $afine_date;
-    public $installment_amount_1, $installment_date_1;
-    public $installment_amount_2, $installment_date_2;
-    public $installment_amount_3, $installment_date_3;
-    public $installment_amount_4, $installment_date_4;
-    public $installment_amount_5, $installment_date_5;
-    public $installment_amount_6, $installment_date_6;
-    public $installment_amount_7, $installment_date_7;
-    public $installment_amount_8, $installment_date_8;
-    public $installment_amount_9, $installment_date_9;
-    public $installment_amount_10, $installment_date_10;
-    public $installment_amount_11, $installment_date_11;
-    public $installment_amount_12, $installment_date_12;
-    public $installment_amount_13, $installment_date_13;
-    public $installment_amount_14, $installment_date_14;
-    public $installment_amount_15, $installment_date_15;
+    public $sale_id, $customer_id, $shop_id, $payment_method, $installment_count, $description;
+    public $insurance = ['amount' => 0, 'date' => null, 'status' => 0];
+    public $remaining_sale = ['amount' => 0, 'date' => null, 'status' => 0];
+    public $maintenance_deposit = ['amount' => 0, 'date' => null, 'status' => 0];
+    public $installment = ['amount' => 0, 'date' => null, 'status' => 0];
+    public $installments = [];
     public $customer_search, $shop_search;
 
     protected function rules()
     {
         return [
-            'customer_id' => 'required|numeric|exists:customers,id',
-            'shop_id' => 'required|numeric|exists:shops,id',
-            'auction_date' => 'required|date',
+            'customer_id' => 'required|string|exists:customers,id',
+            'shop_id' => 'required|string|exists:shops,id',
             'payment_method' => 'required|string',
-            'insurance_amount' => 'required|numeric',
-            'insurance_date' => 'required|date',
-            'remaining_sale_amount' => 'required|numeric',
-            'remaining_sale_date' => 'required|date',
-            'maintenance_deposit_amount' => 'required|numeric',
-            'maintenance_deposit_date' => 'required|date',
-            'afine_amount' => 'nullable|numeric',
-            'afine_date' => 'nullable|date',
-            'installment_amount_1' => 'nullable|numeric',
-            'installment_date_1' => 'nullable|date',
-            'installment_amount_2' => 'nullable|numeric',
-            'installment_date_2' => 'nullable|date',
-            'installment_amount_3' => 'nullable|numeric',
-            'installment_date_3' => 'nullable|date',
-            'installment_amount_4' => 'nullable|numeric',
-            'installment_date_4' => 'nullable|date',
-            'installment_amount_5' => 'nullable|numeric',
-            'installment_date_5' => 'nullable|date',
-            'installment_amount_6' => 'nullable|numeric',
-            'installment_date_6' => 'nullable|date',
-            'installment_amount_7' => 'nullable|numeric',
-            'installment_date_7' => 'nullable|date',
-            'installment_amount_8' => 'nullable|numeric',
-            'installment_date_8' => 'nullable|date',
-            'installment_amount_9' => 'nullable|numeric',
-            'installment_date_9' => 'nullable|date',
-            'installment_amount_10' => 'nullable|numeric',
-            'installment_date_10' => 'nullable|date',
-            'installment_amount_11' => 'nullable|numeric',
-            'installment_date_11' => 'nullable|date',
-            'installment_amount_12' => 'nullable|numeric',
-            'installment_date_12' => 'nullable|date',
-            'installment_amount_13' => 'nullable|numeric',
-            'installment_date_13' => 'nullable|date',
-            'installment_amount_14' => 'nullable|numeric',
-            'installment_date_14' => 'nullable|date',
-            'installment_amount_15' => 'nullable|numeric',
-            'installment_date_15' => 'nullable|date',
+            'insurance.amount' => 'required|numeric',
+            'insurance.date' => 'required|date',
+            'remaining_sale.amount' => 'required|numeric',
+            'remaining_sale.date' => 'required|date',
+            'maintenance_deposit.amount' => 'required|numeric',
+            'maintenance_deposit.date' => 'required|date',
+            'description' => 'nullable|string|max:1000',
+        ];
+    }
+
+    protected function installmentRules()
+    {
+        return [
+            'installments.*.amount' => 'required|numeric',
+            'installments.*.date' => 'required|date',
+            'installments.*.status' => 'required|boolean',
         ];
     }
 
@@ -91,23 +54,27 @@ trait SaleTrait
 
     public function shopSellPrice()
     {
-        $shopSellPrice = $this->shop_id ? Shop::findOrFail($this->shop_id)->sell_price : 0;
-        $this->insurance_amount = ($shopSellPrice * 10) / 100;
-        $this->maintenance_deposit_amount = ($shopSellPrice * 5) / 100;
-        $this->remaining_sale_amount = $shopSellPrice - $this->insurance_amount;
+        $shop = Shop::findOrFail($this->shop_id);
+        $shopSellPrice = $shop ? $shop->sell_price : 0;
+        $shopAuctionDate = $shop ? $shop->auction_date : null;
+        $this->insurance['amount'] = ($shopSellPrice * 10) / 100;
+        $this->remaining_sale['amount'] = $shopSellPrice - $this->insurance['amount'];
+        $this->maintenance_deposit['amount'] = ($shopSellPrice * 5) / 100;
+        $this->changeDateByAuctionDate($shopAuctionDate);
     }
 
     public function changeInsuranceAmount()
     {
-        $shopSellPrice = $this->shop_id ? Shop::findOrFail($this->shop_id)->sell_price : 0;
-        $this->remaining_sale_amount = $shopSellPrice - $this->insurance_amount;
+        $shop = Shop::findOrFail($this->shop_id);
+        $shopSellPrice = $shop ? $shop->sell_price : 0;
+        $this->remaining_sale['amount'] = $shopSellPrice - $this->insurance['amount'];
     }
 
-    public function changeDateByAuctionDate()
+    public function changeDateByAuctionDate($date)
     {
-        $this->insurance_date = $this->auction_date;
-        $this->remaining_sale_date =  Helper::addMonthToDate($this->auction_date, 3);
-        $this->maintenance_deposit_date = Helper::addMonthToDate($this->auction_date, 3);
+        $this->insurance['date'] = $date;
+        $this->remaining_sale['date'] =  Helper::addMonthToDate($date, 3);
+        $this->maintenance_deposit['date'] = Helper::addMonthToDate($date, 3);
     }
 
     public function shops()
@@ -124,75 +91,135 @@ trait SaleTrait
         return ['cash', 'installment'];
     }
 
+    public function changePayment()
+    {
+        if ($this->sale_id) {
+            if (!empty($this->installments) && $this->payment_method !== 'installment') {
+                $this->payment_method = 'installment';
+                $this->successNotify(__('site.should_delete_installments_first'));
+            } else {
+                $this->addInstallment();
+            }
+        } else {
+            $this->reset(['installments', 'installment_count']);
+            if (empty($this->installments) && $this->payment_method === 'installment') {
+                $this->addInstallment();
+            }
+        }
+    }
+
+    public function changeInstallmentCount()
+    {
+        if ($this->payment_method === 'installment') {
+            if ($this->sale_id) {
+                if ($this->installment_count > $this->sale->installment_count) {
+                    $index = $this->sale->installment_count - 1;
+                    $count = $this->installment_count - $this->sale->installment_count;
+                    $this->installments = array_fill($index, $count, $this->installment);
+                } else {
+                    $this->installment_count = $this->sale->installment_count;
+                }
+            } else {
+                $this->installments = array_fill(0, $this->installment_count, $this->installment);
+            }
+        }
+    }
+
+    public function addInstallment()
+    {
+        $this->installments[] = $this->installment;
+    }
+
+    public function removeInstallment($key)
+    {
+        unset($this->installments[$key]);
+        $this->installments = array_values($this->installments);
+    }
+
+    public function storeSale()
+    {
+        $validated = $this->validate();
+
+        $sale = Sale::create($validated);
+        $sale->insurance()->create($this->insurance);
+        $sale->remainingSale()->create($this->remaining_sale);
+        $sale->maintenanceDeposit()->create($this->maintenance_deposit);
+
+        if ($this->payment_method === 'installment') {
+            $this->validate($this->installmentRules());
+            foreach ($this->installments as $installment) {
+                $sale->installments()->create($installment);
+            }
+        }
+        $this->dispatch('refresh-list-sale');
+        $this->successNotify(__('site.sale_created'));
+        $this->reset();
+    }
+
+
     public function setsale($id)
     {
         $this->sale = Sale::findOrFail($id);
         $this->sale_id = $this->sale->id;
         $this->customer_id = $this->sale->customer_id;
         $this->shop_id = $this->sale->shop_id;
-        $this->auction_date = $this->sale->auction_date;
         $this->payment_method = $this->sale->payment_method;
-        $this->insurance_amount = $this->sale->insurance_amount;
-        $this->insurance_date = $this->sale->insurance_date;
-        $this->remaining_sale_amount = $this->sale->remaining_sale_amount;
-        $this->remaining_sale_date = $this->sale->remaining_sale_date;
-        $this->maintenance_deposit_amount = $this->sale->maintenance_deposit_amount;
-        $this->maintenance_deposit_date = $this->sale->maintenance_deposit_date;
-        $this->afine_amount = $this->sale->afine_amount;
-        $this->afine_date = $this->sale->afine_date;
-        $this->installment_amount_1 = $this->sale->installment_amount_1;
-        $this->installment_date_1 = $this->sale->installment_date_1;
-        $this->installment_amount_2 = $this->sale->installment_amount_2;
-        $this->installment_date_2 = $this->sale->installment_date_2;
-        $this->installment_amount_3 = $this->sale->installment_amount_3;
-        $this->installment_date_3 = $this->sale->installment_date_3;
-        $this->installment_amount_4 = $this->sale->installment_amount_4;
-        $this->installment_date_4 = $this->sale->installment_date_4;
-        $this->installment_amount_5 = $this->sale->installment_amount_5;
-        $this->installment_date_5 = $this->sale->installment_date_5;
-        $this->installment_amount_6 = $this->sale->installment_amount_6;
-        $this->installment_date_6 = $this->sale->installment_date_6;
-        $this->installment_amount_7 = $this->sale->installment_amount_7;
-        $this->installment_date_7 = $this->sale->installment_date_7;
-        $this->installment_amount_8 = $this->sale->installment_amount_8;
-        $this->installment_date_8 = $this->sale->installment_date_8;
-        $this->installment_amount_9 = $this->sale->installment_amount_9;
-        $this->installment_date_9 = $this->sale->installment_date_9;
-        $this->installment_amount_10 = $this->sale->installment_amount_10;
-        $this->installment_date_10 = $this->sale->installment_date_10;
-        $this->installment_amount_11 = $this->sale->installment_amount_11;
-        $this->installment_date_11 = $this->sale->installment_date_11;
-        $this->installment_amount_12 = $this->sale->installment_amount_12;
-        $this->installment_date_12 = $this->sale->installment_date_12;
-        $this->installment_amount_13 = $this->sale->installment_amount_13;
-        $this->installment_date_13 = $this->sale->installment_date_13;
-        $this->installment_amount_14 = $this->sale->installment_amount_14;
-        $this->installment_date_14 = $this->sale->installment_date_14;
-        $this->installment_amount_15 = $this->sale->installment_amount_15;
-        $this->installment_date_15 = $this->sale->installment_date_15;
+        $this->installment_count = $this->sale->installment_count;
+        $this->description = $this->sale->description;
+        $this->insurance = $this->sale->insurance->toArray();
+        $this->remaining_sale = $this->sale->remainingSale->toArray();
+        $this->maintenance_deposit = $this->sale->maintenanceDeposit->toArray();
+        $this->installments = $this->sale->installments->toArray();
     }
 
-    public function storesale()
+    public function updateSale()
     {
         $validated = $this->validate();
-        Sale::create($validated);
-        $this->dispatch('refresh-list-sale');
-        $this->successNotify(__('site.sale_created'));
-        $this->reset();
-    }
 
-    public function updatesale()
-    {
-        $validated = $this->validate();
         $this->sale->update($validated);
+        $this->sale->insurance()->update($this->insurance);
+        $this->sale->remainingSale()->update($this->remaining_sale);
+        $this->sale->maintenanceDeposit()->update($this->maintenance_deposit);
+
+        if ($this->payment_method === 'installment') {
+
+            $this->validate($this->installmentRules());
+
+            $providedInstallmentIds = collect($this->installments)->pluck('id')->filter()->toArray();
+            $existingInstallments = $this->sale->installments;
+
+            foreach ($this->installments as $installment) {
+                if (isset($installment['id'])) {
+                    $existInstallment = $this->sale->installments()->find($installment['id']);
+                    if ($existInstallment) {
+                        $existInstallment->update($installment);
+                    }
+                } else {
+                    $this->sale->installments()->create($installment);
+                }
+            }
+
+            foreach ($existingInstallments as $existingInstallment) {
+                if (!in_array($existingInstallment->id, $providedInstallmentIds)) {
+                    $existingInstallment->delete();
+                }
+            }
+        }
+
         $this->dispatch('refresh-list-sale');
         $this->successNotify(__('site.sale_updated'));
         $this->reset();
     }
 
-    public function deletesale($id)
+    public function deleteSale($id)
     {
         $sale = Sale::findOrFail($id);
+        $sale->insurance()->delete();
+        $sale->remainingSale()->delete();
+        $sale->maintenanceDeposit()->delete();
+        if (isset($sale->installments)) {
+            $sale->installments()->delete();
+        }
         $sale->delete();
         $this->dispatch('refresh-list-sale');
         $this->successNotify(__('site.sale_deleted'));
@@ -200,9 +227,17 @@ trait SaleTrait
         $this->reset();
     }
 
-    public function bulkDeletesale($arr)
+    public function bulkDeleteSale($arr)
     {
         $sales = Sale::whereIn('id', $arr);
+        foreach ($sales as $sale) {
+            $sale->insurance()->delete();
+            $sale->remainingSale()->delete();
+            $sale->maintenanceDeposit()->delete();
+            if ($sale->installment_method === 'installment') {
+                $sale->installments()->delete();
+            }
+        }
         $sales->delete();
         $this->dispatch('refresh-list-sale');
         $this->dispatch('checkbox-clear');

@@ -4,6 +4,9 @@
         @can('create-sale')
         <livewire:sale.create-sale />
         @endcan
+        @can('show-sale')
+        <livewire:sale.show-sale />
+        @endcan
         @can('edit-sale')
         <livewire:sale.update-sale />
         @endcan
@@ -81,6 +84,38 @@
                             </td>
                             <td class="px-4 py-2 border">
                                 <div class="flex justify-center">
+                                    <button wire:click="sortByField('customer_id')">
+                                        {{ __('site.phone_number') }}
+                                    </button>
+                                    <x-sort-icon sort_field="customer_id" :sort_by="$sort_by" :sort_asc="$sort_asc" />
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border">
+                                <div class="flex justify-center">
+                                    <button wire:click="sortByField('shop_id')">
+                                        {{ __('site.shop_code') }}
+                                    </button>
+                                    <x-sort-icon sort_field="shop_id" :sort_by="$sort_by" :sort_asc="$sort_asc" />
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border">
+                                <div class="flex justify-center">
+                                    <button wire:click="sortByField('shop_id')">
+                                        {{ __('site.auction_date') }}
+                                    </button>
+                                    <x-sort-icon sort_field="shop_id" :sort_by="$sort_by" :sort_asc="$sort_asc" />
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border">
+                                <div class="flex justify-center">
+                                    <button wire:click="sortByField('shop_id')">
+                                        {{ __('site.company_id') }}
+                                    </button>
+                                    <x-sort-icon sort_field="shop_id" :sort_by="$sort_by" :sort_asc="$sort_asc" />
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border">
+                                <div class="flex justify-center">
                                     <button wire:click="sortByField('shop_id')">
                                         {{ __('site.government_id') }}
                                     </button>
@@ -98,17 +133,9 @@
                             <td class="px-4 py-2 border">
                                 <div class="flex justify-center">
                                     <button wire:click="sortByField('shop_id')">
-                                        {{ __('site.shop_id') }}
+                                        {{ __('site.shop_number') }}
                                     </button>
                                     <x-sort-icon sort_field="shop_id" :sort_by="$sort_by" :sort_asc="$sort_asc" />
-                                </div>
-                            </td>
-                            <td class="px-4 py-2 border">
-                                <div class="flex justify-center">
-                                    <button wire:click="sortByField('auction_date')">
-                                        {{ __('site.auction_date') }}
-                                    </button>
-                                    <x-sort-icon sort_field="auction_date" :sort_by="$sort_by" :sort_asc="$sort_asc" />
                                 </div>
                             </td>
                             <td class="px-4 py-2 border">
@@ -120,76 +147,68 @@
                                         :sort_asc="$sort_asc" />
                                 </div>
                             </td>
-                            <td class="px-2 border" colspan="2">
+                            <td class="px-2 border" colspan="3">
                                 <div class="flex justify-center">
-                                    <button wire:click="sortByField('insurance_date')">
+                                    <button wire:click="sortByField('insurances.sale_id')">
                                         {{ __('site.insurance') }}
                                     </button>
-                                    <x-sort-icon sort_field="insurance_date" :sort_by="$sort_by"
+                                    <x-sort-icon sort_field="insurances.sale_id" :sort_by="$sort_by"
                                         :sort_asc="$sort_asc" />
                                 </div>
                                 <div class="flex justify-between">
                                     <span>{{ __('site.amount') }}</span>
                                     <span>{{ __('site.date') }}</span>
+                                    <span>{{ __('site.status') }}</span>
                                 </div>
                             </td>
-                            <td class="px-2 py-2 border" colspan="2">
+                            <td class="px-2 py-2 border" colspan="3">
                                 <div class="flex justify-center">
-                                    <button wire:click="sortByField('remaining_sale_date')">
+                                    <button wire:click="sortByField('remaining_sales.sale_id')">
                                         {{ __('site.remaining_amount_sale') }}
                                     </button>
-                                    <x-sort-icon sort_field="remaining_sale_date" :sort_by="$sort_by"
+                                    <x-sort-icon sort_field="remaining_sales.sale_id" :sort_by="$sort_by"
                                         :sort_asc="$sort_asc" />
                                 </div>
                                 <div class="flex justify-between">
                                     <span>{{ __('site.amount') }}</span>
                                     <span>{{ __('site.date') }}</span>
+                                    <span>{{ __('site.status') }}</span>
                                 </div>
                             </td>
-                            <td class="px-2 py-2 border" colspan="2">
+                            <td class="px-2 py-2 border" colspan="3">
                                 <div class="flex justify-center">
-                                    <button wire:click="sortByField('maintenance_deposit_date')">
+                                    <button wire:click="sortByField('maintenance_deposits.sale_id')">
                                         {{ __('site.maintenance_deposit') }}
                                     </button>
-                                    <x-sort-icon sort_field="maintenance_deposit_date" :sort_by="$sort_by"
+                                    <x-sort-icon sort_field="maintenance_deposits.sale_id" :sort_by="$sort_by"
                                         :sort_asc="$sort_asc" />
                                 </div>
                                 <div class="flex justify-between">
                                     <span>{{ __('site.amount') }}</span>
                                     <span>{{ __('site.date') }}</span>
+                                    <span>{{ __('site.status') }}</span>
                                 </div>
                             </td>
-                            <td class="px-2 py-2 border" colspan="2">
-                                <div class="flex justify-center">
-                                    <button wire:click="sortByField('afine_date')">
-                                        {{ __('site.afine') }}
-                                    </button>
-                                    <x-sort-icon sort_field="afine_date" :sort_by="$sort_by" :sort_asc="$sort_asc" />
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>{{ __('site.amount') }}</span>
-                                    <span>{{ __('site.date') }}</span>
-                                </div>
-                            </td>
-                            @for ($i = 1; $i <= 15; $i++) 
-                            <td class="px-2 py-2 border" colspan="2">
-                            <div class="flex justify-center">
-                                <button wire:click="sortByField('installment_date_{{$i}}')">
-                                    {{ __("site.installment_{$i}") }}
-                                </button>
-                                <x-sort-icon sort_field="installment_date_{{$i}}" :sort_by="$sort_by" :sort_asc="$sort_asc" />
-                            </div>
-                            <div class="flex justify-between">
-                                <span>{{ __('site.amount') }}</span>
-                                <span>{{ __('site.date') }}</span>
-                            </div>
-                            </td>
-                            @endfor
                             <td class="px-4 py-2 border">
                                 <div class="flex justify-center">
                                     {{ __('site.action') }}
                                 </div>
                             </td>
+                            {{-- @for ($i = 1; $i <= 15; $i++) <td class="px-2 py-2 border" colspan="3">
+                                <div class="flex justify-center">
+                                    <button wire:click="sortByField('installments.sale_id')">
+                                        {{ __("site.installment_{$i}") }}
+                                    </button>
+                                    <x-sort-icon sort_field="installments.sale_id" :sort_by="$sort_by"
+                                        :sort_asc="$sort_asc" />
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>{{ __('site.amount') }}</span>
+                                    <span>{{ __('site.date') }}</span>
+                                    <span>{{ __('site.status') }}</span>
+                                </div>
+                                </td>
+                                @endfor --}}
                         </tr>
                     </x-slot>
                     <x-slot name="tbody">
@@ -210,6 +229,18 @@
                                 {{ $sale->customer->national_number }}
                             </td>
                             <td class="p-2 border">
+                                {{ $sale->customer->phone_number }}
+                            </td>
+                            <td class="p-2 border">
+                                {{ $sale->shop->shop_code }}
+                            </td>
+                            <td class="p-2 border">
+                                {{ $sale->shop->auction_date }}
+                            </td>
+                            <td class="p-2 border">
+                                {{ $sale->shop->company?->name }}
+                            </td>
+                            <td class="p-2 border">
                                 {{ $sale->shop->government->name }}
                             </td>
                             <td class="p-2 border">
@@ -219,51 +250,88 @@
                                 {{ $sale->shop->building_number }}
                             </td>
                             <td class="p-2 border">
-                                {{ $sale->auction_date }}
-                            </td>
-                            <td class="p-2 border">
                                 {{ __("site.{$sale->payment_method}") }}
                             </td>
                             <td class="p-2 border">
-                                {{ $sale->insurance_amount }}
+                                {{ $sale->insurance->amount }}
                             </td>
                             <td class="p-2 border">
-                                {{ $sale->insurance_date }}
+                                {{ $sale->insurance->date }}
                             </td>
                             <td class="p-2 border">
-                                {{ $sale->remaining_sale_amount }}
+                                @if ($sale->insurance->status)
+                                <div class="p-2 bg-green-500 rounded-full text-white">
+                                    {{ __('site.paid') }}
+                                </div>
+                                @else
+                                <div class="p-2 bg-yellow-200 rounded-full">
+                                    {{ __('site.unpaid') }}
+                                </div>
+                                @endif
                             </td>
                             <td class="p-2 border">
-                                {{ $sale->remaining_sale_date }}
+                                {{ $sale->remainingSale->amount }}
                             </td>
                             <td class="p-2 border">
-                                {{ $sale->maintenance_deposit_amount }}
+                                {{ $sale->remainingSale->date }}
                             </td>
                             <td class="p-2 border">
-                                {{ $sale->maintenance_deposit_date }}
+                                @if ($sale->remainingSale->status)
+                                <div class="p-2 bg-green-500 rounded-full text-white">
+                                    {{ __('site.paid') }}
+                                </div>
+                                @else
+                                <div class="p-2 bg-yellow-200 rounded-full">
+                                    {{ __('site.unpaid') }}
+                                </div>
+                                @endif
                             </td>
                             <td class="p-2 border">
-                                {{ $sale->afine_amount }}
+                                {{ $sale->maintenanceDeposit->amount }}
                             </td>
                             <td class="p-2 border">
-                                {{ $sale->afine_date }}
-                            </td>
-                            @for ($i = 1; $i<= 15; $i++)
-                            <td class="p-2 border">
-                                {{ $sale->{'installment_amount_' . $i} }}
+                                {{ $sale->maintenanceDeposit->date }}
                             </td>
                             <td class="p-2 border">
-                                {{ $sale->{'installment_date_' . $i} }}
+                                @if ($sale->maintenanceDeposit->status)
+                                <div class="p-2 bg-green-500 rounded-full text-white">
+                                    {{ __('site.paid') }}
+                                </div>
+                                @else
+                                <div class="p-2 bg-yellow-200 rounded-full">
+                                    {{ __('site.unpaid') }}
+                                </div>
+                                @endif
                             </td>
-                            @endfor
                             <td class="p-2 border">
                                 <div class="flex justify-center">
+                                    <x-show-button permission="show-sale" id="{{ $sale->id }}" />
+                                    <div class="mx-1"></div>
                                     <x-edit-button permission="edit-sale" id="{{ $sale->id }}" />
                                     <div class="mx-1"></div>
                                     <x-delete-button permission="delete-sale" id="{{ $sale->id }}"
-                                        name="{{ $sale->auction_date }}" />
+                                        name="{{ $sale->shop->auction_date }}" />
                                 </div>
                             </td>
+                            {{-- @foreach ($sale->installments as $installment)
+                            <td class="p-2 border">
+                                {{ $installment->amount }}
+                            </td>
+                            <td class="p-2 border">
+                                {{ $installment->date }}
+                            </td>
+                            <td class="p-2 border">
+                                @if ($installment->status)
+                                <div class="p-2 bg-green-500 rounded-full text-white">
+                                    {{ __('site.paid') }}
+                                </div>
+                                @else
+                                <div class="p-2 bg-yellow-200 rounded-full">
+                                    {{ __('site.unpaid') }}
+                                </div>
+                                @endif
+                            </td>
+                            @endforeach --}}
                         </tr>
                         @empty
                         <tr>

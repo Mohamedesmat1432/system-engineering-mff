@@ -13,6 +13,12 @@
         @can('bulk-delete-customer')
             <livewire:customer.bulk-delete-customer />
         @endcan
+        @can('import-customer')
+            <livewire:customer.import-customer />
+        @endcan
+        @can('export-customer')
+            <livewire:customer.export-customer />
+        @endcan
 
         <div class="p-6 lg:p-8 bg-white border-b border-gray-200 rounded-md">
 
@@ -29,8 +35,10 @@
                             <x-input type="search" wire:model.live.debounce.500ms="search"
                                 placeholder="{{ __('site.search') }}..." />
                         </div>
-                        <div class="mb-2">
+                        <div class="mb-2 grid grid-cols-3 md:grid-cols-3 gap-4">
                             <x-create-button permission="create-customer" />
+                            <x-import-button permission="import-customer" />
+                            <x-export-button permission="export-customer" />
                         </div>
                     </div>
                     @can('bulk-delete-customer')

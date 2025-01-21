@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\UuidTrait;
 use Spatie\Permission\Models\Role as ModelsRole;
 
 class Role extends ModelsRole
 {
-    public $guard_name = 'web';
+    // use UuidTrait;
 
     public function scopeSearch($query, $search)
     {

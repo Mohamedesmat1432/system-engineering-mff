@@ -29,16 +29,16 @@ trait SortSearchTrait
     public bool $trash = false;
 
     public $status = false;
-    
+
     public $checkbox_status = false;
-    
+
     public $checkbox_arr = [];
 
     public $checkbox_all = [];
 
     protected $queryString = [
-        'search', 
-        'search_by_government', 
+        'search',
+        'search_by_government',
         'search_by_city',
         'child_search',
         'date',
@@ -47,13 +47,18 @@ trait SortSearchTrait
         'sort_asc',
         'status',
         'trash',
-        'checkbox_status'
     ];
 
 
     public function toggleStatus()
     {
         $this->status = !$this->status;
+    }
+
+    #[On('checkbox-clear')]
+    public function checkboxClear()
+    {
+        $this->reset('checkbox_arr', 'checkbox_status');
     }
 
     public function checkboxAll()
@@ -63,16 +68,8 @@ trait SortSearchTrait
         if (count($this->checkbox_arr) < 1 || count($this->checkbox_arr) < count($data)) {
             $this->checkbox_arr = $data;
         } else {
-            $this->checkbox_status = false;
-            $this->checkbox_arr = [];
+            $this->checkboxClear();
         }
-    }
-
-    #[On('checkbox-clear')]
-    public function checkboxClear()
-    {
-        $this->checkbox_arr = [];
-        $this->checkbox_status = false;
     }
 
     public function sortByField($field)
@@ -89,6 +86,16 @@ trait SortSearchTrait
     }
 
     public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingSearchByGovernment()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingSearchByCity()
     {
         $this->resetPage();
     }

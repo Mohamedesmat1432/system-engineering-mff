@@ -42,14 +42,31 @@ class SalesExport implements FromCollection, WithHeadings, WithStyles, ShouldAut
 
     public function map($sale): array
     {
-        return [
+        // Prepare installments
+        $installments = $sale->installments->map(function ($installment) {
+            return [
+                'amount' => $installment->amount,
+                'date' => $installment->date,
+                'status' => $installment->status,
+            ];
+        });
+
+        // Flatten installments into a single array
+        $installmentColumns = [];
+        foreach ($installments as $installment) {
+            $installmentColumns[] = $installment['amount'];
+            $installmentColumns[] = $installment['date'];
+            $installmentColumns[] = $installment['status'];
+        }
+
+        return array_merge([
             $sale->id,
-            Helper::formatDate($sale->auction_date),
             $sale->customer->customer_name,
             $sale->customer->national_number,
             $sale->customer->count_national_number,
             $sale->customer->phone_number,
             $sale->customer->home_number,
+            Helper::formatDate($sale->shop->auction_date),
             $sale->shop->government->name,
             $sale->shop->city->name,
             $sale->shop->center,
@@ -62,58 +79,28 @@ class SalesExport implements FromCollection, WithHeadings, WithStyles, ShouldAut
             $sale->shop->sell_price,
             $sale->shop->sell_price_for_meter,
             $sale->payment_method,
-            $sale->insurance_amount,
-            Helper::formatDate($sale->insurance_date),
-            $sale->remaining_sale_amount,
-            Helper::formatDate($sale->remaining_sale_date),
-            $sale->maintenance_deposit_amount,
-            Helper::formatDate($sale->maintenance_deposit_date),
-            $sale->afine_amount,
-            Helper::formatDate($sale->afine_date),
-            $sale->installment_amount_1,
-            Helper::formatDate($sale->installment_date_1),
-            $sale->installment_amount_2,
-            Helper::formatDate($sale->installment_date_2),
-            $sale->installment_amount_3,
-            Helper::formatDate($sale->installment_date_3),
-            $sale->installment_amount_4,
-            Helper::formatDate($sale->installment_date_4),
-            $sale->installment_amount_5,
-            Helper::formatDate($sale->installment_date_5),
-            $sale->installment_amount_6,
-            Helper::formatDate($sale->installment_date_6),
-            $sale->installment_amount_7,
-            Helper::formatDate($sale->installment_date_7),
-            $sale->installment_amount_8,
-            Helper::formatDate($sale->installment_date_8),
-            $sale->installment_amount_9,
-            Helper::formatDate($sale->installment_date_9),
-            $sale->installment_amount_10,
-            Helper::formatDate($sale->installment_date_10),
-            $sale->installment_amount_11,
-            Helper::formatDate($sale->installment_date_11),
-            $sale->installment_amount_12,
-            Helper::formatDate($sale->installment_date_12),
-            $sale->installment_amount_13,
-            Helper::formatDate($sale->installment_date_13),
-            $sale->installment_amount_14,
-            Helper::formatDate($sale->installment_date_14),
-            $sale->installment_amount_15,
-            Helper::formatDate($sale->installment_date_15),
-        ];
+            $sale->insurance->amount,
+            Helper::formatDate($sale->insurance->date),
+            $sale->remainingSale->amount,
+            Helper::formatDate($sale->remainingSale->date),
+            $sale->maintenanceDeposit->amount,
+            Helper::formatDate($sale->maintenanceDeposit->date),
+        ], $installmentColumns);
     }
 
     public function headings(): array
     {
+        $headings = [];
+
         if ($this->originalCoulmns) {
-            return [
+            $headings = [
                 __('site.id'),
-                __('site.auction_date'),
                 __('site.customer_name'),
                 __('site.national_number'),
                 __('site.count_national_number'),
                 __('site.phone_number'),
                 __('site.home_number'),
+                __('site.auction_date'),
                 __('site.government_id'),
                 __('site.city_id'),
                 __('site.center'),
@@ -134,46 +121,22 @@ class SalesExport implements FromCollection, WithHeadings, WithStyles, ShouldAut
                 __('site.maintenance_deposit_date'),
                 __('site.afine_amount'),
                 __('site.afine_date'),
-                __('site.installment_amount_1'),
-                __('site.installment_date_1'),
-                __('site.installment_amount_2'),
-                __('site.installment_date_2'),
-                __('site.installment_amount_3'),
-                __('site.installment_date_3'),
-                __('site.installment_amount_4'),
-                __('site.installment_date_4'),
-                __('site.installment_amount_5'),
-                __('site.installment_date_5'),
-                __('site.installment_amount_6'),
-                __('site.installment_date_6'),
-                __('site.installment_amount_7'),
-                __('site.installment_date_7'),
-                __('site.installment_amount_8'),
-                __('site.installment_date_8'),
-                __('site.installment_amount_9'),
-                __('site.installment_date_9'),
-                __('site.installment_amount_10'),
-                __('site.installment_date_10'),
-                __('site.installment_amount_11'),
-                __('site.installment_date_11'),
-                __('site.installment_amount_12'),
-                __('site.installment_date_12'),
-                __('site.installment_amount_13'),
-                __('site.installment_date_13'),
-                __('site.installment_amount_14'),
-                __('site.installment_date_14'),
-                __('site.installment_amount_15'),
-                __('site.installment_date_15'),
             ];
+
+            for ($i = 1; $i <= 15; $i++) {
+                $headings[] = __("site.installment_amount_{$i}");
+                $headings[] = __("site.installment_date_{$i}");
+                $headings[] = __("site.installment_status_{$i}");
+            }
         } else {
-            return [
+            $headings =  [
                 'id',
-                'auction_date',
                 'customer_name',
                 'national_number',
                 'count_national_number',
                 'phone_number',
                 'home_number',
+                'auction_date',
                 'government_id',
                 'city_id',
                 'center',
@@ -194,37 +157,15 @@ class SalesExport implements FromCollection, WithHeadings, WithStyles, ShouldAut
                 'maintenance_deposit_date',
                 'afine_amount',
                 'afine_date',
-                'installment_amount_1',
-                'installment_date_1',
-                'installment_amount_2',
-                'installment_date_2',
-                'installment_amount_3',
-                'installment_date_3',
-                'installment_amount_4',
-                'installment_date_4',
-                'installment_amount_5',
-                'installment_date_5',
-                'installment_amount_6',
-                'installment_date_6',
-                'installment_amount_7',
-                'installment_date_7',
-                'installment_amount_8',
-                'installment_date_8',
-                'installment_amount_9',
-                'installment_date_9',
-                'installment_amount_10',
-                'installment_date_10',
-                'installment_amount_11',
-                'installment_date_11',
-                'installment_amount_12',
-                'installment_date_12',
-                'installment_amount_13',
-                'installment_date_13',
-                'installment_amount_14',
-                'installment_date_14',
-                'installment_amount_15',
-                'installment_date_15',
             ];
+
+            for ($i = 1; $i <= 15; $i++) {
+                $headings[] = "installment_amount_{$i}";
+                $headings[] = "installment_date_{$i}";
+                $headings[] = "installment_status_{$i}";
+            }
         }
+
+        return $headings;
     }
 }

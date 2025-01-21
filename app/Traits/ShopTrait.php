@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Models\City;
+use App\Models\Company;
 use App\Models\Shop;
 use App\Models\Government;
 use Livewire\WithPagination;
@@ -13,25 +14,33 @@ trait ShopTrait
 
     public ?Shop $shop;
 
-    public $shop_id, $government_id, $city_id, $center, $location,
-        $building_number, $building_entrance_number, $shop_number, $type_of_shop,
+    public $shop_id, $shop_code, $auction_date, $company_id, $government_id, $city_id, $center,
+        $location, $building_number, $building_entrance_number, $shop_number, $type_of_shop,
         $shop_area, $sell_price, $sell_price_for_meter;
 
     protected function rules()
     {
         return [
-            'government_id' => 'required|numeric|exists:governments,id',
-            'city_id' => 'required|numeric|exists:cities,id',
-            'center' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
+            'shop_code' => 'required|string|unique:shops,shop_code,' . $this->shop_id,
+            'auction_date' => 'required|date',
+            'company_id' => 'nullable|string|exists:companies,id',
+            'government_id' => 'required|string|exists:governments,id',
+            'city_id' => 'required|string|exists:cities,id',
+            'center' => 'nullable|string|max:255',
+            'location' => 'nullable|string|max:255',
             'building_number' => 'required|numeric',
-            'building_entrance_number' => 'required|numeric',
+            'building_entrance_number' => 'nullable|numeric',
             'shop_number' => 'required|numeric',
             'type_of_shop' => 'required|string|max:255',
             'shop_area' => 'required|numeric',
             'sell_price' => 'required|numeric',
             'sell_price_for_meter' => 'required|numeric',
         ];
+    }
+
+    public function companies()
+    {
+        return Company::pluck('name', 'id')->toArray();
     }
 
     public function governments()
@@ -54,6 +63,9 @@ trait ShopTrait
     {
         $this->shop = Shop::findOrFail($id);
         $this->shop_id = $this->shop->id;
+        $this->shop_code = $this->shop->shop_code;
+        $this->auction_date = $this->shop->auction_date;
+        $this->company_id = $this->shop->company_id;
         $this->government_id = $this->shop->government_id;
         $this->city_id = $this->shop->city_id;
         $this->center = $this->shop->center;

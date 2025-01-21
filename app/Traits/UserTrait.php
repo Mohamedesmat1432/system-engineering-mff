@@ -20,6 +20,7 @@ trait UserTrait
     public $new_password;
     public $role;
     public $department_id;
+    
     protected function rules()
     {
         $rules = [
@@ -27,7 +28,7 @@ trait UserTrait
             'email' => 'required|string|email|max:255|unique:users,email,' . $this->user_id,
             'role' => 'nullable|exists:roles,id',
             'status' => 'required|boolean',
-            'department_id' => 'required|exists:departments,id',
+            'department_id' => 'required|string|exists:departments,id',
         ];
 
         if ($this->password) {

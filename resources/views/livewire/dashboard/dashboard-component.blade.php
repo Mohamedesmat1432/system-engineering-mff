@@ -30,7 +30,7 @@
                 @can('view-chart-user')
                 <livewire:chart.chart-user />
                 @endcan
-                @can('view-customer')
+                @can('view-chart-customer')
                 <livewire:chart.chart-customer />
                 @endcan
                 @can('view-chart-shop')
@@ -38,12 +38,6 @@
                 @endcan
                 @can('view-chart-sale')
                 <livewire:chart.chart-sale />
-                @endcan
-                @can('view-chart-shop-outside-damietta')
-                <livewire:chart.chart-shop-outside-damietta />
-                @endcan
-                @can('view-chart-shop-damietta-only')
-                <livewire:chart.chart-shop-damietta-only />
                 @endcan
             </div>
         </div>

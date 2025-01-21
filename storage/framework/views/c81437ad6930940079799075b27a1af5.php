@@ -28,6 +28,24 @@ unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
         <?php endif; ?>
+        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('show-sale')): ?>
+        <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('sale.show-sale', []);
+
+$__html = app('livewire')->mount($__name, $__params, 'lw-1095906862-1', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+        <?php endif; ?>
         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('edit-sale')): ?>
         <?php
 $__split = function ($name, $params = []) {
@@ -35,7 +53,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('sale.update-sale', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-1095906862-1', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-1095906862-2', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -53,7 +71,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('sale.delete-sale', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-1095906862-2', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-1095906862-3', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -71,7 +89,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('sale.bulk-delete-sale', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-1095906862-3', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-1095906862-4', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -89,7 +107,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('sale.import-sale', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-1095906862-4', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-1095906862-5', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -107,7 +125,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('sale.export-sale', []);
 
-$__html = app('livewire')->mount($__name, $__params, 'lw-1095906862-5', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'lw-1095906862-6', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -363,6 +381,118 @@ if (isset($__slots)) unset($__slots);
                             </td>
                             <td class="px-4 py-2 border">
                                 <div class="flex justify-center">
+                                    <button wire:click="sortByField('customer_id')">
+                                        <?php echo e(__('site.phone_number')); ?>
+
+                                    </button>
+                                    <?php if (isset($component)) { $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sort-icon','data' => ['sortField' => 'customer_id','sortBy' => $sort_by,'sortAsc' => $sort_asc]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('sort-icon'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['sort_field' => 'customer_id','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
+<?php $attributes = $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
+<?php unset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
+<?php $component = $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
+<?php unset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
+<?php endif; ?>
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border">
+                                <div class="flex justify-center">
+                                    <button wire:click="sortByField('shop_id')">
+                                        <?php echo e(__('site.shop_code')); ?>
+
+                                    </button>
+                                    <?php if (isset($component)) { $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sort-icon','data' => ['sortField' => 'shop_id','sortBy' => $sort_by,'sortAsc' => $sort_asc]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('sort-icon'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['sort_field' => 'shop_id','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
+<?php $attributes = $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
+<?php unset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
+<?php $component = $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
+<?php unset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
+<?php endif; ?>
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border">
+                                <div class="flex justify-center">
+                                    <button wire:click="sortByField('shop_id')">
+                                        <?php echo e(__('site.auction_date')); ?>
+
+                                    </button>
+                                    <?php if (isset($component)) { $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sort-icon','data' => ['sortField' => 'shop_id','sortBy' => $sort_by,'sortAsc' => $sort_asc]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('sort-icon'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['sort_field' => 'shop_id','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
+<?php $attributes = $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
+<?php unset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
+<?php $component = $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
+<?php unset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
+<?php endif; ?>
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border">
+                                <div class="flex justify-center">
+                                    <button wire:click="sortByField('shop_id')">
+                                        <?php echo e(__('site.company_id')); ?>
+
+                                    </button>
+                                    <?php if (isset($component)) { $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sort-icon','data' => ['sortField' => 'shop_id','sortBy' => $sort_by,'sortAsc' => $sort_asc]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('sort-icon'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['sort_field' => 'shop_id','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
+<?php $attributes = $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
+<?php unset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
+<?php $component = $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
+<?php unset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
+<?php endif; ?>
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border">
+                                <div class="flex justify-center">
                                     <button wire:click="sortByField('shop_id')">
                                         <?php echo e(__('site.government_id')); ?>
 
@@ -420,7 +550,7 @@ if (isset($__slots)) unset($__slots);
                             <td class="px-4 py-2 border">
                                 <div class="flex justify-center">
                                     <button wire:click="sortByField('shop_id')">
-                                        <?php echo e(__('site.shop_id')); ?>
+                                        <?php echo e(__('site.shop_number')); ?>
 
                                     </button>
                                     <?php if (isset($component)) { $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $component; } ?>
@@ -433,34 +563,6 @@ if (isset($__slots)) unset($__slots);
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['sort_field' => 'shop_id','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
-<?php $attributes = $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
-<?php unset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
-<?php $component = $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
-<?php unset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
-<?php endif; ?>
-                                </div>
-                            </td>
-                            <td class="px-4 py-2 border">
-                                <div class="flex justify-center">
-                                    <button wire:click="sortByField('auction_date')">
-                                        <?php echo e(__('site.auction_date')); ?>
-
-                                    </button>
-                                    <?php if (isset($component)) { $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sort-icon','data' => ['sortField' => 'auction_date','sortBy' => $sort_by,'sortAsc' => $sort_asc]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('sort-icon'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['sort_field' => 'auction_date','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
@@ -501,22 +603,22 @@ if (isset($__slots)) unset($__slots);
 <?php endif; ?>
                                 </div>
                             </td>
-                            <td class="px-2 border" colspan="2">
+                            <td class="px-2 border" colspan="3">
                                 <div class="flex justify-center">
-                                    <button wire:click="sortByField('insurance_date')">
+                                    <button wire:click="sortByField('insurances.sale_id')">
                                         <?php echo e(__('site.insurance')); ?>
 
                                     </button>
                                     <?php if (isset($component)) { $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sort-icon','data' => ['sortField' => 'insurance_date','sortBy' => $sort_by,'sortAsc' => $sort_asc]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sort-icon','data' => ['sortField' => 'insurances.sale_id','sortBy' => $sort_by,'sortAsc' => $sort_asc]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('sort-icon'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['sort_field' => 'insurance_date','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
+<?php $component->withAttributes(['sort_field' => 'insurances.sale_id','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
@@ -531,24 +633,25 @@ if (isset($__slots)) unset($__slots);
                                 <div class="flex justify-between">
                                     <span><?php echo e(__('site.amount')); ?></span>
                                     <span><?php echo e(__('site.date')); ?></span>
+                                    <span><?php echo e(__('site.status')); ?></span>
                                 </div>
                             </td>
-                            <td class="px-2 py-2 border" colspan="2">
+                            <td class="px-2 py-2 border" colspan="3">
                                 <div class="flex justify-center">
-                                    <button wire:click="sortByField('remaining_sale_date')">
+                                    <button wire:click="sortByField('remaining_sales.sale_id')">
                                         <?php echo e(__('site.remaining_amount_sale')); ?>
 
                                     </button>
                                     <?php if (isset($component)) { $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sort-icon','data' => ['sortField' => 'remaining_sale_date','sortBy' => $sort_by,'sortAsc' => $sort_asc]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sort-icon','data' => ['sortField' => 'remaining_sales.sale_id','sortBy' => $sort_by,'sortAsc' => $sort_asc]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('sort-icon'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['sort_field' => 'remaining_sale_date','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
+<?php $component->withAttributes(['sort_field' => 'remaining_sales.sale_id','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
@@ -563,24 +666,25 @@ if (isset($__slots)) unset($__slots);
                                 <div class="flex justify-between">
                                     <span><?php echo e(__('site.amount')); ?></span>
                                     <span><?php echo e(__('site.date')); ?></span>
+                                    <span><?php echo e(__('site.status')); ?></span>
                                 </div>
                             </td>
-                            <td class="px-2 py-2 border" colspan="2">
+                            <td class="px-2 py-2 border" colspan="3">
                                 <div class="flex justify-center">
-                                    <button wire:click="sortByField('maintenance_deposit_date')">
+                                    <button wire:click="sortByField('maintenance_deposits.sale_id')">
                                         <?php echo e(__('site.maintenance_deposit')); ?>
 
                                     </button>
                                     <?php if (isset($component)) { $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sort-icon','data' => ['sortField' => 'maintenance_deposit_date','sortBy' => $sort_by,'sortAsc' => $sort_asc]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sort-icon','data' => ['sortField' => 'maintenance_deposits.sale_id','sortBy' => $sort_by,'sortAsc' => $sort_asc]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('sort-icon'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['sort_field' => 'maintenance_deposit_date','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
+<?php $component->withAttributes(['sort_field' => 'maintenance_deposits.sale_id','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
@@ -595,80 +699,16 @@ if (isset($__slots)) unset($__slots);
                                 <div class="flex justify-between">
                                     <span><?php echo e(__('site.amount')); ?></span>
                                     <span><?php echo e(__('site.date')); ?></span>
+                                    <span><?php echo e(__('site.status')); ?></span>
                                 </div>
                             </td>
-                            <td class="px-2 py-2 border" colspan="2">
-                                <div class="flex justify-center">
-                                    <button wire:click="sortByField('afine_date')">
-                                        <?php echo e(__('site.afine')); ?>
-
-                                    </button>
-                                    <?php if (isset($component)) { $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sort-icon','data' => ['sortField' => 'afine_date','sortBy' => $sort_by,'sortAsc' => $sort_asc]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('sort-icon'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['sort_field' => 'afine_date','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
-<?php $attributes = $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
-<?php unset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
-<?php $component = $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
-<?php unset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
-<?php endif; ?>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span><?php echo e(__('site.amount')); ?></span>
-                                    <span><?php echo e(__('site.date')); ?></span>
-                                </div>
-                            </td>
-                            <!--[if BLOCK]><![endif]--><?php for($i = 1; $i <= 15; $i++): ?> 
-                            <td class="px-2 py-2 border" colspan="2">
-                            <div class="flex justify-center">
-                                <button wire:click="sortByField('installment_date_<?php echo e($i); ?>')">
-                                    <?php echo e(__("site.installment_{$i}")); ?>
-
-                                </button>
-                                <?php if (isset($component)) { $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.sort-icon','data' => ['sortField' => 'installment_date_'.e($i).'','sortBy' => $sort_by,'sortAsc' => $sort_asc]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
-<?php $component->withName('sort-icon'); ?>
-<?php if ($component->shouldRender()): ?>
-<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
-<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
-<?php endif; ?>
-<?php $component->withAttributes(['sort_field' => 'installment_date_'.e($i).'','sort_by' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_by),'sort_asc' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($sort_asc)]); ?>
-<?php echo $__env->renderComponent(); ?>
-<?php endif; ?>
-<?php if (isset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
-<?php $attributes = $__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
-<?php unset($__attributesOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
-<?php endif; ?>
-<?php if (isset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e)): ?>
-<?php $component = $__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e; ?>
-<?php unset($__componentOriginalee2a861ad7afb8a8513aaf5b4abcef1e); ?>
-<?php endif; ?>
-                            </div>
-                            <div class="flex justify-between">
-                                <span><?php echo e(__('site.amount')); ?></span>
-                                <span><?php echo e(__('site.date')); ?></span>
-                            </div>
-                            </td>
-                            <?php endfor; ?><!--[if ENDBLOCK]><![endif]-->
                             <td class="px-4 py-2 border">
                                 <div class="flex justify-center">
                                     <?php echo e(__('site.action')); ?>
 
                                 </div>
                             </td>
+                            
                         </tr>
                      <?php $__env->endSlot(); ?>
                      <?php $__env->slot('tbody', null, []); ?> 
@@ -711,6 +751,22 @@ if (isset($__slots)) unset($__slots);
 
                             </td>
                             <td class="p-2 border">
+                                <?php echo e($sale->customer->phone_number); ?>
+
+                            </td>
+                            <td class="p-2 border">
+                                <?php echo e($sale->shop->shop_code); ?>
+
+                            </td>
+                            <td class="p-2 border">
+                                <?php echo e($sale->shop->auction_date); ?>
+
+                            </td>
+                            <td class="p-2 border">
+                                <?php echo e($sale->shop->company?->name); ?>
+
+                            </td>
+                            <td class="p-2 border">
                                 <?php echo e($sale->shop->government->name); ?>
 
                             </td>
@@ -723,57 +779,95 @@ if (isset($__slots)) unset($__slots);
 
                             </td>
                             <td class="p-2 border">
-                                <?php echo e($sale->auction_date); ?>
-
-                            </td>
-                            <td class="p-2 border">
                                 <?php echo e(__("site.{$sale->payment_method}")); ?>
 
                             </td>
                             <td class="p-2 border">
-                                <?php echo e($sale->insurance_amount); ?>
+                                <?php echo e($sale->insurance->amount); ?>
 
                             </td>
                             <td class="p-2 border">
-                                <?php echo e($sale->insurance_date); ?>
+                                <?php echo e($sale->insurance->date); ?>
 
                             </td>
                             <td class="p-2 border">
-                                <?php echo e($sale->remaining_sale_amount); ?>
+                                <!--[if BLOCK]><![endif]--><?php if($sale->insurance->status): ?>
+                                <div class="p-2 bg-green-500 rounded-full text-white">
+                                    <?php echo e(__('site.paid')); ?>
+
+                                </div>
+                                <?php else: ?>
+                                <div class="p-2 bg-yellow-200 rounded-full">
+                                    <?php echo e(__('site.unpaid')); ?>
+
+                                </div>
+                                <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+                            </td>
+                            <td class="p-2 border">
+                                <?php echo e($sale->remainingSale->amount); ?>
 
                             </td>
                             <td class="p-2 border">
-                                <?php echo e($sale->remaining_sale_date); ?>
+                                <?php echo e($sale->remainingSale->date); ?>
 
                             </td>
                             <td class="p-2 border">
-                                <?php echo e($sale->maintenance_deposit_amount); ?>
+                                <!--[if BLOCK]><![endif]--><?php if($sale->remainingSale->status): ?>
+                                <div class="p-2 bg-green-500 rounded-full text-white">
+                                    <?php echo e(__('site.paid')); ?>
+
+                                </div>
+                                <?php else: ?>
+                                <div class="p-2 bg-yellow-200 rounded-full">
+                                    <?php echo e(__('site.unpaid')); ?>
+
+                                </div>
+                                <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+                            </td>
+                            <td class="p-2 border">
+                                <?php echo e($sale->maintenanceDeposit->amount); ?>
 
                             </td>
                             <td class="p-2 border">
-                                <?php echo e($sale->maintenance_deposit_date); ?>
+                                <?php echo e($sale->maintenanceDeposit->date); ?>
 
                             </td>
                             <td class="p-2 border">
-                                <?php echo e($sale->afine_amount); ?>
+                                <!--[if BLOCK]><![endif]--><?php if($sale->maintenanceDeposit->status): ?>
+                                <div class="p-2 bg-green-500 rounded-full text-white">
+                                    <?php echo e(__('site.paid')); ?>
 
-                            </td>
-                            <td class="p-2 border">
-                                <?php echo e($sale->afine_date); ?>
+                                </div>
+                                <?php else: ?>
+                                <div class="p-2 bg-yellow-200 rounded-full">
+                                    <?php echo e(__('site.unpaid')); ?>
 
+                                </div>
+                                <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
                             </td>
-                            <!--[if BLOCK]><![endif]--><?php for($i = 1; $i<= 15; $i++): ?>
-                            <td class="p-2 border">
-                                <?php echo e($sale->{'installment_amount_' . $i}); ?>
-
-                            </td>
-                            <td class="p-2 border">
-                                <?php echo e($sale->{'installment_date_' . $i}); ?>
-
-                            </td>
-                            <?php endfor; ?><!--[if ENDBLOCK]><![endif]-->
                             <td class="p-2 border">
                                 <div class="flex justify-center">
+                                    <?php if (isset($component)) { $__componentOriginal1552aa883fbbe3ec28d1bd1905fbebcf = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal1552aa883fbbe3ec28d1bd1905fbebcf = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.show-button','data' => ['permission' => 'show-sale','id' => ''.e($sale->id).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('show-button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['permission' => 'show-sale','id' => ''.e($sale->id).'']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal1552aa883fbbe3ec28d1bd1905fbebcf)): ?>
+<?php $attributes = $__attributesOriginal1552aa883fbbe3ec28d1bd1905fbebcf; ?>
+<?php unset($__attributesOriginal1552aa883fbbe3ec28d1bd1905fbebcf); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal1552aa883fbbe3ec28d1bd1905fbebcf)): ?>
+<?php $component = $__componentOriginal1552aa883fbbe3ec28d1bd1905fbebcf; ?>
+<?php unset($__componentOriginal1552aa883fbbe3ec28d1bd1905fbebcf); ?>
+<?php endif; ?>
+                                    <div class="mx-1"></div>
                                     <?php if (isset($component)) { $__componentOriginal8417baeedcb6c131165d53e37e61cc07 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal8417baeedcb6c131165d53e37e61cc07 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.edit-button','data' => ['permission' => 'edit-sale','id' => ''.e($sale->id).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
@@ -797,14 +891,14 @@ if (isset($__slots)) unset($__slots);
                                     <div class="mx-1"></div>
                                     <?php if (isset($component)) { $__componentOriginalec2502b834f860c8e30d229aa8f280e2 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginalec2502b834f860c8e30d229aa8f280e2 = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.delete-button','data' => ['permission' => 'delete-sale','id' => ''.e($sale->id).'','name' => ''.e($sale->auction_date).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.delete-button','data' => ['permission' => 'delete-sale','id' => ''.e($sale->id).'','name' => ''.e($sale->shop->auction_date).'']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('delete-button'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
-<?php $component->withAttributes(['permission' => 'delete-sale','id' => ''.e($sale->id).'','name' => ''.e($sale->auction_date).'']); ?>
+<?php $component->withAttributes(['permission' => 'delete-sale','id' => ''.e($sale->id).'','name' => ''.e($sale->shop->auction_date).'']); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginalec2502b834f860c8e30d229aa8f280e2)): ?>
@@ -817,6 +911,7 @@ if (isset($__slots)) unset($__slots);
 <?php endif; ?>
                                 </div>
                             </td>
+                            
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <tr>

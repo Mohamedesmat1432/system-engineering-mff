@@ -30,8 +30,8 @@ class ChartShop extends Component
                 [
                     'label' => __('site.shops'),
                     'backgroundColor' => [
-                        'rgb(255, 99, 132)',
                         'rgb(54, 162, 235)',
+                        'rgb(255, 99, 132)',
                         'rgb(255, 205, 86)',
                         'rgba(75, 192, 192, 0.4)',
                         'rgba(75, 192, 192, 0.5)',
@@ -44,8 +44,8 @@ class ChartShop extends Component
                         'rgba(75, 192, 192, 0.12)',
                     ],
                     'borderColor' => [
-                        'rgb(255, 99, 132)',
                         'rgb(54, 162, 235)',
+                        'rgb(255, 99, 132)',
                         'rgb(255, 205, 86)',
                         'rgba(75, 192, 192, 0.4)',
                         'rgba(75, 192, 192, 0.5)',

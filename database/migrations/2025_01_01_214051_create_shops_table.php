@@ -12,9 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('shops', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->foreignId('government_id')->constrained('governments');
-            $table->foreignId('city_id')->constrained('cities');
+            $table->uuid('id')->primary();
+            $table->string('shop_code')->nullable();
+            $table->date('auction_date')->nullable();
+            $table->uuid('company_id')->nullable();
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->uuid('government_id')->nullable();
+            $table->foreign('government_id')->references('id')->on('governments')->onDelete('cascade');
+            $table->uuid('city_id')->nullable();
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->string('center')->nullable();
             $table->string('location')->nullable();
             $table->string('building_number')->nullable();

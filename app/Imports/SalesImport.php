@@ -12,7 +12,6 @@ use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
-use Maatwebsite\Excel\Events\BeforeSheet;
 
 class SalesImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmptyRows
 {
@@ -37,6 +36,7 @@ class SalesImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmpty
         ]);
 
         $shop = Shop::firstOrCreate([
+            'auction_date' => $row['auction_date'],
             'government_id' => Government::where('name_ar', $row['government_id'])->orWhere('name_en', $row['government_id'])->first()?->id,
             'city_id'  => City::where('name_ar', $row['city_id'])->orWhere('name_en', $row['city_id'])->first()?->id,
             'center' => $row['center'],
@@ -58,56 +58,50 @@ class SalesImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmpty
             return null;  // Skips the row
         }
 
-        return new Sale([
+        $sale =  Sale::firstOrCreate([
             'customer_id' => $customer->id,
             'shop_id' => $shop->id,
-            'auction_date' => $row['auction_date'],
             'payment_method'  => $row['payment_method'],
-            'insurance_amount' => $row['insurance_amount'],
-            'insurance_date' => $row['insurance_date'],
-            'remaining_sale_amount' => $row['remaining_sale_amount'],
-            'remaining_sale_date' => $row['remaining_sale_date'],
-            'maintenance_deposit_amount' => $row['maintenance_deposit_amount'],
-            'maintenance_deposit_date' => $row['maintenance_deposit_date'],
-            'afine_amount' => $row['afine_amount'],
-            'afine_date' => $row['afine_date'],
-            'installment_amount_1' => $row['installment_amount_1'],
-            'installment_date_1' => $row['installment_date_1'],
-            'installment_amount_2' => $row['installment_amount_2'],
-            'installment_date_2' => $row['installment_date_2'],
-            'installment_amount_3' => $row['installment_amount_3'],
-            'installment_date_3' => $row['installment_date_3'],
-            'installment_amount_4' => $row['installment_amount_4'],
-            'installment_date_4' => $row['installment_date_4'],
-            'installment_amount_5' => $row['installment_amount_5'],
-            'installment_date_5' => $row['installment_date_5'],
-            'installment_amount_6' => $row['installment_amount_6'],
-            'installment_date_6' => $row['installment_date_6'],
-            'installment_amount_7' => $row['installment_amount_7'],
-            'installment_date_7' => $row['installment_date_7'],
-            'installment_amount_8' => $row['installment_amount_8'],
-            'installment_date_8' => $row['installment_date_8'],
-            'installment_amount_9' => $row['installment_amount_9'],
-            'installment_date_9' => $row['installment_date_9'],
-            'installment_amount_10' => $row['installment_amount_10'],
-            'installment_date_10' => $row['installment_date_10'],
-            'installment_amount_11' => $row['installment_amount_11'],
-            'installment_date_11' => $row['installment_date_11'],
-            'installment_amount_12' => $row['installment_amount_12'],
-            'installment_date_12' => $row['installment_date_12'],
-            'installment_amount_13' => $row['installment_amount_13'],
-            'installment_date_13' => $row['installment_date_13'],
-            'installment_amount_14' => $row['installment_amount_14'],
-            'installment_date_14' => $row['installment_date_14'],
-            'installment_amount_15' => $row['installment_amount_15'],
-            'installment_date_15' => $row['installment_date_15'],
+            // 'installment_count'  => $row['installment_count'],
         ]);
+
+        $sale->insurance()->firstOrCreate([
+            'amount' => $row['insurance_amount'],
+            'date' => $row['insurance_date'],
+            'status' => 0,
+        ]);
+
+        $sale->remainingSale()->firstOrCreate([
+            'amount' => $row['remaining_sale_amount'],
+            'date' => $row['remaining_sale_date'],
+            'status' => 0,
+        ]);
+
+        $sale->maintenanceDeposit()->firstOrCreate([
+            'amount' => $row['maintenance_deposit_amount'],
+            'date' => $row['maintenance_deposit_date'],
+            'status' => 0,
+        ]);
+
+        if ($sale->payment_method === 'installment') {
+            for ($i = 1; $i <= 15; $i++) {
+                $amountKey = "installment_amount_{$i}";
+                $dateKey = "installment_date_{$i}";
+
+                if (!empty($row[$amountKey]) && !empty($row[$dateKey])) {
+                    $sale->installments()->firstOrCreate([
+                        'amount' => $row[$amountKey],
+                        'date' => $row[$dateKey],
+                        'status' => 0,
+                    ]);
+                }
+            }
+        }
     }
 
     public function rules(): array
     {
-        return [
-            'auction_date' => 'required|Date',
+        $rules = [
             'customer_name' => 'required|string|max:255',
             'national_number' => 'required',
             'count_national_number' => 'nullable|numeric',
@@ -124,6 +118,7 @@ class SalesImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmpty
             'type_of_shop' => 'required|string|max:255',
             'shop_area' => 'required|numeric',
             'sell_price_for_meter' => 'required|numeric',
+            'auction_date' => 'required|date',
             'payment_method' => 'nullable|string',
             'insurance_amount' => 'nullable|numeric',
             'insurance_date' => 'nullable|date',
@@ -131,38 +126,14 @@ class SalesImport implements ToModel, WithHeadingRow, WithValidation, SkipsEmpty
             'remaining_sale_date' => 'nullable|date',
             'maintenance_deposit_amount' => 'nullable|numeric',
             'maintenance_deposit_date' => 'nullable|date',
-            'afine_amount' => 'nullable|numeric',
-            'afine_date' => 'nullable|date',
-            'installment_amount_1' => 'nullable|numeric',
-            'installment_date_1' => 'nullable|date',
-            'installment_amount_2' => 'nullable|numeric',
-            'installment_date_2' => 'nullable|date',
-            'installment_amount_3' => 'nullable|numeric',
-            'installment_date_3' => 'nullable|date',
-            'installment_amount_4' => 'nullable|numeric',
-            'installment_date_4' => 'nullable|date',
-            'installment_amount_5' => 'nullable|numeric',
-            'installment_date_5' => 'nullable|date',
-            'installment_amount_6' => 'nullable|numeric',
-            'installment_date_6' => 'nullable|date',
-            'installment_amount_7' => 'nullable|numeric',
-            'installment_date_7' => 'nullable|date',
-            'installment_amount_8' => 'nullable|numeric',
-            'installment_date_8' => 'nullable|date',
-            'installment_amount_9' => 'nullable|numeric',
-            'installment_date_9' => 'nullable|date',
-            'installment_amount_10' => 'nullable|numeric',
-            'installment_date_10' => 'nullable|date',
-            'installment_amount_11' => 'nullable|numeric',
-            'installment_date_11' => 'nullable|date',
-            'installment_amount_12' => 'nullable|numeric',
-            'installment_date_12' => 'nullable|date',
-            'installment_amount_13' => 'nullable|numeric',
-            'installment_date_13' => 'nullable|date',
-            'installment_amount_14' => 'nullable|numeric',
-            'installment_date_14' => 'nullable|date',
-            'installment_amount_15' => 'nullable|numeric',
-            'installment_date_15' => 'nullable|date',
         ];
+
+        for ($i = 1; $i <= 15; $i++) {
+            $rules["installment_amount_{$i}"] = 'nullable|numeric';
+            $rules["installment_date_{$i}"] = 'nullable|date';
+            // $rules["installment_status_{$i}"] = 'nullable|date';
+        }
+
+        return $rules;
     }
 }

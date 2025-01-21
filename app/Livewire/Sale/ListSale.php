@@ -19,7 +19,9 @@ class ListSale extends Component
     {
         $this->authorize('view-sale');
 
-        $sales = Sale::with(['customer', 'shop'])->search($this->search)->paginate($this->page_element);
+        $sales = Sale::with(['customer', 'shop'])->search($this->search)
+            ->orderBy($this->sort_by, $this->sort_asc ? 'ASC' : 'DESC')
+            ->paginate($this->page_element);
 
         $this->checkbox_all = Sale::pluck('id')->toArray();
 
